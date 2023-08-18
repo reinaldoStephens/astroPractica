@@ -10,62 +10,103 @@ const products = await response.json();
     <main>
         <div class="container-fluid">
             <Header />
-            <h1>Products</h1>
 
-            <ul>
-                {
-                    products.map((product: any) => (
-                        <li class="product">
-                            <a href={`#`}>
-                                <figure>
-                                    <img src={product.image} />
-                                    <figcaption>
-                                        <div class="name">{product.title}</div>
-                                        <div class="price">${product.price}</div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </li>
-                    ))
-                }
-            </ul>
+            <!-- shop section -->
+            <section class="shop_section layout_padding">
+                <div class="container">
+                    <div class="heading_container heading_center">
+                        <h2>Latest Products</h2>
+                    </div>
+                    <div class="row">
+                        {
+                            products.map((product: any) => (
+                                <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <div class="box">
+                                        <a href="">
+                                            <div class="img-box">
+                                                <img src={product.image} alt="" />
+                                            </div>
+                                            <div class="detail-box">
+                                                <h6>Ring</h6>
+                                                <h6>
+                                                    Price
+                                                    <span> $200</span>
+                                                </h6>
+                                            </div>
+                                            <div class="new">
+                                                <span> New</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 </Layout>
 
 <style lang="scss">
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
-    .name {
-        font-weight: 500;
-    }
+    // shop section
+    $white: #ffffff;
+    $black: #000000;
+    $primary1: #f89cab;
+    $btnColor: #db4f66;
 
-    .price {
-        font-size: 90%;
-        color: #787878;
-    }
-    .product a {
-        display: block;
-        text-decoration: none;
-        color: inherit;
-    }
-    figure img {
-        width: 100%;
-        height: 200px;
-        object-fit: contain;
-    }
-    figure {
-        width: 200px;
-        display: flex;
-        flex-direction: column;
-        margin: 40px;
-    }
-    figure figcaption {
-        text-align: center;
-        line-height: 1.6;
+    .shop_section {
+        .heading_container {
+            margin-bottom: 20px;
+        }
+
+        .box {
+            background-color: #f7f7f7;
+            position: relative;
+            padding: 10px;
+            margin-top: 25px;
+
+            a {
+                color: $black;
+            }
+
+            .img-box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px 30px;
+                height: 245px;
+
+                img {
+                    max-width: 100%;
+                    max-height: 145px;
+                }
+            }
+
+            .detail-box {
+                display: flex;
+                justify-content: space-between;
+
+                h6 {
+                    span {
+                        color: $btnColor;
+                    }
+                }
+            }
+
+            .new {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: $white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 100%;
+                font-size: 15px;
+            }
+        }
     }
 </style>
