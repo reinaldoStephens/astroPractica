@@ -1,0 +1,112 @@
+---
+const response = await fetch("https://fakestoreapi.com/products");
+const products = await response.json();
+---
+
+<!-- shop section -->
+<section class="">
+    <div class="heading_container heading_center">
+        <h2>Latest Products</h2>
+    </div>
+    <div class="grid-layout product-detail-container">
+        {
+            products.map((product: any) => (
+                <div class="box" id={product.id}>
+                    <a href="">
+                        <div class="img-box">
+                            <img src={product.image} alt="" />
+                        </div>
+                        <div class="detail-box">
+                            <h6>{product.title}</h6>
+                            <h6>
+                                Price
+                                <span> ${product.price}</span>
+                            </h6>
+                        </div>
+                        <div class="new">
+                            <span> New</span>
+                        </div>
+                    </a>
+                </div>
+            ))
+        }
+    </div>
+</section>
+<style lang="scss">
+    .heading_container {
+        h2 {
+            text-transform: uppercase;
+            font-weight: bold;
+
+            span {
+                color: var(--text-color);
+            }
+        }
+
+        &.heading_center {
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    .heading_container {
+        margin-bottom: 20px;
+    }
+
+    .box {
+        display: grid;
+        background-color: var(--text-color-inverse);
+        position: relative;
+        padding: 10px;
+        margin-top: 25px;
+        box-shadow: var(--navbar-shallow-color) 0px 5px 15px;
+        a {
+            color: var(--text-color);
+        }
+
+        .img-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 30px;
+            height: 245px;
+
+            img {
+                max-width: 100%;
+                max-height: 145px;
+            }
+        }
+
+        .detail-box {
+            display: flex;
+            justify-content: space-between;
+
+            h6 {
+                span {
+                    color: var(--primary-color);
+                }
+            }
+        }
+
+        .new {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--navbar-shallow-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            font-size: 15px;
+        }
+    }
+
+    .grid-layout {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+        padding: 1rem;
+    }
+</style>
