@@ -7,14 +7,14 @@
             <a class="navbar-brand" href="index.html">
                 <span> Fake Store</span>
             </a>
-            <button class="open-menu" aria-label="Abrir menú">
-                <img src="img/burger_menu.svg" alt="Abrir menú" />
-            </button>
+
+            <div class="open-menu" role="button" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
         <ul class="menu">
-            <button class="close-menu" aria-label="Cerrar menú">
-                <img src="img/close_icon.svg" alt="Cerrar menú" />
-            </button>
             <li><a href="#home" class="selected">Home</a></li>
             <li><a href="#shop">Shop</a></li>
             <li><a href="#whyus">Why Us</a></li>
@@ -25,34 +25,44 @@
 <script>
     const menu = document.querySelector(".menu");
     const openMenuBtn = document.querySelector(".open-menu");
-    const closeMenuBtn = document.querySelector(".close-menu");
 
     function toogleMenu() {
         menu?.classList.toggle("menu-opened");
     }
 
     openMenuBtn?.addEventListener("click", () => toogleMenu());
-    closeMenuBtn?.addEventListener("click", () => toogleMenu());
+
+    const closeIcon = document.querySelector(".open-menu");
+    closeIcon?.addEventListener("click", () => {
+        closeIcon?.classList.toggle("open");
+
+        if (closeIcon?.classList.contains("open")) {
+            closeIcon.ariaLabel = "Close menu";
+        } else {
+            closeIcon.ariaLabel = "Open menu";
+        }
+    });
 </script>
 <style>
     .header_section {
-        min-height: 3rem;
         width: 100%;
-
         display: flex;
         justify-content: center;
     }
 
     .menu {
         display: flex;
-        margin: 0;
         list-style: none;
-        display: none;
+        border-radius: 10px;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+        padding: 0;
+        margin: 0;
+        justify-content: center;
     }
 
     .menu li {
-        padding: 5px 25px;
-        border-radius: 5px;
+        padding: 0 25px;
+        border-radius: 10px;
     }
 
     .menu a {
@@ -60,7 +70,6 @@
         font-size: 18px;
         font-weight: 500;
         line-height: 50px;
-        text-transform: capitalize;
         position: relative;
     }
 
@@ -68,6 +77,11 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        width: 95%;
+    }
+
+    .navbar-brand {
+        margin: 15px;
     }
 
     .navbar-brand span {
@@ -107,53 +121,60 @@
         opacity: 0.8;
     }
 
-    .open-menu,
-    .close-menu {
+    .open-menu {
         display: none;
     }
 
     @media screen and (max-width: 950px) {
         /* menu */
-        .navbar {
-            padding: 2rem;
+        .header_section {
             width: 100%;
+            display: flex;
+        }
+
+        .navbar {
+            padding: 0.5rem;
+        }
+
+        .navbar-brand {
+            margin: 5px 0;
         }
 
         .navbar-brand-container {
+            display: flex;
             justify-content: space-between;
+            width: 100%;
         }
 
         .menu {
             flex-direction: column;
             align-items: center;
-            position: relative;
+            gap: 1rem;
             min-width: 200px;
-            height: 100%;
             background-color: var(--text-color-inverse);
-            overflow: auto;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s;
+            padding: 1rem;
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .menu li {
+            padding: 0 80px;
             border-radius: 10px;
-            box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
         }
 
         .menu a {
-            line-height: 70px;
-            font-size: 25px;
+            line-height: 1.5;
+            font-weight: 400;
         }
 
-        .open-menu,
-        .close-menu {
+        .open-menu {
             display: block;
             border: none;
             background: none;
             cursor: pointer;
-        }
-
-        .close-menu {
-            align-self: flex-end;
-            padding: 20px 15px;
         }
 
         .menu-opened {
@@ -169,6 +190,78 @@
 
         .menu a:hover,
         .menu a.selected {
+        }
+
+        .open-menu {
+            width: 50px;
+            height: 48px;
+            margin-top: 6px;
+            position: relative;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: 0.5s ease-in-out;
+            -moz-transition: 0.5s ease-in-out;
+            -o-transition: 0.5s ease-in-out;
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+        }
+
+        .open-menu span {
+            display: block;
+            position: absolute;
+            height: 5px;
+            width: 100%;
+            background: var(--text-color);
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: 0.25s ease-in-out;
+            -moz-transition: 0.25s ease-in-out;
+            -o-transition: 0.25s ease-in-out;
+            transition: 0.25s ease-in-out;
+        }
+
+        .open-menu span:nth-child(1) {
+            top: 0px;
+        }
+
+        .open-menu span:nth-child(2) {
+            top: 16px;
+        }
+
+        .open-menu span:nth-child(3) {
+            top: 32px;
+        }
+
+        .open-menu.open {
+            width: 45px;
+        }
+
+        .open-menu.open span:nth-child(1) {
+            top: 18px;
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+
+        .open-menu.open span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+
+        .open-menu.open span:nth-child(3) {
+            top: 18px;
+            -webkit-transform: rotate(-135deg);
+            -moz-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            transform: rotate(-135deg);
         }
     }
 </style>
