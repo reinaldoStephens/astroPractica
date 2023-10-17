@@ -4,9 +4,13 @@ const products = await response.json();
 ---
 
 <!-- shop section -->
-<section class="">
+<section class="products-section">
     <div class="heading_container heading_center">
         <h2>Latest Products</h2>
+    </div>
+    <div class="search-wrapper">
+        <label for="search">Search Products:</label>
+        <input type="search" id="search" />
     </div>
     <div class="grid-layout product-detail-container">
         {
@@ -17,8 +21,8 @@ const products = await response.json();
                             <img src={product.image} alt="" />
                         </div>
                         <div class="detail-box">
-                            <h6>{product.title}</h6>
-                            <h6>
+                            <h6 class="product-title">{product.title}</h6>
+                            <h6 class="product-price">
                                 Price
                                 <span> ${product.price}</span>
                             </h6>
@@ -32,7 +36,43 @@ const products = await response.json();
         }
     </div>
 </section>
+<script>
+    const searchInput = document.querySelector("#search");
+    let productsBoxes = document.querySelectorAll(".box");
+    searchInput?.addEventListener("input", (e) => {
+        const inputElement = e.target as HTMLInputElement;
+        const value = inputElement?.value.toUpperCase();
+        productsBoxes.forEach((element) => {
+            let productTitleElem = element.querySelector(".product-title");
+            let productTitle = productTitleElem?.textContent?.trim().toUpperCase();
+            const isVisible = productTitle?.includes(value);
+            element.classList.toggle("hide", !isVisible);
+        });
+    });
+</script>
 <style lang="scss">
+    .products-section {
+        margin-top: 5rem;
+    }
+
+    .search-wrapper {
+        display: flex;
+        justify-content: left;
+        flex-direction: row;
+        gap: 0.25rem;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        #search {
+            margin-left: 0.5rem;
+            width: 70%;
+        }
+    }
+
+    div.hide {
+        display: none !important;
+    }
+
     .heading_container {
         h2 {
             text-transform: uppercase;
@@ -53,53 +93,96 @@ const products = await response.json();
         margin-bottom: 20px;
     }
 
+    .box:hover .detail-box::after {
+        opacity: 0.8;
+    }
+
     .box {
+        max-height: 400px;
         display: grid;
         background-color: var(--text-color-inverse);
-        position: relative;
         padding: 10px;
-        margin-top: 25px;
         box-shadow: var(--navbar-shallow-color) 0px 5px 15px;
         a {
             color: var(--text-color);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .img-box {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 15px 30px;
-            height: 245px;
+            padding: 30px 50px;
+            height: auto;
 
             img {
                 max-width: 100%;
-                max-height: 145px;
+                max-height: 200px;
             }
         }
 
         .detail-box {
             display: flex;
             justify-content: space-between;
+            padding: 0.25rem;
+            height: auto;
+            position: relative;
 
             h6 {
                 span {
                     color: var(--primary-color);
                 }
+                margin: 0;
+            }
+
+            .product-price {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding-left: 1rem;
+            }
+
+            .product-price span {
+                padding-left: 0.25rem;
+            }
+
+            .product-title {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
             }
         }
 
-        .new {
-            width: 50px;
-            height: 50px;
+        .detail-box::after {
+            content: "";
+            background-color: var(--secondary-color);
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: var(--navbar-shallow-color);
+            margin: 0 auto;
+            top: calc(100%);
+            width: 98%;
+            height: 4px;
+
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .new {
+            width: 2rem;
+            height: 2rem;
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            background-color: var(--menu-hover-color);
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 100%;
-            font-size: 15px;
+            border: 1px solid var(--navbar-shallow-color);
+            font-size: 0.6em;
+            font-weight: 600;
         }
     }
 
@@ -109,5 +192,6 @@ const products = await response.json();
         grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
         width: 100%;
         max-width: 1200px;
+        margin: 2rem auto;
     }
 </style>
