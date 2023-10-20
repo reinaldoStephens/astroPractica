@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/layout.astro";
+import { getProductBy, getLatestProducts } from "../../services/fakeStore";
+const { id } = Astro.params;
+
+let product: any = null;
+if (id) {
+    product = await getProductBy({ id });
+}
+
+export async function getStaticPaths() {
+    const products = await getLatestProducts();
+
+    return products.map((product) => ({
+        params: {
+            id: product.id,
+        },
+    }));
+}
+---
+
+<Layout title={`Product ${product.title}`}>
+    <article>
+        <img width="200" height="200" src={product?.image} alt={`Image for ${product?.title} product`} />
+        <h2>Product #{product.id}</h2>
+        <p>{product.description}</p>
+    </article>
+</Layout>
+
+<style>
+    article {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    p {
+        text-align: center;
+    }
+</style>

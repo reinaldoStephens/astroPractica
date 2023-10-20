@@ -1,11 +1,12 @@
 ---
+import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
+
 export interface Props {
     title: string;
 }
 
 const { title } = Astro.props as Props;
-
-import Header from "../components/Header.astro";
 ---
 
 <!DOCTYPE html>
@@ -17,6 +18,7 @@ import Header from "../components/Header.astro";
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <ViewTransitions />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,38 +27,44 @@ import Header from "../components/Header.astro";
     <body>
         <Header />
         <slot />
+        <style is:global lang="scss">
+            :root {
+                --menu-text-color: #514f4f;
+                --menu-hover-color: #f4f5f6;
+                --theme-color: white;
+                --primary-color: #124f88;
+                --secondary-color: #9651ec;
+                --text-color-inverse: white;
+                --text-color: black;
+                --navbar-shallow-color: #e5e5e5;
+                --menu-mobile-background-color: #3a4460;
+
+                --accent: 136, 58, 234;
+                --accent-light: 224, 204, 250;
+                --accent-dark: 49, 10, 101;
+                --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+
+                font-size: 1.1em;
+            }
+
+            body {
+                font-family: "Montserrat", sans-serif;
+                background-color: var(--theme-color);
+                color: var(--text-color);
+                padding-bottom: 70px;
+                margin-top: 0;
+                height: 100%;
+            }
+
+            .layout_padding {
+                padding-top: 90px;
+                padding-bottom: 90px;
+            }
+
+            a {
+                text-decoration: none;
+                color: var(--text-color);
+            }
+        </style>
     </body>
 </html>
-<style is:global lang="scss">
-    :root {
-        --menu-text-color: #514f4f;
-        --menu-hover-color: #f4f5f6;
-        --theme-color: white;
-        --primary-color: #124f88;
-        --secondary-color: #f7c331;
-        --text-color-inverse: white;
-        --text-color: black;
-        --navbar-shallow-color: #e5e5e5;
-        --menu-mobile-background-color: #3a4460;
-
-        font-size: 1.1em;
-    }
-
-    body {
-        font-family: "Montserrat", sans-serif;
-        background-color: var(--theme-color);
-        color: var(--text-color);
-        padding-bottom: 70px;
-        margin-top: 0;
-    }
-
-    .layout_padding {
-        padding-top: 90px;
-        padding-bottom: 90px;
-    }
-
-    a {
-        text-decoration: none;
-        color: var(--text-color);
-    }
-</style>

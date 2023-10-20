@@ -5,7 +5,7 @@
     <nav class="navbar">
         <div class="navbar-brand-container">
             <a class="navbar-brand" href="index.html">
-                <span> Fake Store</span>
+                <h1>Fake <span class="text-gradient">Store</span></h1>
             </a>
 
             <div class="open-menu" role="button" aria-label="Open Menu">
@@ -21,6 +21,8 @@
             <li><a href="#contact">Contact Us</a></li>
         </ul>
     </nav>
+
+    <div id="menu-backdrop"></div>
 </header>
 <script>
     const menu = document.querySelector(".menu");
@@ -40,10 +42,61 @@
             closeIcon.ariaLabel = "Close menu";
         } else {
             closeIcon.ariaLabel = "Open menu";
+            console.log("hola");
+            menuBackDrop.style.opacity = "0";
+            menuBackDrop.style.visibility = "hidden";
+            menuBackDrop.style.display = "none";
         }
     });
+
+    const headerSection = document.querySelector(".header_section");
+    const listItem = headerSection?.querySelectorAll(".header_section li");
+    const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+
+    listItem?.forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+            const { width, height, top, left } = item.getBoundingClientRect();
+            menuBackDrop.style.setProperty("--left", `${left}px`);
+            menuBackDrop.style.setProperty("--top", `${top + window.scrollY}px`);
+            menuBackDrop.style.setProperty("--width", `${width}px`);
+            menuBackDrop.style.setProperty("--height", `${height}px`);
+            menuBackDrop.style.display = "block";
+            menuBackDrop.style.opacity = "1";
+            menuBackDrop.style.visibility = "visible";
+        });
+    });
+
+    headerSection?.addEventListener("mouseleave", () => {
+        menuBackDrop.style.opacity = "0";
+        menuBackDrop.style.visibility = "hidden";
+    });
 </script>
-<style>
+<style is:global>
+    #menu-backdrop {
+        position: absolute;
+        background-color: #e1e1e18b;
+        border-radius: 0.25rem;
+        left: var(--left);
+        top: var(--top);
+        /* transform: translateX(--left);
+        transform: translateY(--top); */
+        width: var(--width);
+        height: var(--height);
+
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 500ms;
+        z-index: -10;
+    }
+
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+
     .header_section {
         width: 100%;
         display: flex;
@@ -62,15 +115,12 @@
 
     .menu li {
         padding: 0 25px;
-        border-radius: 10px;
     }
 
     .menu a {
-        color: var(--menu-text-color);
         font-size: 18px;
         font-weight: 500;
         line-height: 50px;
-        position: relative;
     }
 
     .navbar {
@@ -78,10 +128,7 @@
         justify-content: center;
         flex-direction: column;
         width: 95%;
-    }
-
-    .navbar-brand {
-        margin: 15px;
+        position: relative;
     }
 
     .navbar-brand span {
@@ -95,19 +142,19 @@
         align-items: center;
     }
 
-    .menu a:hover {
-        color: var(--primary-color);
-    }
-
-    .menu li:hover {
-        background-color: var(--menu-hover-color);
-    }
-
     .open-menu {
         display: none;
     }
 
     @media screen and (max-width: 950px) {
+        #menu-backdrop {
+            z-index: 10;
+        }
+
+        .menu-opened li {
+            z-index: 20;
+        }
+
         /* menu */
         .header_section {
             width: 100%;
@@ -131,7 +178,6 @@
         .menu {
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
             min-width: 200px;
             background-color: var(--text-color-inverse);
             opacity: 0;
@@ -143,7 +189,7 @@
         }
 
         .menu li {
-            padding: 0 80px;
+            padding: 1rem 100px;
             border-radius: 10px;
         }
 
@@ -163,15 +209,10 @@
             opacity: 1;
             display: flex;
             pointer-events: all;
-            z-index: 1;
         }
 
         .menu a::after {
             content: none;
-        }
-
-        .menu a:hover,
-        .menu a.selected {
         }
 
         .open-menu {

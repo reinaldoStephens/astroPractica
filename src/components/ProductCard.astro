@@ -35,12 +35,13 @@ const { id, title, price, image } = Astro.props;
     }
 
     .box:hover .detail-box::after {
-        opacity: 0.8;
+        opacity: 0.4;
     }
 
     .box {
+        margin: 0 auto;
+        width: 100%;
         max-height: 400px;
-        display: grid;
         background-color: var(--text-color-inverse);
         padding: 10px;
         box-shadow: var(--navbar-shallow-color) 0px 5px 15px;
@@ -101,7 +102,6 @@ const { id, title, price, image } = Astro.props;
             content: "";
             background-color: var(--secondary-color);
             position: absolute;
-            margin: 0 auto;
             top: calc(100%);
             width: 98%;
             height: 4px;
