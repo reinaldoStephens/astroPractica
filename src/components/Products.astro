@@ -28,7 +28,7 @@ const products = await getLatestProducts();
         <h1>Nothing Found</h1>
         <p>
             Sorry, but nothing matched your search. <br />
-            Please try again with some different keywords.
+             Please try again with some different keywords.
         </p>
     </div>
     <div class="grid-layout product-detail-container">
@@ -247,8 +247,9 @@ const products = await getLatestProducts();
     }
 
     :global(.pagination-number.active) {
-        color: var(--text-color);
-        background: var(--secondary-color);
+        color: var(--text-color-inverse);
+        background-image: linear-gradient(45deg, rgba(85, 236, 219, 1), rgba(212, 148, 255, 1));
+        border: 5px solid #ff4a9e 30%;
     }
 
     .no-results-container {

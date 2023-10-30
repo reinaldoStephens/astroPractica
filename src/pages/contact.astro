@@ -1,0 +1,252 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Store App">
+    <section class="contact" id="contact">
+        <h2 class="contact-title">Contacto</h2>
+        <div class="contact-details">
+            <div class="contact-details-group">
+                <p class="contact-label">Dirección:</p>
+                <p class="contact-text">San José, Costa Rica</p>
+            </div>
+            <div class="contact-details-group">
+                <p class="contact-label">Email:</p>
+                <a class="contact-text" href="mailto:m.q.c@awamail.com">m.q.c@awamail.com</a>
+            </div>
+            <div class="contact-details-group">
+                <p class="contact-label">Teléfono:</p>
+                <a class="contact-text" href="tel:+506 8617-2026">+506 8617-2026</a>
+            </div>
+            <div class="contact-details-group">
+                <p class="contact-text">Deje su mensaje y con gusto le responderé</p>
+            </div>
+        </div>
+        <form class="contact-form" novalidate>
+            <div class="contact-form-group">
+                <label for="name">Nombre*</label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Ingrese su nombre"
+                    title="Nombre"
+                    maxlength="20"
+                    aria-label="Ingrese su nombre completo"
+                    autocomplete="on"
+                    required
+                />
+            </div>
+            <div class="contact-form-group">
+                <label for="email">Correo electrónico*</label>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Ingrese su email"
+                    title="Email"
+                    maxlength="30"
+                    autocomplete="email"
+                    aria-label="Ingrese su email completo"
+                    required
+                />
+            </div>
+            <div class="contact-form-group">
+                <label for="subject">Asunto*</label>
+                <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    placeholder="Ingrese el asunto del correo"
+                    title="Asunto"
+                    maxlength="20"
+                    aria-label="Ingrese el asunto del correo"
+                    autocomplete="on"
+                    required
+                />
+            </div>
+            <div class="contact-form-group">
+                <label for="message">Mensaje*</label>
+                <textarea
+                    name="message"
+                    id="message"
+                    rows="6"
+                    title="Mensaje"
+                    placeholder="Pregunta sobre [producto o servicio]"
+                    aria-label="Ingrese su mensaje completo"
+                    maxlength="2000"
+                    autocomplete="off"
+                    required></textarea>
+            </div>
+
+            <button type="submit" class="contact-form-submit">Enviar</button>
+        </form>
+
+        <nav class="social">
+            <ul class="social-list">
+                <li class="social-item">
+                    <a rel="noopener noreferrer" href="https://instagram.com/awa_boots" target="_blank" class="social-link">
+                        <img src="img/social/instagram.svg" alt="Instagram Profile" title="Instagram Profile" />
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a rel="noopener noreferrer" href="https://www.facebook.com" target="_blank" class="social-link"
+                        ><img src="img/social/facebook.svg" alt="Linkedin Profile" /></a
+                    >
+                </li>
+            </ul>
+        </nav>
+    </section>
+</Layout>
+
+<style>
+    form:invalid button {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    .contact {
+        background-image: linear-gradient(45deg, rgba(85, 236, 219, 1), rgba(212, 148, 255, 1));
+        /* background-image: linear-gradient(
+            69deg,
+            rgba(143, 66, 236, 0.75),
+            rgba(255, 74, 158, 0.75) 30%,
+            rgba(55, 118, 255, 0.75)
+        ); */
+        color: hsl(210, 10%, 14%);
+        font-size: 18px;
+        border-radius: 14px;
+        padding: 25px;
+
+        display: grid;
+        gap: 25px;
+    }
+
+    .contact p,
+    .contact h2,
+    .contact ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .contact-title {
+        text-align: center;
+        font-weight: 500;
+        font-size: 35px;
+    }
+
+    .contact-details,
+    .contact-form {
+        display: grid;
+        gap: 20px;
+    }
+
+    .contact-details-group,
+    .contact-form-group {
+        display: grid;
+        gap: 3px;
+    }
+
+    .contact-label {
+        font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        border-radius: 7px;
+        border: none;
+        height: 30px;
+        padding: 5px 10px;
+    }
+
+    .contact-form textarea {
+        height: auto;
+        resize: vertical;
+    }
+
+    .contact-form-submit {
+        width: 100%;
+        height: 50px;
+
+        background-color: var(--text-color);
+        border-radius: 7px;
+        color: var(--text-color-inverse);
+        border: 1px solid var(--theme-color);
+
+        cursor: pointer;
+    }
+
+    .contact-form-submit:hover {
+        box-shadow: 0 0 14px var(--secondary-color);
+    }
+
+    .social-list {
+        list-style: none;
+
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+    }
+
+    .social-list img {
+        height: 25px;
+    }
+
+    .social-list img:hover {
+        filter: drop-shadow(0 0 14px var(--secondary-color));
+    }
+
+    @media (min-width: 950px) {
+        .contact {
+            font-size: 18px;
+            padding: 70px;
+
+            max-width: 980px;
+            margin: 3rem auto;
+
+            box-sizing: border-box;
+        }
+
+        .contact-title {
+            text-align: left;
+        }
+
+        .social-list {
+            justify-content: flex-start;
+        }
+
+        .social-list img {
+            height: 35px;
+        }
+
+        .contact-title {
+            grid-area: title;
+        }
+
+        .contact-details {
+            grid-area: details;
+        }
+
+        .contact-form {
+            grid-area: form;
+        }
+
+        .social {
+            grid-area: social;
+        }
+
+        .contact {
+            grid:
+                "title form" auto
+                "details form" 1fr
+                "social form" auto /
+                40% 60%;
+            align-items: start;
+        }
+
+        .contact-text {
+            width: 100%;
+            max-width: fit-content;
+        }
+    }
+</style>
