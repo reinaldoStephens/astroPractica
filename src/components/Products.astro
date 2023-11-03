@@ -56,169 +56,177 @@ const products = await getLatestProducts();
         </nav>
     </div>
 </section>
+
 <script>
-    const searchInput = document.getElementById("search") as HTMLInputElement;
-    let productsBoxes = document.querySelectorAll(".box");
-    const showSelectElem = document.getElementById("show") as HTMLSelectElement;
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            const searchInput = document.getElementById("search") as HTMLInputElement;
+            let productsBoxes = document.querySelectorAll(".box");
+            const showSelectElem = document.getElementById("show") as HTMLSelectElement;
 
-    let paginationContainer = document.querySelector(".pagination-container");
+            let paginationContainer = document.querySelector(".pagination-container");
 
-    searchInput?.addEventListener("input", (e) => searchVerification(searchInput));
-    showSelectElem?.addEventListener("change", () => searchVerification(searchInput));
+            const paginationNumbers = document.getElementById("pagination-numbers");
+            const nextButton = document.getElementById("next-button");
+            const prevButton = document.getElementById("prev-button");
+            let paginationLimit = Number(showSelectElem.options[showSelectElem.selectedIndex].text);
+            let visibleProductBoxes = document.querySelectorAll(".box:not(.hide)");
+            let pageCount = Math.ceil(visibleProductBoxes.length / paginationLimit);
+            let currentPage = 1;
 
-    function searchVerification(inputElement: HTMLInputElement) {
-        const value = inputElement?.value.toLowerCase();
-        let elemFound = false;
+            searchInput?.addEventListener("input", (e) => searchVerification(searchInput));
+            showSelectElem?.addEventListener("change", () => searchVerification(searchInput));
 
-        productsBoxes.forEach((element) => {
-            let productTitleElem = element.querySelector(".product-title");
-            let productTitle = productTitleElem?.textContent?.trim().toLowerCase();
-            const isVisible = productTitle?.includes(value);
-            if (isVisible) elemFound = true;
-            element.classList.toggle("hide", !isVisible);
-            console.log(element.classList);
-        });
+            function searchVerification(inputElement: HTMLInputElement) {
+                const value = inputElement?.value.toLowerCase();
+                let elemFound = false;
 
-        let noResultContainer = document.querySelector(".no-results-container");
+                productsBoxes.forEach((element) => {
+                    let productTitleElem = element.querySelector(".product-title");
+                    let productTitle = productTitleElem?.textContent?.trim().toLowerCase();
+                    const isVisible = productTitle?.includes(value);
+                    if (isVisible) elemFound = true;
+                    element.classList.toggle("hide", !isVisible);
+                    console.log(element.classList);
+                });
 
-        if (!elemFound) {
-            // show no result found message
-            noResultContainer?.classList.remove("hide");
-            // hide pagination
-            paginationContainer?.classList.add("hide");
-            // disable show select
-            showSelectElem.disabled = true;
-        } else {
-            noResultContainer?.classList.add("hide");
-            showSelectElem.disabled = false;
+                let noResultContainer = document.querySelector(".no-results-container");
 
-            initPagination(false);
-        }
-    }
+                if (!elemFound) {
+                    // show no result found message
+                    noResultContainer?.classList.remove("hide");
+                    // hide pagination
+                    paginationContainer?.classList.add("hide");
+                    // disable show select
+                    showSelectElem.disabled = true;
+                } else {
+                    noResultContainer?.classList.add("hide");
+                    showSelectElem.disabled = false;
 
-    const paginationNumbers = document.getElementById("pagination-numbers");
-    const nextButton = document.getElementById("next-button");
-    const prevButton = document.getElementById("prev-button");
-    let paginationLimit = Number(showSelectElem.options[showSelectElem.selectedIndex].text);
-    let visibleProductBoxes = document.querySelectorAll(".box:not(.hide)");
-    let pageCount = Math.ceil(visibleProductBoxes.length / paginationLimit);
-    let currentPage = 1;
-
-    const disableButton = (button: any) => {
-        button.classList.add("disabled");
-        button.setAttribute("disabled", true);
-    };
-
-    const enableButton = (button: any) => {
-        button.classList.remove("disabled");
-        button.removeAttribute("disabled");
-    };
-
-    const handlePageButtonsStatus = () => {
-        if (currentPage === 1) {
-            disableButton(prevButton);
-        } else {
-            enableButton(prevButton);
-        }
-
-        if (pageCount === currentPage) {
-            disableButton(nextButton);
-        } else {
-            enableButton(nextButton);
-        }
-    };
-
-    const handleActivePageNumber = () => {
-        document.querySelectorAll(".pagination-number").forEach((button) => {
-            button.classList.remove("active");
-            const pageIndex = Number(button.getAttribute("page-index"));
-            if (pageIndex == currentPage) {
-                button.classList.add("active");
+                    initPagination(false);
+                }
             }
-        });
-    };
 
-    const createPageNumber = (index: any) => {
-        const pageNumber = document.createElement("button");
-        pageNumber.className = "pagination-number";
-        pageNumber.innerHTML = index;
-        pageNumber.setAttribute("page-index", index);
-        pageNumber.setAttribute("aria-label", "Page " + index);
-        return pageNumber;
-    };
+            const disableButton = (button: any) => {
+                button.classList.add("disabled");
+                button.setAttribute("disabled", true);
+            };
 
-    const getPaginationNumbers = () => {
-        let pageNumberList: Array<any> = [];
-        for (let i = 1; i <= pageCount; i++) {
-            pageNumberList.push(createPageNumber(i));
-        }
-        paginationNumbers?.replaceChildren(...pageNumberList);
-    };
+            const enableButton = (button: any) => {
+                button.classList.remove("disabled");
+                button.removeAttribute("disabled");
+            };
 
-    const setCurrentPage = (pageNum: any) => {
-        currentPage = pageNum;
+            const handlePageButtonsStatus = () => {
+                if (currentPage === 1) {
+                    disableButton(prevButton);
+                } else {
+                    enableButton(prevButton);
+                }
 
-        handleActivePageNumber();
-        handlePageButtonsStatus();
+                if (pageCount === currentPage) {
+                    disableButton(nextButton);
+                } else {
+                    enableButton(nextButton);
+                }
+            };
 
-        const prevRange = (pageNum - 1) * paginationLimit;
-        const currRange = pageNum * paginationLimit;
+            const handleActivePageNumber = () => {
+                document.querySelectorAll(".pagination-number").forEach((button) => {
+                    button.classList.remove("active");
+                    const pageIndex = Number(button.getAttribute("page-index"));
+                    if (pageIndex == currentPage) {
+                        button.classList.add("active");
+                    }
+                });
+            };
 
-        visibleProductBoxes?.forEach((item: any, index: any) => {
-            item.classList.add("hide");
-            if (index >= prevRange && index < currRange) {
-                item.classList.remove("hide");
-            }
-        });
-    };
+            const createPageNumber = (index: any) => {
+                const pageNumber = document.createElement("button");
+                pageNumber.className = "pagination-number";
+                pageNumber.innerHTML = index;
+                pageNumber.setAttribute("page-index", index);
+                pageNumber.setAttribute("aria-label", "Page " + index);
+                return pageNumber;
+            };
 
-    function initPagination(isShowSelect: boolean) {
-        //debugger;
-        paginationLimit = Number(showSelectElem.options[showSelectElem.selectedIndex].text);
-        if (isShowSelect) {
-            visibleProductBoxes = document.querySelectorAll(".box");
-        } else {
-            visibleProductBoxes = document.querySelectorAll(".box:not(.hide)");
-        }
+            const getPaginationNumbers = () => {
+                let pageNumberList: Array<any> = [];
+                for (let i = 1; i <= pageCount; i++) {
+                    pageNumberList.push(createPageNumber(i));
+                }
+                paginationNumbers?.replaceChildren(...pageNumberList);
+            };
 
-        let productsLength = visibleProductBoxes.length;
-        let paginationContainer = document.querySelector(".pagination-container");
-        if (!productsLength) {
-            paginationContainer?.classList.add("hide");
-        } else {
-            paginationContainer?.classList.remove("hide");
+            const setCurrentPage = (pageNum: any) => {
+                currentPage = pageNum;
 
-            pageCount = Math.ceil(productsLength / paginationLimit);
+                handleActivePageNumber();
+                handlePageButtonsStatus();
 
-            getPaginationNumbers();
-            setCurrentPage(1);
+                const prevRange = (pageNum - 1) * paginationLimit;
+                const currRange = pageNum * paginationLimit;
 
-            prevButton?.addEventListener("click", () => {
-                setCurrentPage(currentPage - 1);
-            });
+                visibleProductBoxes?.forEach((item: any, index: any) => {
+                    item.classList.add("hide");
+                    if (index >= prevRange && index < currRange) {
+                        item.classList.remove("hide");
+                    }
+                });
+            };
 
-            nextButton?.addEventListener("click", () => {
-                setCurrentPage(currentPage + 1);
-            });
+            function initPagination(isShowSelect: boolean) {
+                //debugger;
+                paginationLimit = Number(showSelectElem.options[showSelectElem.selectedIndex].text);
+                if (isShowSelect) {
+                    visibleProductBoxes = document.querySelectorAll(".box");
+                } else {
+                    visibleProductBoxes = document.querySelectorAll(".box:not(.hide)");
+                }
 
-            document.querySelectorAll(".pagination-number").forEach((button) => {
-                const pageIndex = Number(button.getAttribute("page-index"));
+                let productsLength = visibleProductBoxes.length;
+                let paginationContainer = document.querySelector(".pagination-container");
+                if (!productsLength) {
+                    paginationContainer?.classList.add("hide");
+                } else {
+                    paginationContainer?.classList.remove("hide");
 
-                if (pageIndex) {
-                    button.addEventListener("click", () => {
-                        setCurrentPage(pageIndex);
+                    pageCount = Math.ceil(productsLength / paginationLimit);
+
+                    getPaginationNumbers();
+                    setCurrentPage(1);
+
+                    prevButton?.addEventListener("click", () => {
+                        setCurrentPage(currentPage - 1);
+                    });
+
+                    nextButton?.addEventListener("click", () => {
+                        setCurrentPage(currentPage + 1);
+                    });
+
+                    document.querySelectorAll(".pagination-number").forEach((button) => {
+                        const pageIndex = Number(button.getAttribute("page-index"));
+
+                        if (pageIndex) {
+                            button.addEventListener("click", () => {
+                                setCurrentPage(pageIndex);
+                            });
+                        }
                     });
                 }
-            });
-        }
-    }
+            }
 
-    initPagination(false);
+            initPagination(false);
+        },
+        { once: false }
+    );
 </script>
 <style lang="scss">
     .pagination-container {
         position: relative;
         text-align: center;
+        height: 5rem;
     }
     .pagination-body {
         width: 100%;
