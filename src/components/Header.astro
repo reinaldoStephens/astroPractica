@@ -16,7 +16,7 @@
             </div>
         </div>
         <ul class="menu">
-            <li><a href="/" class="selected">Home</a></li>
+            <li><a href="/" class="selected" data-astro-reload>Home</a></li>
             <li><a href="#shop">Shop</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/contact">Contact Us</a></li>
@@ -26,51 +26,57 @@
     <div id="menu-backdrop"></div>
 </header>
 <script>
-    const menu = document.querySelector(".menu");
-    const openMenuBtn = document.querySelector(".open-menu");
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            const menu = document.querySelector(".menu");
+            const openMenuBtn = document.querySelector(".open-menu");
 
-    function toogleMenu() {
-        menu?.classList.toggle("menu-opened");
-    }
+            function toogleMenu() {
+                menu?.classList.toggle("menu-opened");
+            }
 
-    openMenuBtn?.addEventListener("click", () => toogleMenu());
+            openMenuBtn?.addEventListener("click", () => toogleMenu());
 
-    const closeIcon = document.querySelector(".open-menu");
-    closeIcon?.addEventListener("click", () => {
-        closeIcon?.classList.toggle("open");
+            const closeIcon = document.querySelector(".open-menu");
+            closeIcon?.addEventListener("click", () => {
+                closeIcon?.classList.toggle("open");
 
-        if (closeIcon?.classList.contains("open")) {
-            closeIcon.ariaLabel = "Close menu";
-        } else {
-            closeIcon.ariaLabel = "Open menu";
-            console.log("hola");
-            menuBackDrop.style.opacity = "0";
-            menuBackDrop.style.visibility = "hidden";
-            menuBackDrop.style.display = "none";
-        }
-    });
+                if (closeIcon?.classList.contains("open")) {
+                    closeIcon.ariaLabel = "Close menu";
+                } else {
+                    closeIcon.ariaLabel = "Open menu";
+                    console.log("hola");
+                    menuBackDrop.style.opacity = "0";
+                    menuBackDrop.style.visibility = "hidden";
+                    menuBackDrop.style.display = "none";
+                }
+            });
 
-    const headerSection = document.querySelector(".header_section");
-    const listItem = headerSection?.querySelectorAll(".header_section li");
-    const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+            const headerSection = document.querySelector(".header_section");
+            const listItem = headerSection?.querySelectorAll(".header_section li");
+            const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
 
-    listItem?.forEach((item) => {
-        item.addEventListener("mouseenter", () => {
-            const { width, height, top, left } = item.getBoundingClientRect();
-            menuBackDrop.style.setProperty("--left", `${left}px`);
-            menuBackDrop.style.setProperty("--top", `${top + window.scrollY}px`);
-            menuBackDrop.style.setProperty("--width", `${width}px`);
-            menuBackDrop.style.setProperty("--height", `${height}px`);
-            menuBackDrop.style.display = "block";
-            menuBackDrop.style.opacity = "1";
-            menuBackDrop.style.visibility = "visible";
-        });
-    });
+            listItem?.forEach((item) => {
+                item.addEventListener("mouseenter", () => {
+                    const { width, height, top, left } = item.getBoundingClientRect();
+                    menuBackDrop.style.setProperty("--left", `${left}px`);
+                    menuBackDrop.style.setProperty("--top", `${top + window.scrollY}px`);
+                    menuBackDrop.style.setProperty("--width", `${width}px`);
+                    menuBackDrop.style.setProperty("--height", `${height}px`);
+                    menuBackDrop.style.display = "block";
+                    menuBackDrop.style.opacity = "1";
+                    menuBackDrop.style.visibility = "visible";
+                });
+            });
 
-    headerSection?.addEventListener("mouseleave", () => {
-        menuBackDrop.style.opacity = "0";
-        menuBackDrop.style.visibility = "hidden";
-    });
+            headerSection?.addEventListener("mouseleave", () => {
+                menuBackDrop.style.opacity = "0";
+                menuBackDrop.style.visibility = "hidden";
+            });
+        },
+        { once: false }
+    );
 </script>
 <style is:global>
     #menu-backdrop {
