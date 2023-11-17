@@ -1,99 +1,32 @@
 ---
-
+import Nav from "./Nav";
 ---
 
 <header class="header_section">
-    <nav class="navbar">
-        <div class="navbar-brand-container">
-            <a class="navbar-brand" href="index.html">
-                <h1>Awa<span class="text-gradient">Boots</span></h1>
-            </a>
-
-            <div class="open-menu" role="button" aria-label="Open Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        <ul class="menu">
-            <li><a href="/" class="selected" data-astro-reload>Home</a></li>
-            <li><a href="#shop">Shop</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-        </ul>
-    </nav>
-
-    <div id="menu-backdrop"></div>
+    <Nav client:load />
 </header>
-<script>
-    document.addEventListener(
-        "astro:page-load",
-        () => {
-            const menu = document.querySelector(".menu");
-            const openMenuBtn = document.querySelector(".open-menu");
 
-            function toogleMenu() {
-                menu?.classList.toggle("menu-opened");
-            }
-
-            openMenuBtn?.addEventListener("click", () => toogleMenu());
-
-            const closeIcon = document.querySelector(".open-menu");
-            closeIcon?.addEventListener("click", () => {
-                closeIcon?.classList.toggle("open");
-
-                if (closeIcon?.classList.contains("open")) {
-                    closeIcon.ariaLabel = "Close menu";
-                } else {
-                    closeIcon.ariaLabel = "Open menu";
-                    console.log("hola");
-                    menuBackDrop.style.opacity = "0";
-                    menuBackDrop.style.visibility = "hidden";
-                    menuBackDrop.style.display = "none";
-                }
-            });
-
-            const headerSection = document.querySelector(".header_section");
-            const listItem = headerSection?.querySelectorAll(".header_section li");
-            const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
-
-            listItem?.forEach((item) => {
-                item.addEventListener("mouseenter", () => {
-                    const { width, height, top, left } = item.getBoundingClientRect();
-                    menuBackDrop.style.setProperty("--left", `${left}px`);
-                    menuBackDrop.style.setProperty("--top", `${top + window.scrollY}px`);
-                    menuBackDrop.style.setProperty("--width", `${width}px`);
-                    menuBackDrop.style.setProperty("--height", `${height}px`);
-                    menuBackDrop.style.display = "block";
-                    menuBackDrop.style.opacity = "1";
-                    menuBackDrop.style.visibility = "visible";
-                });
-            });
-
-            headerSection?.addEventListener("mouseleave", () => {
-                menuBackDrop.style.opacity = "0";
-                menuBackDrop.style.visibility = "hidden";
-            });
-        },
-        { once: false }
-    );
-</script>
 <style is:global>
     #menu-backdrop {
         position: absolute;
         background-color: #e1e1e18b;
         border-radius: 0.25rem;
-        left: var(--left);
-        top: var(--top);
-        /* transform: translateX(--left);
-        transform: translateY(--top); */
-        width: var(--width);
-        height: var(--height);
-
         transition-property: all;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 500ms;
         z-index: -10;
+    }
+
+    .menu-backdrop-visible {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .menu-backdrop-hidden {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
     }
 
     .text-gradient {
@@ -148,6 +81,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 100;
     }
 
     .open-menu {

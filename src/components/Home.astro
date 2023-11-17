@@ -1,0 +1,130 @@
+---
+import { Image } from "astro:assets";
+
+import redBerryImg from "../../public/img/products/redBerry.webp";
+import powerBlackImg from "../../public/img/products/powerBlack.webp";
+import crystalGlossImg from "../../public/img/products/crystalGloss.webp";
+import pinkRoseImg from "../../public/img/products/pinkRose.webp";
+import jaianImg from "../../public/img/products/jaian.webp";
+
+let imgWidth = 250;
+let imgHeight = 250;
+---
+
+<section class="home-section">
+    <article class="catalog-container">
+        <div class="info-item">
+            <h3>Productos Undercover</h3>
+            <h5>Stock Noviembre - Diciembre 2023</h5>
+            <span>
+                <strong>*Precios en descuento hasta 30/11/23</strong>
+            </span>
+        </div>
+        <div class="catalog-item product-item p1">
+            <div class="new">
+                <span>$76</span>
+            </div>
+            <Image width={imgWidth} height={imgHeight} src={redBerryImg} alt="Botas Red Berry" />
+            <h5>Red Berry</h5>
+            <span> Tallas Disponibles: 36, 37, 38, 39, 40, 41, 42</span>
+        </div>
+        <div class="catalog-item product-item p2">
+            <div class="new">
+                <span>$81</span>
+            </div>
+            <Image width={imgWidth} height={imgHeight} src={crystalGlossImg} alt="Botas Crystal Gloss" />
+            <h5>Crystal Gloss</h5>
+            <span> Tallas Disponibles: 38, 39, 40</span>
+        </div>
+        <div class="catalog-item product-item p3">
+            <div class="new">
+                <span>$71</span>
+            </div>
+            <Image width={imgWidth} height={imgHeight} src={powerBlackImg} alt="Botas Power Black" />
+            <h5>Power Black</h5>
+            <span> Tallas Disponibles: 38, 39, 40, 41, 42</span>
+        </div>
+        <div class="catalog-item product-item p4">
+            <div class="new">
+                <span>$71</span>
+            </div>
+            <Image width={imgWidth} height={imgHeight} src={pinkRoseImg} alt="Botas Pink Rosé" />
+            <h5>Pink Rosé</h5>
+            <span> Tallas Disponibles: 39</span>
+        </div>
+        <div class="catalog-item product-item p5">
+            <div class="new">
+                <span>$72</span>
+            </div>
+            <Image width={imgWidth} height={imgHeight} src={jaianImg} alt="Botas Ja-Ian" />
+            <h5>Ja-Ian</h5>
+            <span> Tallas Disponibles: 36, 37, 38, 39, 40</span>
+        </div>
+    </article>
+</section>
+<style lang="scss">
+    .info-item {
+        background-color: red;
+        grid-area: info;
+    }
+
+    .p1 {
+        background-color: yellow;
+        grid-area: p1;
+    }
+    .p2 {
+        background-color: yellow;
+        grid-area: p2;
+    }
+    .p3 {
+        background-color: yellow;
+        grid-area: p3;
+    }
+    .p4 {
+        background-color: yellow;
+        grid-area: p4;
+    }
+    .p5 {
+        background-color: yellow;
+        grid-area: p5;
+    }
+
+    .catalog-container {
+        display: grid;
+        background-color: #09e;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "info p1"
+            "p2 p3"
+            "p4 p5";
+    }
+
+    .catalog-item {
+        position: relative;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    img {
+        align-self: center;
+    }
+
+    .new {
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        background-color: var(--menu-hover-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        border: 1px solid var(--navbar-shallow-color);
+        font-size: 0.6em;
+        font-weight: 600;
+    }
+</style>
