@@ -36,7 +36,7 @@ const products = await getLatestProducts();
             products.map(({ id, image, title, price, rating, category, description }) => (
                 <ProductCard
                     id={id.toString()}
-                    image={image}
+                    image={image.src}
                     title={title}
                     price={price.toString()}
                     rating={rating.toString()}

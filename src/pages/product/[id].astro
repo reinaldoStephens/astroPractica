@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../../layouts/layout.astro";
 import { getProductBy, getLatestProducts } from "../../services/fakeStore";
+import ProductPage from "../../components/ProductPage";
+
 const { id } = Astro.params;
 
 let product: any = null;
@@ -20,13 +23,29 @@ export async function getStaticPaths() {
 ---
 
 <Layout title={`Product ${product.title}`}>
-    <article>
-        <img width="200" height="200" src={product?.image} alt={`Image for ${product?.title} product`} />
-        <h2>Product #{product.id}</h2>
-        <p>{product.description}</p>
-    </article>
+    <ProductPage client:load image={product.image} title={product.title} description={product.description} />
 </Layout>
 
+<script>
+    document.addEventListener(
+        "astro:page-load",
+        () => {
+            function zoom(e: any) {
+                var zoomer = e.currentTarget;
+                let offsetX, offsetY, x, y;
+                e.offsetX ? (offsetX = e.offsetX) : (offsetX = e.touches[0]?.pageX);
+                e.offsetY ? (offsetY = e.offsetY) : (offsetX = e.touches[0]?.pageX);
+                x = (offsetX / zoomer.offsetWidth) * 100;
+                y = (offsetY / zoomer.offsetHeight) * 100;
+                zoomer.style.backgroundPosition = x + "% " + y + "%";
+            }
+            document.querySelector(".zoom")?.addEventListener("mousemove", (e) => {
+                zoom(e);
+            });
+        },
+        { once: false }
+    );
+</script>
 <style>
     article {
         display: flex;
@@ -38,5 +57,19 @@ export async function getStaticPaths() {
 
     p {
         text-align: center;
+    }
+
+    figure.zoom {
+        background-position: 50% 50%;
+        position: relative;
+        overflow: hidden;
+        cursor: crosshair;
+    }
+    figure.zoom img:hover {
+        opacity: 0;
+    }
+    figure.zoom img {
+        transition: opacity 0.5s;
+        display: block;
     }
 </style>

@@ -2,11 +2,15 @@
 import Nav from "./Nav";
 ---
 
-<header class="header_section">
+<header class="header-section">
     <Nav client:load />
 </header>
 
 <style is:global>
+    .header-section {
+        margin-bottom: 3rem;
+    }
+
     #menu-backdrop {
         position: absolute;
         background-color: #e1e1e18b;
@@ -70,6 +74,7 @@ import Nav from "./Nav";
         flex-direction: column;
         width: 95%;
         position: relative;
+        margin: 0 auto;
     }
 
     .navbar-brand span {

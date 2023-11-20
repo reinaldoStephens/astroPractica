@@ -27,7 +27,9 @@ const { title } = Astro.props as Props;
     </head>
     <body>
         <Header />
-        <slot />
+        <main>
+            <slot />
+        </main>
         <Footer />
         <style is:global lang="scss">
             :root {
@@ -40,6 +42,7 @@ const { title } = Astro.props as Props;
                 --text-color: black;
                 --navbar-shallow-color: #e5e5e5;
                 --menu-mobile-background-color: #3a4460;
+                --home-catolog-color: #7bbfca;
 
                 --accent: 136, 58, 234;
                 --accent-light: 224, 204, 250;
@@ -58,6 +61,13 @@ const { title } = Astro.props as Props;
                 min-height: 100vh;
                 display: flex;
                 flex-direction: column;
+            }
+
+            main {
+                margin: auto;
+                padding: 1rem;
+                width: 1000px;
+                max-width: calc(100% - 2rem);
             }
 
             .layout_padding {
