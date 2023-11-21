@@ -8,6 +8,6 @@ const products = getLatestProducts();
 
 <Layout title="Store App">
     <section class="shop-section">
-        <ProductsGrid client:load initialProducts={products} />
+        <ProductsGrid client:only="react" initialProducts={products} />
     </section>
 </Layout>

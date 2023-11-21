@@ -59,6 +59,50 @@ const response = [
         rating: { rate: 4.7, count: 130 },
         size: ["39"],
     },
+    // {
+    //     id: 6,
+    //     title: "RED BERRY RAINKERS WOMEN'S RAIN BOOTS",
+    //     price: 76,
+    //     description:
+    //         "Meet your 365 days boot! Comfortable and functional, yet stylish, our Rainkers are the perfect match for your day-to-day activities.",
+    //     category: "boot",
+    //     image: redBerryImg,
+    //     rating: { rate: 4.7, count: 130 },
+    //     size: ["36", "37", "38", "39", "40", "41", "42"],
+    // },
+    // {
+    //     id: 7,
+    //     title: "RED BERRY RAINKERS WOMEN'S RAIN BOOTS",
+    //     price: 76,
+    //     description:
+    //         "Meet your 365 days boot! Comfortable and functional, yet stylish, our Rainkers are the perfect match for your day-to-day activities.",
+    //     category: "boot",
+    //     image: redBerryImg,
+    //     rating: { rate: 4.7, count: 130 },
+    //     size: ["36", "37", "38", "39", "40", "41", "42"],
+    // },
+    // {
+    //     id: 8,
+    //     title: "RED BERRY RAINKERS WOMEN'S RAIN BOOTS",
+    //     price: 76,
+    //     description:
+    //         "Meet your 365 days boot! Comfortable and functional, yet stylish, our Rainkers are the perfect match for your day-to-day activities.",
+    //     category: "boot",
+    //     image: redBerryImg,
+    //     rating: { rate: 4.7, count: 130 },
+    //     size: ["36", "37", "38", "39", "40", "41", "42"],
+    // },
+    // {
+    //     id: 9,
+    //     title: "RED RAINKERS WOMEN'S RAIN BOOTS",
+    //     price: 76,
+    //     description:
+    //         "Meet your 365 days boot! Comfortable and functional, yet stylish, our Rainkers are the perfect match for your day-to-day activities.",
+    //     category: "boot",
+    //     image: redBerryImg,
+    //     rating: { rate: 4.7, count: 130 },
+    //     size: ["36", "37", "38", "39", "40", "41", "42"],
+    // },
 ];
 
 function filterById(response: any[], id: any) {
