@@ -1,378 +1,168 @@
 ---
-import ProductCard from "./ProductCard.astro";
 import { getLatestProducts } from "../services/fakeStore";
+import ProductsGrid from "./ProductsGrid.jsx";
 
 const products = await getLatestProducts();
 ---
 
 <!-- shop section -->
-<section class="products-section">
-    <header class="heading_container heading_center">
-        <h2>Latest Products</h2>
-    </header>
-    <div class="search-wrapper">
-        <div class="input-group search-input-group">
-            <label for="search">Search Products:</label>
-            <input type="search" id="search" class="search-input" maxlength="80" />
-        </div>
-        <div class="input-group show-input-group">
-            <label for="show">Show:</label>
-            <select id="show" class="show-select">
-                <option value="9">9</option>
-                <option value="18">18</option>
-                <option value="27">27</option>
-            </select>
-        </div>
-    </div>
-    <div class="no-results-container hide">
-        <h1>Nothing Found</h1>
-        <p>
-            Sorry, but nothing matched your search. <br />
-             Please try again with some different keywords.
-        </p>
-    </div>
-    <div class="grid-layout product-detail-container">
-        {
-            products.map(({ id, image, title, price, rating, category, description }) => (
-                <ProductCard
-                    id={id.toString()}
-                    image={image.src}
-                    title={title}
-                    price={price.toString()}
-                    rating={rating.toString()}
-                    category={category}
-                    description={description}
-                />
-            ))
-        }
-    </div>
-    <div class="pagination-container">
-        <nav class="pagination-body">
-            <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page"> &lt;</button>
-
-            <div id="pagination-numbers"></div>
-
-            <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page"> &gt;</button>
-        </nav>
-    </div>
-</section>
-
 <script>
-    const searchInput = document.getElementById("search") as HTMLInputElement;
-    let productsBoxes = document.querySelectorAll(".box");
-    const showSelectElem = document.getElementById("show") as HTMLSelectElement;
+    // const searchInput = document.getElementById("search") as HTMLInputElement;
+    // let productsBoxes = document.querySelectorAll(".box");
+    // const showSelectElem = document.getElementById("show") as HTMLSelectElement;
 
-    let paginationContainer = document.querySelector(".pagination-container");
+    // let paginationContainer = document.querySelector(".pagination-container");
 
-    const paginationNumbers = document.getElementById("pagination-numbers");
-    const nextButton = document.getElementById("next-button");
-    const prevButton = document.getElementById("prev-button");
-    let paginationLimit = Number(showSelectElem.options[showSelectElem.selectedIndex].text);
-    let visibleProductBoxes = document.querySelectorAll(".box:not(.hide)");
-    let pageCount = Math.ceil(visibleProductBoxes.length / paginationLimit);
-    let currentPage = 1;
+    // const paginationNumbers = document.getElementById("pagination-numbers");
+    // const nextButton = document.getElementById("next-button");
+    // const prevButton = document.getElementById("prev-button");
+    // let paginationLimit = Number(showSelectElem.options[showSelectElem.selectedIndex].text);
+    // let visibleProductBoxes = document.querySelectorAll(".box:not(.hide)");
+    // let pageCount = Math.ceil(visibleProductBoxes.length / paginationLimit);
+    // let currentPage = 1;
 
-    searchInput?.addEventListener("input", (e) => searchVerification(searchInput));
-    showSelectElem?.addEventListener("change", () => searchVerification(searchInput));
+    // searchInput?.addEventListener("input", (e) => searchVerification(searchInput));
+    // showSelectElem?.addEventListener("change", () => searchVerification(searchInput));
 
-    function searchVerification(inputElement: HTMLInputElement) {
-        const value = inputElement?.value.toLowerCase();
-        let elemFound = false;
+    // function searchVerification(inputElement: HTMLInputElement) {
+    //     const value = inputElement?.value.toLowerCase();
+    //     let elemFound = false;
 
-        productsBoxes.forEach((element) => {
-            let productTitleElem = element.querySelector(".product-title");
-            let productTitle = productTitleElem?.textContent?.trim().toLowerCase();
-            const isVisible = productTitle?.includes(value);
-            if (isVisible) elemFound = true;
-            element.classList.toggle("hide", !isVisible);
-            console.log(element.classList);
-        });
+    //     productsBoxes.forEach((element) => {
+    //         let productTitleElem = element.querySelector(".product-title");
+    //         let productTitle = productTitleElem?.textContent?.trim().toLowerCase();
+    //         const isVisible = productTitle?.includes(value);
+    //         if (isVisible) elemFound = true;
+    //         element.classList.toggle("hide", !isVisible);
+    //         console.log(element.classList);
+    //     });
 
-        let noResultContainer = document.querySelector(".no-results-container");
+    //     let noResultContainer = document.querySelector(".no-results-container");
 
-        if (!elemFound) {
-            // show no result found message
-            noResultContainer?.classList.remove("hide");
-            // hide pagination
-            paginationContainer?.classList.add("hide");
-            // disable show select
-            showSelectElem.disabled = true;
-        } else {
-            noResultContainer?.classList.add("hide");
-            showSelectElem.disabled = false;
+    //     if (!elemFound) {
+    //         // show no result found message
+    //         noResultContainer?.classList.remove("hide");
+    //         // hide pagination
+    //         paginationContainer?.classList.add("hide");
+    //         // disable show select
+    //         showSelectElem.disabled = true;
+    //     } else {
+    //         noResultContainer?.classList.add("hide");
+    //         showSelectElem.disabled = false;
 
-            initPagination(false);
-        }
-    }
+    //         initPagination(false);
+    //     }
+    // }
 
-    const disableButton = (button: any) => {
-        button.classList.add("disabled");
-        button.setAttribute("disabled", true);
-    };
+    // const disableButton = (button: any) => {
+    //     button.classList.add("disabled");
+    //     button.setAttribute("disabled", true);
+    // };
 
-    const enableButton = (button: any) => {
-        button.classList.remove("disabled");
-        button.removeAttribute("disabled");
-    };
+    // const enableButton = (button: any) => {
+    //     button.classList.remove("disabled");
+    //     button.removeAttribute("disabled");
+    // };
 
-    const handlePageButtonsStatus = () => {
-        if (currentPage === 1) {
-            disableButton(prevButton);
-        } else {
-            enableButton(prevButton);
-        }
+    // const handlePageButtonsStatus = () => {
+    //     if (currentPage === 1) {
+    //         disableButton(prevButton);
+    //     } else {
+    //         enableButton(prevButton);
+    //     }
 
-        if (pageCount === currentPage) {
-            disableButton(nextButton);
-        } else {
-            enableButton(nextButton);
-        }
-    };
+    //     if (pageCount === currentPage) {
+    //         disableButton(nextButton);
+    //     } else {
+    //         enableButton(nextButton);
+    //     }
+    // };
 
-    const handleActivePageNumber = () => {
-        document.querySelectorAll(".pagination-number").forEach((button) => {
-            button.classList.remove("active");
-            const pageIndex = Number(button.getAttribute("page-index"));
-            if (pageIndex == currentPage) {
-                button.classList.add("active");
-            }
-        });
-    };
+    // const handleActivePageNumber = () => {
+    //     document.querySelectorAll(".pagination-number").forEach((button) => {
+    //         button.classList.remove("active");
+    //         const pageIndex = Number(button.getAttribute("page-index"));
+    //         if (pageIndex == currentPage) {
+    //             button.classList.add("active");
+    //         }
+    //     });
+    // };
 
-    const createPageNumber = (index: any) => {
-        const pageNumber = document.createElement("button");
-        pageNumber.className = "pagination-number";
-        pageNumber.innerHTML = index;
-        pageNumber.setAttribute("page-index", index);
-        pageNumber.setAttribute("aria-label", "Page " + index);
-        return pageNumber;
-    };
+    // const createPageNumber = (index: any) => {
+    //     const pageNumber = document.createElement("button");
+    //     pageNumber.className = "pagination-number";
+    //     pageNumber.innerHTML = index;
+    //     pageNumber.setAttribute("page-index", index);
+    //     pageNumber.setAttribute("aria-label", "Page " + index);
+    //     return pageNumber;
+    // };
 
-    const getPaginationNumbers = () => {
-        let pageNumberList: Array<any> = [];
-        for (let i = 1; i <= pageCount; i++) {
-            pageNumberList.push(createPageNumber(i));
-        }
-        paginationNumbers?.replaceChildren(...pageNumberList);
-    };
+    // const getPaginationNumbers = () => {
+    //     let pageNumberList: Array<any> = [];
+    //     for (let i = 1; i <= pageCount; i++) {
+    //         pageNumberList.push(createPageNumber(i));
+    //     }
+    //     paginationNumbers?.replaceChildren(...pageNumberList);
+    // };
 
-    const setCurrentPage = (pageNum: any) => {
-        currentPage = pageNum;
+    // const setCurrentPage = (pageNum: any) => {
+    //     currentPage = pageNum;
 
-        handleActivePageNumber();
-        handlePageButtonsStatus();
+    //     handleActivePageNumber();
+    //     handlePageButtonsStatus();
 
-        const prevRange = (pageNum - 1) * paginationLimit;
-        const currRange = pageNum * paginationLimit;
+    //     const prevRange = (pageNum - 1) * paginationLimit;
+    //     const currRange = pageNum * paginationLimit;
 
-        visibleProductBoxes?.forEach((item: any, index: any) => {
-            item.classList.add("hide");
-            if (index >= prevRange && index < currRange) {
-                item.classList.remove("hide");
-            }
-        });
-    };
+    //     visibleProductBoxes?.forEach((item: any, index: any) => {
+    //         item.classList.add("hide");
+    //         if (index >= prevRange && index < currRange) {
+    //             item.classList.remove("hide");
+    //         }
+    //     });
+    // };
 
-    function initPagination(isShowSelect: boolean) {
-        //debugger;
-        paginationLimit = Number(showSelectElem.options[showSelectElem.selectedIndex].text);
-        if (isShowSelect) {
-            visibleProductBoxes = document.querySelectorAll(".box");
-        } else {
-            visibleProductBoxes = document.querySelectorAll(".box:not(.hide)");
-        }
+    // function initPagination(isShowSelect: boolean) {
+    //     //debugger;
+    //     paginationLimit = Number(showSelectElem.options[showSelectElem.selectedIndex].text);
+    //     if (isShowSelect) {
+    //         visibleProductBoxes = document.querySelectorAll(".box");
+    //     } else {
+    //         visibleProductBoxes = document.querySelectorAll(".box:not(.hide)");
+    //     }
 
-        let productsLength = visibleProductBoxes.length;
-        let paginationContainer = document.querySelector(".pagination-container");
-        if (!productsLength) {
-            paginationContainer?.classList.add("hide");
-        } else {
-            paginationContainer?.classList.remove("hide");
+    //     let productsLength = visibleProductBoxes.length;
+    //     let paginationContainer = document.querySelector(".pagination-container");
+    //     if (!productsLength) {
+    //         paginationContainer?.classList.add("hide");
+    //     } else {
+    //         paginationContainer?.classList.remove("hide");
 
-            pageCount = Math.ceil(productsLength / paginationLimit);
+    //         pageCount = Math.ceil(productsLength / paginationLimit);
 
-            getPaginationNumbers();
-            setCurrentPage(1);
+    //         getPaginationNumbers();
+    //         setCurrentPage(1);
 
-            prevButton?.addEventListener("click", () => {
-                setCurrentPage(currentPage - 1);
-            });
+    //         prevButton?.addEventListener("click", () => {
+    //             setCurrentPage(currentPage - 1);
+    //         });
 
-            nextButton?.addEventListener("click", () => {
-                setCurrentPage(currentPage + 1);
-            });
+    //         nextButton?.addEventListener("click", () => {
+    //             setCurrentPage(currentPage + 1);
+    //         });
 
-            document.querySelectorAll(".pagination-number").forEach((button) => {
-                const pageIndex = Number(button.getAttribute("page-index"));
+    //         document.querySelectorAll(".pagination-number").forEach((button) => {
+    //             const pageIndex = Number(button.getAttribute("page-index"));
 
-                if (pageIndex) {
-                    button.addEventListener("click", () => {
-                        setCurrentPage(pageIndex);
-                    });
-                }
-            });
-        }
-    }
+    //             if (pageIndex) {
+    //                 button.addEventListener("click", () => {
+    //                     setCurrentPage(pageIndex);
+    //                 });
+    //             }
+    //         });
+    //     }
+    // }
 
-    initPagination(false);
+    // initPagination(false);
 </script>
-<style lang="scss">
-    .pagination-container {
-        position: relative;
-        text-align: center;
-        height: 5rem;
-    }
-    .pagination-body {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        padding: 1rem 0;
-        justify-content: center;
-    }
-
-    :global(.pagination-number),
-    .pagination-button {
-        font-size: 1.1rem;
-        background-color: transparent;
-        border: none;
-        margin: 0.25rem 0.25rem;
-        cursor: pointer;
-        height: 2.5rem;
-        width: 2.5rem;
-        border-radius: 0.2rem;
-    }
-
-    :global(.pagination-number:hover),
-    .pagination-button:not(.disabled):hover {
-        background: var(--text-color-inverse);
-    }
-
-    :global(.pagination-number.active) {
-        color: var(--text-color-inverse);
-        background-image: linear-gradient(45deg, rgba(85, 236, 219, 1), rgba(212, 148, 255, 1));
-        border: 5px solid #ff4a9e 30%;
-    }
-
-    .no-results-container {
-        display: flex;
-        flex-direction: column;
-        max-width: 980px;
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 400;
-        }
-
-        p {
-            margin: 0;
-        }
-    }
-    .products-section {
-        margin-top: 2.5rem;
-    }
-
-    .search-wrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        .input-group {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-input-group {
-            flex-grow: 0.9;
-
-            label {
-                text-wrap: nowrap;
-            }
-        }
-
-        .search-input {
-            margin-left: 0.5rem;
-            height: 30px;
-            width: 100%;
-            padding-left: 10px;
-            padding-right: 30px;
-
-            border-radius: 7px;
-            border: 1px solid var(--text-color);
-            font-size: 1rem;
-        }
-
-        .search-input:focus-visible {
-            outline: 1px solid #8e8e8e;
-        }
-
-        .show-select {
-            width: 2.5rem;
-            height: 30px;
-            border-radius: 7px;
-            border: 1px solid var(--text-color);
-            font-size: 1rem;
-            margin-left: 0.5rem;
-        }
-    }
-
-    div.hide {
-        display: none;
-    }
-
-    .heading_container {
-        h2 {
-            text-transform: uppercase;
-            font-weight: bold;
-
-            span {
-                color: var(--text-color);
-            }
-        }
-
-        &.heading_center {
-            align-items: center;
-            text-align: center;
-        }
-    }
-
-    .heading_container {
-        margin-bottom: 20px;
-    }
-
-    .grid-layout {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
-        gap: 3rem;
-        margin: 2.5rem 2rem 2.5rem 1rem;
-    }
-
-    @media only screen and (max-width: 950px) {
-        .search-wrapper {
-            flex-direction: column;
-            gap: 1rem;
-
-            .input-group {
-                flex-wrap: wrap;
-                flex-direction: row;
-                gap: 1rem;
-                justify-content: center;
-            }
-
-            .search-input {
-                margin-left: 0;
-                width: 100%;
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .show-select {
-                margin-left: 0;
-            }
-        }
-
-        .products-section {
-            margin-top: 2rem;
-        }
-    }
-</style>
+<style lang="scss"></style>

@@ -1,9 +1,9 @@
 import type { Product, APIFakeStoreProductsResponse } from "../types/api";
-import redBerryImg from "../../public/img/products/redBerry.webp";
-import powerBlackImg from "../../public/img/products/powerBlack.webp";
-import crystalGlossImg from "../../public/img/products/crystalGloss.webp";
-import pinkRoseImg from "../../public/img/products/pinkRose.webp";
-import jaianImg from "../../public/img/products/jaian.webp";
+import redBerryImg from "../img/products/redBerry.webp";
+import powerBlackImg from "../img/products/powerBlack.webp";
+import crystalGlossImg from "../img/products/crystalGloss.webp";
+import pinkRoseImg from "../img/products/pinkRose.webp";
+import jaianImg from "../img/products/jaian.webp";
 
 const response = [
     {
@@ -15,6 +15,7 @@ const response = [
         category: "boot",
         image: redBerryImg,
         rating: { rate: 4.7, count: 130 },
+        size: ["36", "37", "38", "39", "40", "41", "42"],
     },
     {
         id: 2,
@@ -25,6 +26,7 @@ const response = [
         category: "sneaker",
         image: jaianImg,
         rating: { rate: 4.7, count: 130 },
+        size: ["36", "37", "38", "39", "40"],
     },
     {
         id: 3,
@@ -35,6 +37,7 @@ const response = [
         category: "boots",
         image: powerBlackImg,
         rating: { rate: 4.7, count: 130 },
+        size: ["38", "39", "40", "41", "42"],
     },
     {
         id: 4,
@@ -44,6 +47,7 @@ const response = [
             "Whether you're navigating city streets or exploring the great outdoors, our Rainkers provide the support and traction you need to conquer any terrain. The comfortable cushioning ensures all-day comfort, while the stylish, transparent design keeps you looking your best.",
         image: crystalGlossImg,
         rating: { rate: 4.7, count: 130 },
+        size: ["38", "39", "40"],
     },
     {
         id: 5,
@@ -53,6 +57,7 @@ const response = [
             "Experience the perfect blend of style and function with our pink Rainkers. Order your pair today and step out in confidence, rain or shine.",
         image: pinkRoseImg,
         rating: { rate: 4.7, count: 130 },
+        size: ["39"],
     },
 ];
 
@@ -62,12 +67,12 @@ function filterById(response: any[], id: any) {
     })[0];
 }
 
-export const getProductBy = async ({ id }: { id: string }) => {
+export const getProductBy = ({ id }: { id: string }) => {
     const product = filterById(response, id) as Product;
     return product;
 };
 
-export const getLatestProducts = async () => {
+export const getLatestProducts = () => {
     const products = response as APIFakeStoreProductsResponse;
     return products;
 };

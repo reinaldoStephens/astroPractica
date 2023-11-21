@@ -1,10 +1,13 @@
 ---
-import Products from "../components/Products.astro";
+import ProductsGrid from "../components/ProductsGrid.jsx";
 import Layout from "../layouts/Layout.astro";
+
+import { getLatestProducts } from "../services/fakeStore";
+const products = getLatestProducts();
 ---
 
 <Layout title="Store App">
     <section class="shop-section">
-        <Products />
+        <ProductsGrid client:load initialProducts={products} />
     </section>
 </Layout>

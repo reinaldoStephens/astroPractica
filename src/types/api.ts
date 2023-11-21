@@ -8,6 +8,7 @@ export type Product = {
     category: Category;
     image: any;
     rating: Rating;
+    size: Array<any>;
 };
 
 export enum Category {

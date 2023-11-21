@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import Layout from "../../layouts/layout.astro";
 import { getProductBy, getLatestProducts } from "../../services/fakeStore";
-import ProductPage from "../../components/ProductPage";
 
 const { id } = Astro.params;
 
@@ -20,10 +19,46 @@ export async function getStaticPaths() {
         },
     }));
 }
+
+const allSizes = ["36", "37", "38", "39", "40", "41", "42", "43", "44"];
+const enableSizes = allSizes.filter((item) => product.size.includes(item));
 ---
 
 <Layout title={`Product ${product.title}`}>
-    <ProductPage client:load image={product.image} title={product.title} description={product.description} />
+    <section class="product-details-section">
+        <figure class="zoom" style={`background-image: url(${product.image.src})`}>
+            <img width="570" height="570" src={product.image.src} alt={product.title} loading="lazy" decoding="async" />{" "}
+        </figure>
+        <header class="product-title">
+            <h2>{product.title}</h2>
+            <hr />
+        </header>
+        <article class="product-price-container">
+            <span class="dollar">US$</span>
+            <span class="price">{product.price}</span>
+        </article>
+        <article class="product-size-container">
+            <label for="size">Size *</label>
+            <select id="size" class="size-select">
+                {
+                    allSizes.map((size: any) =>
+                        enableSizes.indexOf(size) !== -1 ? (
+                            <option value={size}>{size}</option>
+                        ) : (
+                            <option value={size} disabled>
+                                {size}
+                            </option>
+                        )
+                    )
+                }
+            </select>
+        </article>
+        <article></article>
+        <article class="product-description">
+            <h5>Description</h5>
+            <p>{product.description}</p>
+        </article>
+    </section>
 </Layout>
 
 <script>
@@ -47,16 +82,88 @@ export async function getStaticPaths() {
     );
 </script>
 <style>
-    article {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+    .product-details-section {
+        display: grid;
+        grid-template:
+            "image title" 0.1fr
+            "image price" 0.1fr
+            "image size" 0.1fr
+            "image description" 1fr /
+            auto 1fr;
     }
 
-    p {
-        text-align: center;
+    .zoom {
+        grid-area: image;
+    }
+
+    .product-price-container {
+        grid-area: price;
+    }
+
+    .product-title {
+        grid-area: title;
+    }
+
+    .product-title h2 {
+        font-size: 24px;
+        margin-bottom: 4px;
+    }
+
+    .product-price-container .price {
+        font-size: 28px;
+        line-height: normal;
+    }
+
+    .product-size-container {
+        grid-area: size;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        line-height: 2;
+    }
+
+    .size-select {
+        width: fit-content;
+        border-radius: 4px;
+        border: 1px solid var(--text-color);
+        font-size: 1rem;
+        padding: 3px;
+    }
+
+    .product-price-container .dollar {
+        font-size: 14px;
+        position: relative;
+        top: -0.7em;
+        padding-right: 1px;
+    }
+
+    .product-description {
+        padding-top: 0.5rem;
+        grid-area: description;
+    }
+
+    .product-description h5 {
+        font-size: 16px;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    .product-description p {
+        line-height: 1.2rem;
+        font-size: 16px;
+    }
+
+    hr {
+        background-color: transparent;
+        border-bottom-width: 0;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top: 1px solid #bbbfbf;
+        display: block;
+        height: 1px;
+        line-height: 19px;
+        margin-bottom: 14px;
+        margin-top: 0;
     }
 
     figure.zoom {
@@ -65,11 +172,33 @@ export async function getStaticPaths() {
         overflow: hidden;
         cursor: crosshair;
     }
+
     figure.zoom img:hover {
         opacity: 0;
     }
+
     figure.zoom img {
         transition: opacity 0.5s;
         display: block;
+    }
+
+    @media screen and (max-width: 980px) {
+        figure.zoom img {
+            width: 100%;
+            height: 100%;
+        }
+        figure.zoom {
+            margin: 0 auto;
+        }
+        .product-details-section {
+            display: grid;
+            grid-template:
+                "image" 1fr
+                "title" 0.1fr
+                "price " 0.1fr
+                "size" 0.1fr
+                "description" 1fr /
+                auto;
+        }
     }
 </style>

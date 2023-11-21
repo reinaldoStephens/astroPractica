@@ -1,0 +1,116 @@
+div.hide {
+    display: none;
+}
+
+.box:hover .detail-box::after {
+    opacity: 0.4;
+}
+
+.box {
+    margin: 0 auto;
+    width: 100%;
+    background-color: var(--text-color-inverse);
+    padding: 10px;
+    box-shadow: var(--navbar-shallow-color) 0px 5px 15px;
+    a {
+        color: var(--text-color);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .img-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 50px;
+        height: auto;
+
+        img {
+            max-width: 500px;
+            max-height: 500px;
+        }
+    }
+
+    .detail-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.25rem;
+        height: auto;
+        position: relative;
+
+        h6 {
+            span {
+                color: var(--primary-color);
+            }
+            margin: 0;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-left: 1rem;
+        }
+
+        .product-price span {
+            padding-left: 0.25rem;
+        }
+
+        .product-title {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
+
+    .detail-box::after {
+        content: "";
+        background-image: linear-gradient(69deg, rgba(85, 236, 219, 1), rgba(212, 148, 255, 1));
+
+        position: absolute;
+        top: calc(100%);
+        width: 98%;
+        height: 4px;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .new {
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        background-color: var(--menu-hover-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        border: 1px solid var(--navbar-shallow-color);
+        font-size: 0.6em;
+        font-weight: 600;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .box {
+        .img-box {
+            height: auto;
+
+            img {
+                max-width: 550px;
+                max-height: 550px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .new {
+            top: 0;
+            left: 0;
+        }
+    }
+}
