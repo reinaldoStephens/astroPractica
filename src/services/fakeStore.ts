@@ -5,7 +5,7 @@ import crystalGlossImg from "../img/products/crystalGloss.webp";
 import pinkRoseImg from "../img/products/pinkRose.webp";
 import jaianImg from "../img/products/jaian.webp";
 
-const response = [
+export const response = [
     {
         id: 1,
         title: "RED BERRY RAINKERS WOMEN'S RAIN BOOTS",

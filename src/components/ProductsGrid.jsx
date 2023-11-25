@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import ProductCard from "./ProductCard.jsx";
 import "./css/productGrid.scss";
+import React, { useState, useRef, useEffect } from "react";
+import { Products } from "./Products.jsx";
+import { useProducts } from "../hooks/useProducts.js";
 
-const ProductsGrid = ({ initialProducts }) => {
-    // const products = await getLatestProducts();
+function useSearch() {
+    const [error, setError] = useState(null);
     const [searchVal, setSearchVal] = useState(() => {
         const searchInputValueFromStorage = window.localStorage.getItem("searchValue");
         if (searchInputValueFromStorage) {
@@ -12,12 +13,28 @@ const ProductsGrid = ({ initialProducts }) => {
             return "";
         }
     });
-    const [products, setProducts] = useState(
-        initialProducts.filter((product) => {
-            let searchValCopy = searchVal.toUpperCase();
-            return product.title.includes(searchValCopy);
-        })
-    );
+    const isFirstInput = useRef(true);
+
+    useEffect(() => {
+        if (isFirstInput.current) {
+            isFirstInput.current = searchVal === "";
+            return;
+        }
+
+        if (searchVal === "") {
+            setError("no se puede buscar una pelicula vacia");
+            return;
+        }
+
+        setError(null);
+    }, [searchVal]);
+
+    return { searchVal, setSearchVal, error };
+}
+
+const ProductsGrid = () => {
+    const { searchVal, setSearchVal, error } = useSearch();
+    const { products } = useProducts();
     const [paginationLimit, setPaginationLimit] = useState(6);
     const [pageCount, setPageCount] = useState(Math.ceil(products.length / paginationLimit));
 
@@ -32,8 +49,6 @@ const ProductsGrid = ({ initialProducts }) => {
 
     const prevRange = (currentPage - 1) * paginationLimit;
     const currRange = currentPage * paginationLimit;
-    const prevButtonClassName = currentPage === 1 ? "pagination-button disabled" : "pagination-button";
-    const prevButtonDisabled = currentPage === 1;
 
     const handlePrevButtonOnClick = () => {
         setCurrentPage(currentPage - 1);
@@ -51,26 +66,29 @@ const ProductsGrid = ({ initialProducts }) => {
     };
 
     const handleInput = (event) => {
-        let inputValue = event.target.value;
-        setSearchVal(inputValue);
-        window.localStorage.setItem("searchValue", inputValue);
+        const newQuery = event.target.value;
+        setSearchVal(newQuery);
 
-        let newProducts = [...products];
+        // let inputValue = event.target.value;
+        // setSearchVal(inputValue);
+        // window.localStorage.setItem("searchValue", inputValue);
 
-        if (inputValue) {
-            newProducts = initialProducts.filter((product) => {
-                let searchValCopy = inputValue.toUpperCase();
-                return product.title.includes(searchValCopy);
-            });
+        // let newProducts = [...products];
 
-            setPageCount(Math.ceil(newProducts.length / paginationLimit));
-            setProducts(newProducts);
-        } else {
-            setProducts(initialProducts);
-            setPageCount(Math.ceil(initialProducts.length / paginationLimit));
-        }
+        // if (inputValue) {
+        //     newProducts = initialProducts.filter((product) => {
+        //         let searchValCopy = inputValue.toUpperCase();
+        //         return product.title.includes(searchValCopy);
+        //     });
 
-        setCurrentPage(1);
+        //     setPageCount(Math.ceil(newProducts.length / paginationLimit));
+        //     // setProducts(newProducts);
+        // } else {
+        //     // setProducts(initialProducts);
+        //     setPageCount(Math.ceil(initialProducts.length / paginationLimit));
+        // }
+
+        // setCurrentPage(1);
     };
 
     const nextButtonClassName = pageCount === currentPage ? "pagination-button disabled" : "pagination-button";
@@ -79,7 +97,7 @@ const ProductsGrid = ({ initialProducts }) => {
     const indicesToRemove = [];
     const newProducts = [...products];
 
-    initialProducts.forEach((item, index) => {
+    products.forEach((item, index) => {
         if (index >= prevRange && index < currRange) {
         } else {
             indicesToRemove.push(index);
@@ -90,7 +108,6 @@ const ProductsGrid = ({ initialProducts }) => {
         newProducts.splice(indicesToRemove[i], 1);
     }
 
-    const noResultContainerClassName = products.length > 0 ? "no-results-container hide" : "no-results-container";
     const paginationContainerClassName = products.length > 0 ? "pagination-container" : "pagination-container hide";
 
     const getPaginationNumbers = () => {
@@ -117,23 +134,31 @@ const ProductsGrid = ({ initialProducts }) => {
 
     let pageNumbers = getPaginationNumbers();
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(searchVal);
+    };
+
     return (
         <>
             <section className="products-section">
-                <header className="heading_container heading_center">
+                <span className="heading_container heading_center">
                     <h2>Products</h2>
-                </header>
-                <div className="search-wrapper">
+                </span>
+                <form className="search-wrapper" onSubmit={handleSubmit}>
                     <div className="input-group search-input-group">
-                        <label htmlFor="search">Search:</label>
+                        <label htmlFor="search">Product:</label>
                         <input
+                            name="query"
                             type="search"
                             id="search"
                             className="search-input"
+                            placeholder="product name"
                             maxLength="80"
                             value={searchVal}
                             onChange={handleInput}
                         />
+                        <button type="submit">Search</button>
                     </div>
                     {/* <div className="input-group show-input-group">
                         <label htmlFor="show">Show:</label>
@@ -143,47 +168,9 @@ const ProductsGrid = ({ initialProducts }) => {
                             <option value="27">27</option>
                         </select>
                     </div> */}
-                </div>
-                <div className={noResultContainerClassName}>
-                    <h1>Nothing Found</h1>
-                    <p>
-                        Sorry, but nothing matched your search. <br />
-                        Please try again with some different keywords.
-                    </p>
-                </div>
-                <div className="grid-layout product-detail-container">
-                    {newProducts.map(({ id, image, title, price }) => (
-                        <ProductCard key={id} id={id.toString()} image={image.src} title={title} price={price.toString()} />
-                    ))}
-                </div>
-                <div className={paginationContainerClassName}>
-                    <nav className="pagination-body">
-                        <button
-                            className={prevButtonClassName}
-                            id="prev-button"
-                            aria-label="Previous page"
-                            title="Previous page"
-                            disabled={prevButtonDisabled}
-                            onClick={handlePrevButtonOnClick}
-                        >
-                            {" "}
-                            &lt;
-                        </button>
-                        <div id="pagination-numbers">{pageNumbers}</div>
-
-                        <button
-                            className={nextButtonClassName}
-                            id="next-button"
-                            aria-label="Next page"
-                            title="Next page"
-                            disabled={nextButtonDisabled}
-                            onClick={handleNextButtonOnClick}
-                        >
-                            {" "}
-                            &gt;
-                        </button>
-                    </nav>
-                </div>
+                </form>
+                {error && <p className="error">{error}</p>}
+                <Products products={products}></Products>
             </section>
         </>
     );
