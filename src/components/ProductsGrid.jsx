@@ -1,5 +1,5 @@
 import "./css/productGrid.scss";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Products } from "./Products.jsx";
 import { useProducts } from "../hooks/useProducts.js";
 
@@ -22,7 +22,7 @@ function useSearch() {
         }
 
         if (searchVal === "") {
-            setError("no se puede buscar una pelicula vacia");
+            setError("No se puede buscar una pelicula vacia");
             return;
         }
 
@@ -34,36 +34,44 @@ function useSearch() {
 
 const ProductsGrid = () => {
     const { searchVal, setSearchVal, error } = useSearch();
-    const { products } = useProducts();
-    const [paginationLimit, setPaginationLimit] = useState(6);
-    const [pageCount, setPageCount] = useState(Math.ceil(products.length / paginationLimit));
+    const { products, getProducts } = useProducts({ searchVal });
 
-    const [currentPage, setCurrentPage] = useState(() => {
-        const currentPageFromStorage = window.localStorage.getItem("currentPage");
-        if (currentPageFromStorage && currentPageFromStorage <= pageCount) {
-            return currentPageFromStorage;
-        } else {
-            return 1;
-        }
-    });
-
-    const prevRange = (currentPage - 1) * paginationLimit;
-    const currRange = currentPage * paginationLimit;
-
-    const handlePrevButtonOnClick = () => {
-        setCurrentPage(currentPage - 1);
-        window.localStorage.setItem("currentPage", currentPage - 1);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        getProducts();
     };
 
-    const handleNextButtonOnClick = () => {
-        setCurrentPage(currentPage + 1);
-        window.localStorage.setItem("currentPage", currentPage + 1);
-    };
+    console.log(products);
 
-    const handleNumberButtonOnClick = (event) => {
-        setCurrentPage(Number(event.target.innerText));
-        window.localStorage.setItem("currentPage", Number(event.target.innerText));
-    };
+    // const [paginationLimit, setPaginationLimit] = useState(6);
+    // const [pageCount, setPageCount] = useState(Math.ceil(products.length / paginationLimit));
+
+    // const [currentPage, setCurrentPage] = useState(() => {
+    //     const currentPageFromStorage = window.localStorage.getItem("currentPage");
+    //     if (currentPageFromStorage && currentPageFromStorage <= pageCount) {
+    //         return currentPageFromStorage;
+    //     } else {
+    //         return 1;
+    //     }
+    // });
+
+    // const prevRange = (currentPage - 1) * paginationLimit;
+    // const currRange = currentPage * paginationLimit;
+
+    // const handlePrevButtonOnClick = () => {
+    //     setCurrentPage(currentPage - 1);
+    //     window.localStorage.setItem("currentPage", currentPage - 1);
+    // };
+
+    // const handleNextButtonOnClick = () => {
+    //     setCurrentPage(currentPage + 1);
+    //     window.localStorage.setItem("currentPage", currentPage + 1);
+    // };
+
+    // const handleNumberButtonOnClick = (event) => {
+    //     setCurrentPage(Number(event.target.innerText));
+    //     window.localStorage.setItem("currentPage", Number(event.target.innerText));
+    // };
 
     const handleInput = (event) => {
         const newQuery = event.target.value;
@@ -71,7 +79,7 @@ const ProductsGrid = () => {
 
         // let inputValue = event.target.value;
         // setSearchVal(inputValue);
-        // window.localStorage.setItem("searchValue", inputValue);
+        window.localStorage.setItem("searchValue", newQuery);
 
         // let newProducts = [...products];
 
@@ -91,53 +99,48 @@ const ProductsGrid = () => {
         // setCurrentPage(1);
     };
 
-    const nextButtonClassName = pageCount === currentPage ? "pagination-button disabled" : "pagination-button";
-    const nextButtonDisabled = pageCount === currentPage;
+    // const nextButtonClassName = pageCount === currentPage ? "pagination-button disabled" : "pagination-button";
+    // const nextButtonDisabled = pageCount === currentPage;
 
-    const indicesToRemove = [];
-    const newProducts = [...products];
+    // const indicesToRemove = [];
+    // const newProducts = [...products];
 
-    products.forEach((item, index) => {
-        if (index >= prevRange && index < currRange) {
-        } else {
-            indicesToRemove.push(index);
-        }
-    });
+    // products.forEach((item, index) => {
+    //     if (index >= prevRange && index < currRange) {
+    //     } else {
+    //         indicesToRemove.push(index);
+    //     }
+    // });
 
-    for (let i = indicesToRemove.length - 1; i >= 0; i--) {
-        newProducts.splice(indicesToRemove[i], 1);
-    }
+    // for (let i = indicesToRemove.length - 1; i >= 0; i--) {
+    //     newProducts.splice(indicesToRemove[i], 1);
+    // }
 
-    const paginationContainerClassName = products.length > 0 ? "pagination-container" : "pagination-container hide";
+    // const paginationContainerClassName = products.length > 0 ? "pagination-container" : "pagination-container hide";
 
-    const getPaginationNumbers = () => {
-        let pageNumbers = [];
+    // const getPaginationNumbers = () => {
+    //     let pageNumbers = [];
 
-        for (let index = 1; index <= pageCount; index++) {
-            let paginationButtonClassName = currentPage == index ? "pagination-number active" : "pagination-number";
+    //     for (let index = 1; index <= pageCount; index++) {
+    //         let paginationButtonClassName = currentPage == index ? "pagination-number active" : "pagination-number";
 
-            pageNumbers.push(
-                <button
-                    key={index}
-                    className={paginationButtonClassName}
-                    page-index={index}
-                    aria-label={`Page ${index}`}
-                    onClick={handleNumberButtonOnClick}
-                >
-                    {index}
-                </button>
-            );
-        }
+    //         pageNumbers.push(
+    //             <button
+    //                 key={index}
+    //                 className={paginationButtonClassName}
+    //                 page-index={index}
+    //                 aria-label={`Page ${index}`}
+    //                 onClick={handleNumberButtonOnClick}
+    //             >
+    //                 {index}
+    //             </button>
+    //         );
+    //     }
 
-        return pageNumbers;
-    };
+    //     return pageNumbers;
+    // };
 
-    let pageNumbers = getPaginationNumbers();
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(searchVal);
-    };
+    // let pageNumbers = getPaginationNumbers();
 
     return (
         <>

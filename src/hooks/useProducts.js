@@ -1,18 +1,23 @@
-import { response } from "../services/fakeStore.ts";
+import { useState, useRef } from "react";
+import { searchProducts } from "../services/products.js";
 
-export function useProducts() {
-    const products = response;
+export function useProducts({ searchVal }) {
+    const [products, setProducts] = useState([]);
+    // const [loading, setLoading] = useState(false);
+    // const [error, setError] = useState(null);
 
-    const mappedProducts = products?.map((product) => ({
-        id: product.id,
-        title: product.title,
-        description: product.description,
-        category: product.category,
-        image: product.image,
-        rating: product.rating,
-        size: product.size,
-        price: product.price,
-    }));
+    const getProducts = () => {
+        try {
+            // setLoading(true);
+            // setError(null);
+            // TODO: aca se debe de hacer el fetch al API
+            const newProducts = searchProducts({ searchVal });
+            setProducts(newProducts);
+        } catch (error) {
+        } finally {
+            // setLoading(false);
+        }
+    };
 
-    return { products: mappedProducts };
+    return { products, getProducts };
 }
