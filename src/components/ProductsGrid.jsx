@@ -1,7 +1,7 @@
-import "./css/productGrid.scss";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Products } from "./Products.jsx";
-import { useProducts } from "../hooks/useProducts.js";
+import { useProducts } from "../hooks/useProducts.jsx";
+import debounce from "just-debounce-it";
 
 function useSearch() {
     const [error, setError] = useState(null);
@@ -21,11 +21,6 @@ function useSearch() {
             return;
         }
 
-        if (searchVal === "") {
-            setError("No se puede buscar una pelicula vacia");
-            return;
-        }
-
         setError(null);
     }, [searchVal]);
 
@@ -33,114 +28,67 @@ function useSearch() {
 }
 
 const ProductsGrid = () => {
+    const sortOptions = [
+        { value: "nombre", label: "Nombre" },
+        { value: "precio", label: "Precio" },
+    ];
+    const showOptions = [
+        { value: "4", label: "4" },
+        { value: "8", label: "8" },
+    ];
+    const [paginationLimit, setPaginationLimit] = useState(showOptions[0].value);
+    const [sort, setSort] = useState(sortOptions[0].value);
     const { searchVal, setSearchVal, error } = useSearch();
-    const { products, getProducts } = useProducts({ searchVal });
+    const { products, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage } = useProducts({
+        sort,
+        paginationLimit,
+    });
+    const paginationContainerClassName = products.length > 0 ? "pagination-container" : "pagination-container hide";
+    const prevButtonDisabled = currentPage === 1;
+    const prevButtonClassName = prevButtonDisabled ? "pagination-button disabled" : "pagination-button";
+    const nextButtonDisabled = pageCount === currentPage;
+    const nextButtonClassName = nextButtonDisabled ? "pagination-button disabled" : "pagination-button";
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        getProducts();
+    const debouncedGetProducts = useCallback(
+        debounce((searchVal) => {
+            getProducts({ searchVal });
+        }, 500),
+        []
+    );
+
+    useEffect(() => {
+        if (products && products.length === 0) {
+            getProducts({ searchVal });
+        }
+    }, []);
+
+    const handleSort = (event) => {
+        const value = event.target.value;
+        setSort(value);
     };
 
-    console.log(products);
-
-    // const [paginationLimit, setPaginationLimit] = useState(6);
-    // const [pageCount, setPageCount] = useState(Math.ceil(products.length / paginationLimit));
-
-    // const [currentPage, setCurrentPage] = useState(() => {
-    //     const currentPageFromStorage = window.localStorage.getItem("currentPage");
-    //     if (currentPageFromStorage && currentPageFromStorage <= pageCount) {
-    //         return currentPageFromStorage;
-    //     } else {
-    //         return 1;
-    //     }
-    // });
-
-    // const prevRange = (currentPage - 1) * paginationLimit;
-    // const currRange = currentPage * paginationLimit;
-
-    // const handlePrevButtonOnClick = () => {
-    //     setCurrentPage(currentPage - 1);
-    //     window.localStorage.setItem("currentPage", currentPage - 1);
-    // };
-
-    // const handleNextButtonOnClick = () => {
-    //     setCurrentPage(currentPage + 1);
-    //     window.localStorage.setItem("currentPage", currentPage + 1);
-    // };
-
-    // const handleNumberButtonOnClick = (event) => {
-    //     setCurrentPage(Number(event.target.innerText));
-    //     window.localStorage.setItem("currentPage", Number(event.target.innerText));
-    // };
+    const handlePaginationLimit = (event) => {
+        const value = event.target.value;
+        setPaginationLimit(value);
+        setCurrentPage(1);
+    };
 
     const handleInput = (event) => {
         const newQuery = event.target.value;
         setSearchVal(newQuery);
-
-        // let inputValue = event.target.value;
-        // setSearchVal(inputValue);
+        debouncedGetProducts(newQuery);
         window.localStorage.setItem("searchValue", newQuery);
-
-        // let newProducts = [...products];
-
-        // if (inputValue) {
-        //     newProducts = initialProducts.filter((product) => {
-        //         let searchValCopy = inputValue.toUpperCase();
-        //         return product.title.includes(searchValCopy);
-        //     });
-
-        //     setPageCount(Math.ceil(newProducts.length / paginationLimit));
-        //     // setProducts(newProducts);
-        // } else {
-        //     // setProducts(initialProducts);
-        //     setPageCount(Math.ceil(initialProducts.length / paginationLimit));
-        // }
-
-        // setCurrentPage(1);
     };
 
-    // const nextButtonClassName = pageCount === currentPage ? "pagination-button disabled" : "pagination-button";
-    // const nextButtonDisabled = pageCount === currentPage;
+    const handlePrevButtonOnClick = () => {
+        setCurrentPage(currentPage - 1);
+        window.localStorage.setItem("currentPage", currentPage - 1);
+    };
 
-    // const indicesToRemove = [];
-    // const newProducts = [...products];
-
-    // products.forEach((item, index) => {
-    //     if (index >= prevRange && index < currRange) {
-    //     } else {
-    //         indicesToRemove.push(index);
-    //     }
-    // });
-
-    // for (let i = indicesToRemove.length - 1; i >= 0; i--) {
-    //     newProducts.splice(indicesToRemove[i], 1);
-    // }
-
-    // const paginationContainerClassName = products.length > 0 ? "pagination-container" : "pagination-container hide";
-
-    // const getPaginationNumbers = () => {
-    //     let pageNumbers = [];
-
-    //     for (let index = 1; index <= pageCount; index++) {
-    //         let paginationButtonClassName = currentPage == index ? "pagination-number active" : "pagination-number";
-
-    //         pageNumbers.push(
-    //             <button
-    //                 key={index}
-    //                 className={paginationButtonClassName}
-    //                 page-index={index}
-    //                 aria-label={`Page ${index}`}
-    //                 onClick={handleNumberButtonOnClick}
-    //             >
-    //                 {index}
-    //             </button>
-    //         );
-    //     }
-
-    //     return pageNumbers;
-    // };
-
-    // let pageNumbers = getPaginationNumbers();
+    const handleNextButtonOnClick = () => {
+        setCurrentPage(currentPage + 1);
+        window.localStorage.setItem("currentPage", currentPage + 1);
+    };
 
     return (
         <>
@@ -148,32 +96,83 @@ const ProductsGrid = () => {
                 <span className="heading_container heading_center">
                     <h2>Products</h2>
                 </span>
-                <form className="search-wrapper" onSubmit={handleSubmit}>
+                <form className="search-wrapper">
                     <div className="input-group search-input-group">
-                        <label htmlFor="search">Product:</label>
                         <input
                             name="query"
                             type="search"
                             id="search"
                             className="search-input"
-                            placeholder="product name"
+                            placeholder="Product name"
                             maxLength="80"
                             value={searchVal}
                             onChange={handleInput}
+                            title="Search product by name"
                         />
-                        <button type="submit">Search</button>
                     </div>
-                    {/* <div className="input-group show-input-group">
-                        <label htmlFor="show">Show:</label>
-                        <select id="show" className="show-select">
-                            <option value="9">9</option>
-                            <option value="18">18</option>
-                            <option value="27">27</option>
+                    <div className="input-group show-input-group">
+                        <label htmlFor="sort">Sort by</label>
+                        <select
+                            id="sort"
+                            value={sort}
+                            onChange={handleSort}
+                            name="select"
+                            tabIndex="0"
+                            role="combobox"
+                            label="Choose an option"
+                            title="Choose an option"
+                            className="sort-select"
+                        >
+                            {sortOptions.map(({ value, label }) => (
+                                <option key={value} value={value}>
+                                    {label}
+                                </option>
+                            ))}
                         </select>
-                    </div> */}
+                    </div>
+                    <div className="input-group show-input-group">
+                        <label htmlFor="show">Show</label>
+                        <select id="show" className="show-select" tabIndex="0" onChange={handlePaginationLimit}>
+                            {showOptions.map(({ value, label }) => (
+                                <option key={value} value={value}>
+                                    {label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </form>
                 {error && <p className="error">{error}</p>}
                 <Products products={products}></Products>
+                <div className={paginationContainerClassName}>
+                    <nav className="pagination-body">
+                        <button
+                            className={prevButtonClassName}
+                            id="prev-button"
+                            aria-label="Previous page"
+                            title="Previous page"
+                            disabled={prevButtonDisabled}
+                            onClick={handlePrevButtonOnClick}
+                            tabIndex="0"
+                        >
+                            {" "}
+                            &lt;
+                        </button>
+                        <div id="pagination-numbers">{pageNumbers}</div>
+
+                        <button
+                            className={nextButtonClassName}
+                            id="next-button"
+                            aria-label="Next page"
+                            title="Next page"
+                            disabled={nextButtonDisabled}
+                            onClick={handleNextButtonOnClick}
+                            tabIndex="0"
+                        >
+                            {" "}
+                            &gt;
+                        </button>
+                    </nav>
+                </div>
             </section>
         </>
     );

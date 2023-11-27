@@ -45,7 +45,7 @@ const Nav = () => {
         <>
             <nav className="navbar">
                 <div className="navbar-brand-container">
-                    <a className="navbar-brand" href="index.html">
+                    <a className="navbar-brand" href="index.html" tabIndex="0">
                         <h1>
                             Awa<span className="text-gradient">Boots</span>
                         </h1>

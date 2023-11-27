@@ -10,39 +10,11 @@ function ListOfProducts({ products }) {
                     <ProductCard key={id} id={id.toString()} image={image.src} title={title} price={price.toString()} />
                 ))}
             </div>
-            {/* <div className="pagination-container">
-                <nav className="pagination-body">
-                    <button
-                        className={prevButtonClassName}
-                        id="prev-button"
-                        aria-label="Previous page"
-                        title="Previous page"
-                        disabled={prevButtonDisabled}
-                        onClick={handlePrevButtonOnClick}
-                    >
-                        {" "}
-                        &lt;
-                    </button>
-                    <div id="pagination-numbers">{pageNumbers}</div>
-
-                    <button
-                        className={nextButtonClassName}
-                        id="next-button"
-                        aria-label="Next page"
-                        title="Next page"
-                        disabled={nextButtonDisabled}
-                        onClick={handleNextButtonOnClick}
-                    >
-                        {" "}
-                        &gt;
-                    </button>
-                </nav>
-            </div> */}
         </>
     );
 }
 
-function NoMoviesResults() {
+function NoProductsResults() {
     return (
         <div className="no-results-container">
             <h1>Nothing Found</h1>
@@ -55,6 +27,6 @@ function NoMoviesResults() {
 }
 
 export function Products({ products }) {
-    const hasProducts = products.length > 0;
-    return hasProducts ? <ListOfProducts products={products}></ListOfProducts> : <NoMoviesResults></NoMoviesResults>;
+    const hasProducts = products ? products.length > 0 : false;
+    return hasProducts ? <ListOfProducts products={products}></ListOfProducts> : <NoProductsResults></NoProductsResults>;
 }

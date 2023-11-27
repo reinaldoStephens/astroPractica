@@ -69,7 +69,6 @@
     }
 
     .search-input {
-        margin-left: 0.5rem;
         height: 30px;
         width: 100%;
         padding-left: 10px;
@@ -86,6 +85,14 @@
 
     .show-select {
         width: 2.5rem;
+        height: 30px;
+        border-radius: 7px;
+        border: 1px solid var(--text-color);
+        font-size: 1rem;
+        margin-left: 0.5rem;
+    }
+
+    .sort-select {
         height: 30px;
         border-radius: 7px;
         border: 1px solid var(--text-color);
@@ -120,7 +127,7 @@ div.hide {
 
 .grid-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     grid-auto-rows: 1fr;
     gap: 2rem;
     margin: 2.5rem 0rem 2.5rem 0rem;

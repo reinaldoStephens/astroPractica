@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import "./css/productCard.scss";
 
 const ProductCard = ({ id, title, price, image }) => {
     return (
         <>
             <div key={id} className="box" id={id}>
-                <a href={`/product/${id}`}>
+                <a href={`/product/${id}`} tabIndex="0">
                     <picture className="img-box">
                         <img
                             title={title}
