@@ -1,7 +1,9 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect, useCallback, useId } from "react";
 import { Products } from "./Products.jsx";
 import { useProducts } from "../hooks/useProducts.jsx";
 import debounce from "just-debounce-it";
+import { useCart } from "../hooks/useCart.jsx";
+import { CartContext } from "../context/cart.jsx";
 
 function useSearch() {
     const [error, setError] = useState(null);
@@ -28,6 +30,10 @@ function useSearch() {
 }
 
 const ProductsGrid = () => {
+    //const { cart } = useCart();
+
+    const sortSelectId = useId();
+    const showSelectId = useId();
     const sortOptions = [
         { value: "nombre", label: "Nombre" },
         { value: "precio", label: "Precio" },
@@ -108,20 +114,20 @@ const ProductsGrid = () => {
                             value={searchVal}
                             onChange={handleInput}
                             title="Search product by name"
+                            aria-label="Product name"
                         />
                     </div>
                     <div className="input-group show-input-group">
-                        <label htmlFor="sort">Sort by</label>
+                        <label htmlFor={sortSelectId}>Sort by</label>
                         <select
-                            id="sort"
+                            id={sortSelectId}
                             value={sort}
                             onChange={handleSort}
-                            name="select"
+                            name="sortBy"
                             tabIndex="0"
-                            role="combobox"
-                            label="Choose an option"
                             title="Choose an option"
                             className="sort-select"
+                            aria-label="Sort by"
                         >
                             {sortOptions.map(({ value, label }) => (
                                 <option key={value} value={value}>
@@ -131,8 +137,17 @@ const ProductsGrid = () => {
                         </select>
                     </div>
                     <div className="input-group show-input-group">
-                        <label htmlFor="show">Show</label>
-                        <select id="show" className="show-select" tabIndex="0" onChange={handlePaginationLimit}>
+                        <label htmlFor={showSelectId}>Show</label>
+                        <select
+                            id={showSelectId}
+                            value={paginationLimit}
+                            name="show"
+                            className="show-select"
+                            tabIndex="0"
+                            onChange={handlePaginationLimit}
+                            aria-label="Show"
+                            title="Choose an option"
+                        >
                             {showOptions.map(({ value, label }) => (
                                 <option key={value} value={value}>
                                     {label}

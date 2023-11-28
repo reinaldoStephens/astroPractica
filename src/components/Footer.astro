@@ -1,3 +1,7 @@
+---
+import { FacebookIcon, InstagramIcon } from "./Icons.jsx";
+---
+
 <footer>
     <div class="footer_container">
         <div class="logo footer-item">
@@ -10,12 +14,12 @@
             <ul class="social-list">
                 <li class="social-item">
                     <a rel="noopener noreferrer" href="https://instagram.com/awa_boots" target="_blank" class="social-link">
-                        <img src="/img/social/instagram.svg" alt="Instagram Profile" title="Instagram Profile" />
+                        <InstagramIcon />
                     </a>
                 </li>
                 <li class="social-item">
                     <a rel="noopener noreferrer" href="https://www.facebook.com" target="_blank" class="social-link"
-                        ><img src="/img/social/facebook.svg" alt="Linkedin Profile" /></a
+                        ><FacebookIcon /></a
                     >
                 </li>
             </ul>
@@ -49,10 +53,6 @@
         gap: 25px;
         justify-content: center;
         padding-left: 0;
-    }
-
-    .social-list img {
-        height: 50px;
     }
 
     .copyright {

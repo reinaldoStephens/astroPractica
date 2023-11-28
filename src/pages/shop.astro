@@ -3,10 +3,12 @@ import ProductsGrid from "../components/ProductsGrid.jsx";
 import Layout from "../layouts/Layout.astro";
 import "../components/css/productGrid.scss";
 import "../components/css/productCard.scss";
+import { Cart } from "../components/Cart.jsx";
 ---
 
 <Layout title="Store App">
     <section class="shop-section">
+        <Cart />
         <ProductsGrid client:only="react" />
     </section>
 </Layout>

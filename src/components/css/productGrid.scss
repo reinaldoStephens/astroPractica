@@ -126,9 +126,9 @@ div.hide {
 }
 
 .grid-layout {
+    padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    grid-auto-rows: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     margin: 2.5rem 0rem 2.5rem 0rem;
 }
@@ -150,14 +150,24 @@ div.hide {
             width: 100%;
             padding-left: 10px;
             padding-right: 10px;
+            text-align: center;
         }
 
         .show-select {
+            margin-left: 0;
+        }
+
+        .sort-select {
             margin-left: 0;
         }
     }
 
     .products-section {
         margin-top: 2rem;
+    }
+
+    .grid-layout {
+        gap: 2rem;
+        justify-content: center;
     }
 }

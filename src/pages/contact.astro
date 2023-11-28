@@ -1,5 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import { FacebookIcon, InstagramIcon } from "../components/Icons.jsx";
 ---
 
 <Layout title="Store App">
@@ -85,14 +87,26 @@ import Layout from "../layouts/Layout.astro";
         <nav class="social">
             <ul class="social-list">
                 <li class="social-item">
-                    <a rel="noopener noreferrer" href="https://instagram.com/awa_boots" target="_blank" class="social-link">
-                        <img src="img/social/instagram.svg" alt="Instagram Profile" title="Instagram Profile" />
+                    <a
+                        rel="noopener noreferrer"
+                        href="https://instagram.com/awa_boots"
+                        target="_blank"
+                        class="social-link"
+                        aria-label="Perfil de Instagram de la empresa Awa"
+                    >
+                        <InstagramIcon />
                     </a>
                 </li>
                 <li class="social-item">
-                    <a rel="noopener noreferrer" href="https://www.facebook.com" target="_blank" class="social-link"
-                        ><img src="img/social/facebook.svg" alt="Linkedin Profile" /></a
+                    <a
+                        rel="noopener noreferrer"
+                        href="https://www.facebook.com"
+                        target="_blank"
+                        class="social-link"
+                        aria-label="Perfil de Facebook de la empresa Awa"
                     >
+                        <FacebookIcon />
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -187,14 +201,6 @@ import Layout from "../layouts/Layout.astro";
         display: flex;
         gap: 25px;
         justify-content: center;
-    }
-
-    .social-list img {
-        height: 25px;
-    }
-
-    .social-list img:hover {
-        filter: drop-shadow(0 0 14px var(--secondary-color));
     }
 
     @media (min-width: 950px) {

@@ -5,11 +5,11 @@ function ListOfProducts({ products }) {
     // const prevButtonDisabled = currentPage === 1;
     return (
         <>
-            <div className="grid-layout product-detail-container">
+            <ul className="grid-layout product-detail-container">
                 {products.map(({ id, image, title, price }) => (
                     <ProductCard key={id} id={id.toString()} image={image.src} title={title} price={price.toString()} />
                 ))}
-            </div>
+            </ul>
         </>
     );
 }

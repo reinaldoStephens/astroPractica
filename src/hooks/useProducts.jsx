@@ -53,19 +53,9 @@ export function useProducts({ sort, paginationLimit }) {
 
         let newSortedProducts = getSortedProducts();
 
-        const indicesToRemove = [];
-        newSortedProducts.forEach((item, index) => {
-            if (index >= prevRange && index < currRange) {
-            } else {
-                indicesToRemove.push(index);
-            }
+        return newSortedProducts.filter((_, index) => {
+            return index >= prevRange && index < currRange;
         });
-
-        for (let i = indicesToRemove.length - 1; i >= 0; i--) {
-            newSortedProducts.splice(indicesToRemove[i], 1);
-        }
-
-        return newSortedProducts;
     }, [sort, products, currentPage, paginationLimit]);
 
     useEffect(() => {

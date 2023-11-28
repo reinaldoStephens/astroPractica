@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const ProductCard = ({ id, title, price, image }) => {
     return (
         <>
-            <div key={id} className="box" id={id}>
-                <a href={`/product/${id}`} tabIndex="0">
+            <li key={id} className="box" id={id}>
+                <a href={`/product/${id}`} tabIndex="0" aria-label={`This is an link to go to the product called ${title}`}>
                     <picture className="img-box">
                         <img
                             title={title}
@@ -12,6 +12,7 @@ const ProductCard = ({ id, title, price, image }) => {
                             alt={`This is an image of the product called ${title}`}
                             loading="lazy"
                             decoding="async"
+                            aria-label={`This is an image of the product called ${title}`}
                         />
                     </picture>
                     <div className="detail-box">
@@ -25,7 +26,7 @@ const ProductCard = ({ id, title, price, image }) => {
                         <span>New</span>
                     </div>
                 </a>
-            </div>
+            </li>
         </>
     );
 };

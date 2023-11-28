@@ -6,7 +6,7 @@ const NavLink = ({ children, href, initialIsSelected, onMouseEnter }) => {
     return (
         <>
             <li onMouseEnter={onMouseEnter}>
-                <a href={href} className={initialIsSelected} tabIndex={0}>
+                <a href={href} className={initialIsSelected} tabIndex={0} aria-label={`${children} Link`}>
                     {children}
                 </a>
             </li>
