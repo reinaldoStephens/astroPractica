@@ -66,8 +66,8 @@ const Nav = () => {
                     <NavLink id="test" href={"/"} onMouseEnter={handleIsOnHover} initialIsSelected={"selected"}>
                         Home
                     </NavLink>
-                    <NavLink href={"/shop"} onMouseEnter={handleIsOnHover}>
-                        Shop
+                    <NavLink href={"/products"} onMouseEnter={handleIsOnHover}>
+                        Products
                     </NavLink>
                     <NavLink href={"/about"} onMouseEnter={handleIsOnHover}>
                         About Us

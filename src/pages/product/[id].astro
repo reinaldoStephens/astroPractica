@@ -1,17 +1,16 @@
 ---
-import { Image } from "astro:assets";
-import Layout from "../../layouts/layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { getProductBy, getLatestProducts } from "../../services/fakeStore";
 
 const { id } = Astro.params;
 
 let product: any = null;
 if (id) {
-    product = await getProductBy({ id });
+    product = getProductBy({ id: id.toString() });
 }
 
 export async function getStaticPaths() {
-    const products = await getLatestProducts();
+    const products = getLatestProducts();
 
     return products.map((product) => ({
         params: {

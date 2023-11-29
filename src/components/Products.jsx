@@ -1,8 +1,6 @@
 import ProductCard from "./ProductCard.jsx";
 
 function ListOfProducts({ products }) {
-    // const prevButtonClassName = currentPage === 1 ? "pagination-button disabled" : "pagination-button";
-    // const prevButtonDisabled = currentPage === 1;
     return (
         <>
             <ul className="grid-layout product-detail-container">
