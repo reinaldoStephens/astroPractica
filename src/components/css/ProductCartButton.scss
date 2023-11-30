@@ -1,0 +1,28 @@
+.product-added {
+    background: default;
+}
+
+.product-to-add {
+    background: #ffd814;
+}
+
+.product-added,
+.product-to-add {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 205px;
+    align-items: center;
+    border-radius: 100px;
+    height: 29px;
+    cursor: pointer;
+    border-width: 1px;
+    text-decoration: none;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.cart-button-container {
+    margin-top: 1rem;
+}

@@ -9,7 +9,6 @@ export function Cart() {
 
     const cartCheckboxId = useId();
     const countTest = cart?.length || 0;
-    console.log("cart", cart);
 
     return (
         <>
