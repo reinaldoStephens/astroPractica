@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { ProductCartButton } from "../../components/ProductCartButton.jsx";
+
 import { getProductBy, getLatestProducts } from "../../services/fakeStore";
 
 const { id } = Astro.params;
@@ -52,7 +54,9 @@ const enableSizes = allSizes.filter((item) => product.size.includes(item));
                 }
             </select>
         </article>
-        <article></article>
+        <article class="product-cart-button">
+            <ProductCartButton product={product} client:only="react" />
+        </article>
         <article class="product-description">
             <h5>Description</h5>
             <p>{product.description}</p>
@@ -87,6 +91,7 @@ const enableSizes = allSizes.filter((item) => product.size.includes(item));
             "image title" 0.1fr
             "image price" 0.1fr
             "image size" 0.1fr
+            "image cartButton" 0.1fr
             "image description" 1fr /
             auto 1fr;
     }
@@ -101,6 +106,10 @@ const enableSizes = allSizes.filter((item) => product.size.includes(item));
 
     .product-title {
         grid-area: title;
+    }
+
+    .product-cart-button {
+        grid-area: cartButton;
     }
 
     .product-title h2 {

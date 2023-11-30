@@ -1,20 +1,13 @@
 import { useState, useRef, useMemo, useCallback, useEffect } from "react";
 import { searchProducts } from "../services/products.js";
 
-export function useProducts({ sort, paginationLimit }) {
-    const [products, setProducts] = useState([]);
+export function useProducts({ sort, paginationLimit, initialProducts, searchVal }) {
+    const [products, setProducts] = useState(initialProducts);
     const previousSearch = useRef();
     // const [loading, setLoading] = useState(false);
     // const [error, setError] = useState(null);
     const pageCount = Math.ceil(products.length / paginationLimit);
-    const [currentPage, setCurrentPage] = useState(() => {
-        const currentPageFromStorage = window.localStorage.getItem("currentPage");
-        if (currentPageFromStorage && currentPageFromStorage <= pageCount) {
-            return currentPageFromStorage;
-        } else {
-            return 1;
-        }
-    });
+    const [currentPage, setCurrentPage] = useState(1);
     const [pageNumbers, setPageNumbers] = useState([]);
 
     const getProducts = useCallback(({ searchVal }) => {
@@ -30,6 +23,14 @@ export function useProducts({ sort, paginationLimit }) {
         } catch (error) {
         } finally {
             // setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (searchVal) {
+            const newProducts = searchProducts({ searchVal });
+            setProducts(newProducts);
+            setCurrentPage(1);
         }
     }, []);
 
@@ -61,7 +62,6 @@ export function useProducts({ sort, paginationLimit }) {
     useEffect(() => {
         const handleNumberButtonOnClick = (event) => {
             setCurrentPage(Number(event.target.innerText));
-            window.localStorage.setItem("currentPage", Number(event.target.innerText));
         };
         const newNumbers = [];
         for (let index = 1; index <= pageCount; index++) {

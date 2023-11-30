@@ -3,12 +3,12 @@ import ProductsGrid from "../components/ProductsGrid.jsx";
 import Layout from "../layouts/Layout.astro";
 import "../components/css/productGrid.scss";
 import "../components/css/productCard.scss";
-import { Cart } from "../components/Cart.jsx";
+import { searchProducts } from "../services/products.js";
+const products = searchProducts({ searchVal: "" });
 ---
 
 <Layout title="Store App">
     <section class="shop-section">
-        <Cart />
-        <ProductsGrid client:only="react" />
+        <ProductsGrid initialProducts={products} client:load />
     </section>
 </Layout>
