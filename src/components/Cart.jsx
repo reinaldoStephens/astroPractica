@@ -10,6 +10,21 @@ export function Cart() {
     const cartCheckboxId = useId();
     const countTest = cart?.length || 0;
 
+    const handleRemoveProduct = () => {
+        remove(product.id);
+    };
+
+    const handleAddProduct = (productId) => {
+        let productToAdd = cart.find((cartProduct) => {
+            return cartProduct.id === productId;
+        });
+
+        add(productToAdd);
+    };
+
+    const handleClearCart = () => {
+        removeAll();
+    };
     return (
         <>
             <label className="cart-button" htmlFor={cartCheckboxId}>
@@ -26,8 +41,8 @@ export function Cart() {
                                     <strong>{product.title}</strong> - ${product.price}
                                 </div>
                                 <footer>
-                                    <small>Qty: 1</small>
-                                    <button>+</button>
+                                    <small>Qty: {product.count}</small>
+                                    <button onClick={() => handleAddProduct(product.id)}>+</button>
                                 </footer>
                             </li>
                         ))
@@ -36,7 +51,7 @@ export function Cart() {
                     )}
                 </ul>
 
-                <button>
+                <button onClick={handleClearCart}>
                     <ClearCartIcon />
                 </button>
             </aside>

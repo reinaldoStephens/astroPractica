@@ -1,5 +1,10 @@
 import { create } from "zustand";
 
+export const useProductStore = create((set, get) => ({
+    listP: [],
+    setProducts: (products) => set({ listP: products }),
+}));
+
 export const useCartStore = create((set, get) => ({
     cart: [],
     count: () => {

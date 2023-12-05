@@ -1,4 +1,3 @@
-import "../components/css/ProductCartButton.scss";
 import { useCartStore } from "../store/cartStore.js";
 import { AddToCartIcon, RemoveFromCartIcon } from "./Icons.jsx";
 

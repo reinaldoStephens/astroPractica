@@ -1,73 +1,75 @@
 ---
 import { Image } from "astro:assets";
 
+import lsCrystalGloss7 from "../img/lifestyle/crystalGloss7.webp";
+import lsPinkRose1 from "../img/lifestyle/pinkRose1.webp";
+import lsPowerBlack1 from "../img/lifestyle/powerBlack1.webp";
+import lsRedBerry6 from "../img/lifestyle/redBerry6.webp";
+
 import redBerryImg from "../img/products/redBerry.webp";
 import powerBlackImg from "../img/products/powerBlack.webp";
 import crystalGlossImg from "../img/products/crystalGloss.webp";
 import pinkRoseImg from "../img/products/pinkRose.webp";
 import jaianImg from "../img/products/jaian.webp";
 
-const imgWidth = 220;
-const imgHeight = 220;
+import okaPowerBlack from "../img/okayama/pbOkatwo.webp";
+
+const imgWidth = 450;
+const imgHeight = 450;
+const lifeStyleImgWidth = 500;
+const lifeStyleImgHeight = 620;
 ---
 
-<section class="home-section">
-    <article class="catalog-container">
-        <div class="catalog-item info-item">
-            <h3 class="catalog-title">Productos Undercover</h3>
-            <h5 class="catalog-info">Stock <br aria-hidden="true" />Noviembre - Diciembre <br aria-hidden="true" /> 2023</h5>
-            <span class="catalog-secondary-info"> *Precios en descuento hasta 30/11/23</span>
-        </div>
-        <div class="catalog-item product-item p1">
-            <div class="img-container">
-                <div class="new">
-                    <span>$76</span>
-                </div>
-                <Image width={imgWidth} height={imgHeight} src={redBerryImg} alt="Botas Red Berry" />
+<section class="catalog-container">
+    <article class="img-galery-section">
+        <Image width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={lsCrystalGloss7} alt="Botas Crystal Gloss" />
+        <Image width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={lsPinkRose1} alt="Botas Pink Rose" />
+        <Image width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={lsPowerBlack1} alt="Botas Power Black" />
+        <Image width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={lsRedBerry6} alt="Botas Red Berry" />
+    </article>
+    <article class="catalog-item info-item">
+        <h3 class="catalog-title">Productos Undercover</h3>
+        <h5 class="catalog-info">Stock <br aria-hidden="true" />Noviembre - Diciembre <br aria-hidden="true" /> 2023</h5>
+        <span class="catalog-secondary-info"> *Precios en descuento hasta 30/11/23</span>
+    </article>
+    <article class="catalog-item product-item p1">
+        <Image width="432" height="576" src={okaPowerBlack} alt="" />
+    </article>
+    <article class="catalog-item product-item p2">
+        <div class="img-container">
+            <div class="new">
+                <span>$81</span>
             </div>
-            <h5 class="product-title">Red Berry</h5>
-            <span class="product-size"> Tallas Disponibles: 36, 37, 38, 39, 40, 41, 42</span>
+            <Image width={imgWidth} height={imgHeight} src={crystalGlossImg} alt="Botas Crystal Gloss" />
         </div>
-        <div class="catalog-item product-item p2">
-            <div class="img-container">
-                <div class="new">
-                    <span>$81</span>
-                </div>
-                <Image width={imgWidth} height={imgHeight} src={crystalGlossImg} alt="Botas Crystal Gloss" />
+        <h5 class="product-title">Crystal Gloss</h5>
+    </article>
+    <article class="catalog-item product-item p3">
+        <div class="img-container">
+            <div class="new">
+                <span>$71</span>
             </div>
-            <h5 class="product-title">Crystal Gloss</h5>
-            <span class="product-size"> Tallas Disponibles: 38, 39, 40</span>
+            <Image width={imgWidth} height={imgHeight} src={powerBlackImg} alt="Botas Power Black" />
         </div>
-        <div class="catalog-item product-item p3">
-            <div class="img-container">
-                <div class="new">
-                    <span>$71</span>
-                </div>
-                <Image width={imgWidth} height={imgHeight} src={powerBlackImg} alt="Botas Power Black" />
+        <h5 class="product-title">Power Black</h5>
+    </article>
+    <article class="catalog-item product-item p4">
+        <div class="img-container">
+            <div class="new">
+                <span>$71</span>
             </div>
-            <h5 class="product-title">Power Black</h5>
-            <span class="product-size"> Tallas Disponibles: 38, 39, 40, 41, 42</span>
+            <Image width={imgWidth} height={imgHeight} src={pinkRoseImg} alt="Botas Pink Rosé" />
         </div>
-        <div class="catalog-item product-item p4">
-            <div class="img-container">
-                <div class="new">
-                    <span>$71</span>
-                </div>
-                <Image width={imgWidth} height={imgHeight} src={pinkRoseImg} alt="Botas Pink Rosé" />
+        <h5 class="product-title">Pink Rosé</h5>
+    </article>
+    <article class="catalog-item product-item p5">
+        <div class="img-container">
+            <div class="new">
+                <span>$72</span>
             </div>
-            <h5 class="product-title">Pink Rosé</h5>
-            <span class="product-size"> Tallas Disponibles: 39</span>
+            <Image width={imgWidth} height={imgHeight} src={jaianImg} alt="Botas Ja-Ian" />
         </div>
-        <div class="catalog-item product-item p5">
-            <div class="img-container">
-                <div class="new">
-                    <span>$72</span>
-                </div>
-                <Image width={imgWidth} height={imgHeight} src={jaianImg} alt="Botas Ja-Ian" />
-            </div>
-            <h5 class="product-title">Ja-Ian</h5>
-            <span class="product-size"> Tallas Disponibles: 36, 37, 38, 39, 40</span>
-        </div>
+        <h5 class="product-title">Ja-Ian</h5>
     </article>
 </section>
 
@@ -75,17 +77,37 @@ const imgHeight = 220;
     $catalog-border-radius: 10px;
     $catalog-text-color: #393e3a;
 
-    .home-section {
-        margin-bottom: 3rem;
+    .img-galery-section {
+        display: flex;
+        width: 100%;
+    }
+
+    .img-galery-section img {
+        width: 0;
+        flex-grow: 1;
+        object-fit: cover;
+        transition: 0.5s ease;
+    }
+
+    .img-galery-section img:hover {
+        cursor: crosshair;
+        width: 150px;
+        filter: contrast(120%);
     }
 
     .catalog-container {
+        margin-bottom: 3rem;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        gap: 2rem;
         grid-template-areas:
-            "info p1"
-            "p2 p3"
-            "p4 p5";
+            "imgGallery imgGallery"
+            "info info"
+            "p1 ."
+            ". p2"
+            "p3 ."
+            ". p4"
+            "p5 .";
     }
 
     .catalog-item {
@@ -94,38 +116,30 @@ const imgHeight = 220;
         text-align: center;
         display: flex;
         flex-direction: column;
-        outline: 1px solid var(--text-color);
-        height: 350px;
+    }
+
+    .img-galery-section {
+        grid-area: imgGallery;
     }
 
     .info-item {
         grid-area: info;
-        background-color: var(--text-color-inverse);
-    }
-
-    .product-item {
-        background-color: var(--home-catolog-color);
-    }
-
-    .catalog-item:first-child {
-        border-top-left-radius: $catalog-border-radius;
-    }
-
-    .catalog-item:last-child {
-        border-bottom-right-radius: $catalog-border-radius;
-    }
-
-    .catalog-item:nth-last-child(2) {
-        border-bottom-left-radius: $catalog-border-radius;
-    }
-
-    .catalog-item:nth-child(2) {
-        border-top-right-radius: $catalog-border-radius;
     }
 
     .p1 {
         grid-area: p1;
+        transition: all 0.3s ease;
     }
+
+    .p1 img:first-child {
+        border-radius: 4px;
+        object-fit: cover;
+    }
+
+    .p1:hover {
+        transform: perspective(250px) rotateX(10deg) translateY(-5%) translateZ(0);
+    }
+
     .p2 {
         grid-area: p2;
     }
@@ -140,7 +154,7 @@ const imgHeight = 220;
     }
 
     img {
-        align-self: center;
+        object-fit: cover;
     }
 
     .img-container {
@@ -157,13 +171,6 @@ const imgHeight = 220;
         font-size: 16px;
         text-transform: uppercase;
         font-weight: 500;
-    }
-
-    .product-size {
-        margin-top: 0.3rem;
-        color: $catalog-text-color;
-        font-size: 14px;
-        font-weight: 700;
     }
 
     .catalog-title {
@@ -196,7 +203,7 @@ const imgHeight = 220;
         top: -10px;
         right: -10px;
         background-image: linear-gradient(45deg, rgba(212, 148, 255), rgba(85, 236, 219), #3776ff);
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
         font-size: 1em;
@@ -205,36 +212,23 @@ const imgHeight = 220;
     }
 
     @media only screen and (max-width: 720px) {
+        .img-galery-section img {
+            height: 81vh;
+        }
+
         .catalog-container {
             max-width: 500px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr;
             grid-template-areas:
+                "imgGarllery"
                 "info"
                 "p1"
                 "p2"
                 "p3"
                 "p4"
                 "p5";
-        }
-
-        .catalog-item:first-child {
-            border-top-left-radius: $catalog-border-radius;
-            border-top-right-radius: $catalog-border-radius;
-        }
-
-        .catalog-item:last-child {
-            border-bottom-left-radius: $catalog-border-radius;
-            border-bottom-right-radius: $catalog-border-radius;
-        }
-
-        .catalog-item:nth-last-child(2) {
-            border-bottom-left-radius: 0px;
-        }
-
-        .catalog-item:nth-child(2) {
-            border-top-right-radius: 0px;
         }
     }
 </style>

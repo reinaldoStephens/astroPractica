@@ -1,8 +1,11 @@
 ---
+import "../../components/css/ProductCartButton.scss";
+
 import Layout from "../../layouts/Layout.astro";
 import { ProductCartButton } from "../../components/ProductCartButton.jsx";
 
 import { getProductBy, getLatestProducts } from "../../services/fakeStore";
+import { searchProducts } from "../../services/products.js";
 
 const { id } = Astro.params;
 
@@ -20,6 +23,8 @@ export async function getStaticPaths() {
         },
     }));
 }
+
+const productList = searchProducts({ searchVal: "" });
 
 const allSizes = ["36", "37", "38", "39", "40", "41", "42", "43", "44"];
 const enableSizes = allSizes.filter((item) => product.size.includes(item));
@@ -205,6 +210,7 @@ const enableSizes = allSizes.filter((item) => product.size.includes(item));
                 "title" 0.1fr
                 "price " 0.1fr
                 "size" 0.1fr
+                "cartButton" 0.1fr
                 "description" 1fr /
                 auto;
         }
