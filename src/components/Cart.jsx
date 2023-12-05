@@ -1,5 +1,3 @@
-import "./css/Cart.scss";
-
 import { useId } from "react";
 import { ClearCartIcon, RemoveFromCartIcon, CartIcon } from "./Icons.jsx";
 import { useCartStore } from "../store/cartStore.js";
