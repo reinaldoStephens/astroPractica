@@ -1,11 +1,13 @@
 ---
-import "../../components/css/ProductCartButton.scss";
+import "../../components/css/addCartForm.scss";
 
 import Layout from "../../layouts/Layout.astro";
-import { ProductCartButton } from "../../components/ProductCartButton.jsx";
+import { AddToCartForm } from "../../components/AddToCartForm.jsx";
 
 import { getProductBy, getLatestProducts } from "../../services/fakeStore";
 import { searchProducts } from "../../services/products.js";
+import NotFoundLayout from "../../layouts/NotFoundLayout.astro";
+import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
 
 const { id } = Astro.params;
 
@@ -25,49 +27,39 @@ export async function getStaticPaths() {
 }
 
 const productList = searchProducts({ searchVal: "" });
-
-const allSizes = ["36", "37", "38", "39", "40", "41", "42", "43", "44"];
-const enableSizes = allSizes.filter((item) => product.size.includes(item));
 ---
 
-<Layout title={`Product ${product.title}`}>
-    <section class="product-details-section">
-        <figure class="zoom" style={`background-image: url(${product.image.src})`}>
-            <img width="570" height="570" src={product.image.src} alt={product.title} loading="lazy" decoding="async" />{" "}
-        </figure>
-        <header class="product-title">
-            <h2>{product.title}</h2>
-            <hr />
-        </header>
-        <article class="product-price-container">
-            <span class="dollar">US$</span>
-            <span class="price">{product.price}</span>
-        </article>
-        <article class="product-size-container">
-            <label for="size">Size *</label>
-            <select id="size" class="size-select">
-                {
-                    allSizes.map((size: any) =>
-                        enableSizes.indexOf(size) !== -1 ? (
-                            <option value={size}>{size}</option>
-                        ) : (
-                            <option value={size} disabled>
-                                {size}
-                            </option>
-                        )
-                    )
-                }
-            </select>
-        </article>
-        <article class="product-cart-button">
-            <ProductCartButton product={product} client:only="react" />
-        </article>
-        <article class="product-description">
-            <h5>Description</h5>
-            <p>{product.description}</p>
-        </article>
-    </section>
-</Layout>
+{
+    !product ? (
+        <NotFoundLayout title="Product not found" message="Product not found" />
+    ) : (
+        <Layout title={`Product ${product.title}`}>
+            <section class="product-details-section">
+                <div class="breadcrumb">
+                    <ProductBreadcrumb title={product.title} />
+                </div>
+                <figure class="zoom" style={`background-image: url(${product.image.src})`}>
+                    <img width="570" height="570" src={product.image.src} alt={product.title} loading="lazy" decoding="async" />
+                </figure>
+                <header class="product-title">
+                    <h2>{product.title}</h2>
+                    <hr />
+                </header>
+                <article class="product-price-container">
+                    <span class="dollar">US$</span>
+                    <span class="price">{product.price}</span>
+                </article>
+                <article class="add-cart-form">
+                    <AddToCartForm product={product} client:only="react" />
+                </article>
+                <article class="product-description">
+                    <h5>Description</h5>
+                    <p>{product.description}</p>
+                </article>
+            </section>
+        </Layout>
+    )
+}
 
 <script>
     document.addEventListener(
@@ -93,12 +85,17 @@ const enableSizes = allSizes.filter((item) => product.size.includes(item));
     .product-details-section {
         display: grid;
         grid-template:
-            "image title" 0.1fr
-            "image price" 0.1fr
-            "image size" 0.1fr
-            "image cartButton" 0.1fr
+            "breadcrumb ."
+            "image title"
+            "image price"
+            "image addToCartForm"
             "image description" 1fr /
             auto 1fr;
+    }
+
+    .breadcrumb {
+        grid-area: breadcrumb;
+        margin-top: 0.5rem;
     }
 
     .zoom {
@@ -113,8 +110,8 @@ const enableSizes = allSizes.filter((item) => product.size.includes(item));
         grid-area: title;
     }
 
-    .product-cart-button {
-        grid-area: cartButton;
+    .add-cart-form {
+        grid-area: addToCartForm;
     }
 
     .product-title h2 {
@@ -125,22 +122,6 @@ const enableSizes = allSizes.filter((item) => product.size.includes(item));
     .product-price-container .price {
         font-size: 28px;
         line-height: normal;
-    }
-
-    .product-size-container {
-        grid-area: size;
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        line-height: 2;
-    }
-
-    .size-select {
-        width: fit-content;
-        border-radius: 4px;
-        border: 1px solid var(--text-color);
-        font-size: 1rem;
-        padding: 3px;
     }
 
     .product-price-container .dollar {

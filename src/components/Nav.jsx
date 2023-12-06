@@ -63,7 +63,7 @@ const Nav = () => {
                     </div>
                 </div>
                 <ul className={collapseMenuClassName} onMouseLeave={handleIsOnLeave}>
-                    <NavLink id="test" href={"/"} onMouseEnter={handleIsOnHover} initialIsSelected={"selected"}>
+                    <NavLink href={"/"} onMouseEnter={handleIsOnHover} initialIsSelected={"selected"}>
                         Home
                     </NavLink>
                     <NavLink href={"/products"} onMouseEnter={handleIsOnHover}>

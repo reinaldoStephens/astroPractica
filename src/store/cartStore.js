@@ -1,39 +1,45 @@
 import { create } from "zustand";
-
-export const useProductStore = create((set, get) => ({
-    listP: [],
-    setProducts: (products) => set({ listP: products }),
-}));
+const cartInitialState = JSON.parse(window.localStorage.getItem("cart")) || [];
 
 export const useCartStore = create((set, get) => ({
-    cart: [],
+    cart: cartInitialState,
     count: () => {
         const { cart } = get();
         if (cart.length) return cart.map((item) => item.count).reduce((prev, curr) => prev + curr);
         return 0;
     },
-    add: (product) => {
+    add: (product, size) => {
         const { cart } = get();
-        const updatedCart = updateCart(product, cart);
+        const updatedCart = updateCart(product, cart, size);
+        updateLocalStorage(updatedCart);
         set({ cart: updatedCart });
     },
-    remove: (idProduct) => {
+    remove: (idProduct, size, all) => {
         const { cart } = get();
-        const updatedCart = removeCart(idProduct, cart);
+        const updatedCart = removeCart(idProduct, cart, size, all);
+        updateLocalStorage(updatedCart);
         set({ cart: updatedCart });
     },
-    removeAll: () => set({ cart: [] }),
+    removeAll: () => {
+        updateLocalStorage([]);
+        set({ cart: [] });
+    },
 }));
 
-function updateCart(product, cart) {
-    const cartItem = { ...product, count: 1 };
+function updateCart(product, cart, size) {
+    const cartItem = { ...product, count: 1, size: size };
 
-    const productOnCart = cart.map((item) => item.id).includes(product.id);
+    const productOnCart =
+        cart != undefined && cart.length > 0
+            ? cart.some((item) => {
+                  return item.id === product.id && item.size === size;
+              })
+            : false;
 
     if (!productOnCart) cart.push(cartItem);
     else {
         return cart.map((item) => {
-            if (item.id === product.id) return { ...item, count: item.count + 1 };
+            if (item.id === product.id && item.size === size) return { ...item, count: item.count + 1 };
             return item;
         });
     }
@@ -41,13 +47,17 @@ function updateCart(product, cart) {
     return cart;
 }
 
-function removeCart(idProduct, cart) {
+function removeCart(idProduct, cart, size, all) {
     return cart
         .map((item) => {
-            if (item.id === idProduct) return { ...item, count: item.count - 1 };
+            if (item.id === idProduct && item.size === size) return { ...item, count: all ? null : item.count - 1 };
             return item;
         })
         .filter((item) => {
             return item.count;
         });
 }
+
+const updateLocalStorage = (state) => {
+    window.localStorage.setItem("cart", JSON.stringify(state));
+};

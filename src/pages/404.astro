@@ -1,5 +1,7 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import NotFoundLayout from "../layouts/NotFoundLayout.astro";
+
+Astro.response.status = 404;
 ---
 
-<Layout title="404 Error Page">Pagina no encontrada</Layout>
+<NotFoundLayout />
