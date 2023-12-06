@@ -14,10 +14,10 @@ import jaianImg from "../img/products/jaian.webp";
 
 import okaPowerBlack from "../img/okayama/pbOkatwo.webp";
 
-const imgWidth = 450;
-const imgHeight = 450;
-const lifeStyleImgWidth = 500;
-const lifeStyleImgHeight = 620;
+const imgWidth = 300;
+const imgHeight = 300;
+const lifeStyleImgWidth = 300;
+const lifeStyleImgHeight = 400;
 ---
 
 <section class="catalog-container">
@@ -33,7 +33,7 @@ const lifeStyleImgHeight = 620;
         <span class="catalog-secondary-info"> *Precios en descuento hasta 30/11/23</span>
     </article>
     <article class="catalog-item product-item p1">
-        <Image width="432" height="576" src={okaPowerBlack} alt="" />
+        <Image width="300" height="300" src={okaPowerBlack} alt="" />
     </article>
     <article class="catalog-item product-item p2">
         <div class="img-container">
@@ -79,7 +79,7 @@ const lifeStyleImgHeight = 620;
 
     .img-galery-section {
         display: flex;
-        width: 100%;
+        max-width: 100%;
     }
 
     .img-galery-section img {
@@ -220,9 +220,9 @@ const lifeStyleImgHeight = 620;
             max-width: 500px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 100%;
             grid-template-areas:
-                "imgGarllery"
+                "imgGallery"
                 "info"
                 "p1"
                 "p2"

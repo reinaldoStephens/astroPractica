@@ -138,7 +138,7 @@
     top: 20px;
     transition: scale 0.3s ease;
     width: 32px;
-    z-index: 999;
+    z-index: 99;
 }
 
 .cart-button:hover {
@@ -166,12 +166,6 @@
     }
 
     .cart-button {
-        z-index: 9999;
-    }
-
-    .cart-button ~ input:checked ~ .cart {
-        height: 100%;
-        max-height: 100%;
-        display: block;
+        top: 80px;
     }
 }
