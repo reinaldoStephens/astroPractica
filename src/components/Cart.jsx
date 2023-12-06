@@ -70,7 +70,7 @@ export function Cart() {
                         ))
                     ) : (
                         <li>
-                            <div class="cart-empty">
+                            <div className="cart-empty">
                                 <p>Your cart is empty</p>
                                 <a href="/products">
                                     Continue Shopping
@@ -88,19 +88,19 @@ export function Cart() {
                     ""
                 )}
 
-                <div class="">
+                <div className="">
                     {cart.length ? (
-                        <div class="cart-footer-container">
-                            <div class="cart-subtotal">
+                        <div className="cart-footer-container">
+                            <div className="cart-subtotal">
                                 <p>Subtotal</p>
                                 <p>
                                     $555
                                     {/* <Money price={$cart.cost.subtotalAmount} showCurrency={true} /> */}
                                 </p>
                             </div>
-                            <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-                            <div class="mt-6">
-                                <a href="/" class="button">
+                            <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                            <div className="mt-6">
+                                <a href="/" className="button">
                                     Checkout
                                 </a>
                             </div>
