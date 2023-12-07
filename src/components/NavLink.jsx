@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
-const NavLink = ({ children, href, initialIsSelected, onMouseEnter }) => {
-    const [isSelected, setIsSelected] = useState(initialIsSelected);
-
+const NavLink = ({ children, href, initialIsSelected }) => {
     return (
         <>
-            <li onMouseEnter={onMouseEnter}>
-                <a href={href} className={initialIsSelected} tabIndex={0} aria-label={`${children} Link`}>
-                    {children}
-                </a>
-            </li>
+            <a role="menuitem" href={href} aria-selected={`${initialIsSelected}`} aria-label={`${children} Link`}>
+                {children}
+            </a>
         </>
     );
 };

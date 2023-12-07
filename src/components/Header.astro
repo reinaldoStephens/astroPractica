@@ -1,19 +1,30 @@
 ---
 import "../components/css/nav.scss";
 import Nav from "./Nav";
+
+const currentUrlPathname = Astro.url.pathname;
 ---
 
 <header class="header-section">
-    <Nav client:load />
+    <Nav pathname={currentUrlPathname} client:load />
     <div aria-hidden="true" id="menu-backdrop"></div>
 </header>
 
 <style is:global>
+    .header-section {
+        width: 100%;
+        position: sticky;
+        background-color: #ffffff;
+        top: 0;
+        z-index: 10;
+    }
+
     #menu-backdrop {
         position: absolute;
-        background-color: #e1e1e18b;
+        background-image: linear-gradient(69deg, rgba(85, 236, 219, 0.5), rgba(212, 148, 255, 0.5));
+        /* background-color: #e1e1e18b; */
         border-radius: 0.25rem;
-        transition-property: all;
+        transition-property: opacity, left, top, width, height, visibility;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 500ms;
         z-index: -10;
@@ -57,27 +68,46 @@ import Nav from "./Nav";
         document.addEventListener(event, addListeners);
     });
 
+    function setMenuBackdrop(element: Element, menuBackDrop: HTMLElement) {
+        const { width, height, top, left } = element.getBoundingClientRect();
+        menuBackDrop.style.setProperty("left", `${left}px`);
+        menuBackDrop.style.setProperty("top", `${top}px`);
+        menuBackDrop.style.setProperty("width", `${width}px`);
+        menuBackDrop.style.setProperty("height", `${height}px`);
+        menuBackDrop.style.display = "block";
+        menuBackDrop.style.opacity = "1";
+        menuBackDrop.style.visibility = "visible";
+    }
+
     function addListeners() {
         const headerSection = document.querySelector(".header-section");
         const listItem = headerSection?.querySelectorAll(".header-section li");
         const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+        const linkSelected = document.querySelector('[aria-selected="true"]');
+        const menuButton = document.querySelector("#menu-button");
 
         listItem?.forEach((item) => {
             item.addEventListener("mouseenter", () => {
-                const { width, height, top, left } = item.getBoundingClientRect();
-                menuBackDrop.style.setProperty("left", `${left}px`);
-                menuBackDrop.style.setProperty("top", `${top + window.scrollY}px`);
-                menuBackDrop.style.setProperty("width", `${width}px`);
-                menuBackDrop.style.setProperty("height", `${height}px`);
-                menuBackDrop.style.display = "block";
-                menuBackDrop.style.opacity = "1";
-                menuBackDrop.style.visibility = "visible";
+                setMenuBackdrop(item, menuBackDrop);
             });
         });
 
         headerSection?.addEventListener("mouseleave", () => {
-            menuBackDrop.style.opacity = "0";
-            menuBackDrop.style.visibility = "hidden";
+            if (linkSelected) {
+                setMenuBackdrop(linkSelected, menuBackDrop);
+            }
         });
+
+        menuButton?.addEventListener("click", (event) => {
+            if (menuButton.classList.contains("open")) {
+                menuBackDrop.style.display = "none";
+                menuBackDrop.style.opacity = "0";
+                menuBackDrop.style.visibility = "hidden";
+            }
+        });
+
+        if (linkSelected) {
+            setMenuBackdrop(linkSelected, menuBackDrop);
+        }
     }
 </script>

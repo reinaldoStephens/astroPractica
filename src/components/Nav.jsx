@@ -1,7 +1,30 @@
 import React, { useState } from "react";
 import NavLink from "./NavLink";
 
-const Nav = () => {
+const pages = [
+    {
+        url: "/",
+        label: "Home",
+        selected: false,
+    },
+    {
+        url: "/products",
+        label: "Products",
+        selected: false,
+    },
+    {
+        url: "/about",
+        label: "About",
+        selected: false,
+    },
+    {
+        url: "/contact",
+        label: "Contact",
+        selected: false,
+    },
+];
+
+const Nav = ({ pathname }) => {
     const [isCollapsed, setIsCollapsed] = useState(true);
 
     const handleShowCollapsedMenu = () => {
@@ -11,11 +34,19 @@ const Nav = () => {
     const collapseMenuClassName = isCollapsed ? "menu" : "menu menu-opened";
     const hamburguerMenuClassName = isCollapsed ? "open-menu" : "open-menu open";
     const hamburguerMenuAriaLabel = isCollapsed ? "Open menu button" : "Close menu button";
-    const menuIsExpanded = isCollapsed ? "" : "Close menu button";
+    const menuIsExpanded = isCollapsed ? "false" : "true";
+
+    pages.map((page) => {
+        if (page.url === pathname) {
+            page.selected = true;
+        } else {
+            page.selected = false;
+        }
+    });
 
     return (
         <>
-            <nav className="navbar">
+            <nav className="navbar" role="navigation">
                 <div className="navbar-brand-container">
                     <a className="navbar-brand" href="index.html" tabIndex="0" aria-label="Awa Boots Logo link">
                         <h1>
@@ -24,23 +55,40 @@ const Nav = () => {
                     </a>
 
                     <div
+                        id="menu-button"
                         className={hamburguerMenuClassName}
                         role="button"
                         aria-label={hamburguerMenuAriaLabel}
                         onClick={handleShowCollapsedMenu}
+                        aria-controls="menu-items"
                     >
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                     </div>
                 </div>
-                <ul className={collapseMenuClassName}>
-                    <NavLink href={"/"} initialIsSelected={"selected"}>
-                        Home
-                    </NavLink>
-                    <NavLink href={"/products"}>Products</NavLink>
-                    <NavLink href={"/about"}>About Us</NavLink>
-                    <NavLink href={"/contact"}>Contact Us</NavLink>
+                <ul
+                    id="menu-items"
+                    className={collapseMenuClassName}
+                    aria-hidden="true"
+                    tabIndex="-1"
+                    role="menu"
+                    aria-labelledby="menubutton"
+                    aria-expanded={menuIsExpanded}
+                >
+                    <small id="menubutton" aria-hidden="true" hidden>
+                        Awa Menu Links
+                    </small>
+                    {pages &&
+                        pages.map((page) => {
+                            return (
+                                <li key={page.label}>
+                                    <NavLink href={page.url} initialIsSelected={page.selected}>
+                                        {page.label}
+                                    </NavLink>
+                                </li>
+                            );
+                        })}
                 </ul>
             </nav>
         </>

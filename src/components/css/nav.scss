@@ -1,12 +1,5 @@
-.menu a.selected {
-    background-color: #e1e1e18b;
-    border-radius: 10px;
-    scale: 1.1;
-    width: max-content;
-}
-
-.header-section {
-    margin-bottom: 1rem;
+.menu a[aria-selected="true"] {
+    font-weight: 600;
 }
 
 .menu {
