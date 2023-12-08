@@ -1,14 +1,59 @@
 import { useId, useState } from "react";
-import { ClearCartIcon, RemoveFromCartIcon, CloseCartIcon, CartIcon } from "./Icons.jsx";
+import { ClearCartIcon, CloseCartIcon, CartIcon, MinusIcon, PlusIcon } from "./Icons.jsx";
 import { useCartStore } from "../store/cartStore.js";
 
 export function Cart() {
     const { add, cart, remove, removeAll } = useCartStore((state) => state);
-
     const [showCart, setShowCart] = useState(false);
 
     const cartCheckboxId = useId();
-    const countTest = cart?.length || 0;
+    const cartLength = cart?.length || 0;
+
+    const listItems = [];
+    let subtotal = 0;
+    cart.forEach((product, index) => {
+        subtotal += product.price * product.count;
+        listItems.push(
+            <li key={`${product.id}-${product.size}-${index}`}>
+                <div className="up-details">
+                    <img src={product.image.src} alt="" loading="lazy" />
+                    <div className="item-details">
+                        <div className="price-container">
+                            <span className="dollar">US$</span>
+                            <span className="price">{product.price}</span>
+                        </div>
+
+                        <span className="size">
+                            <small>Size: {product.size}</small>
+                        </span>
+                        <div className="quantity-container">
+                            <small>Qty: {product.count}</small>
+                            <button
+                                title="Remove"
+                                aria-label="Remove a product"
+                                className="minus-icon"
+                                onClick={() => handleRemoveProduct(product.id, product.size)}
+                            >
+                                <MinusIcon></MinusIcon>
+                            </button>
+                            <button
+                                title="Add"
+                                aria-label="Add a product"
+                                className="plus-icon"
+                                onClick={() => handleAddProduct(product.id, product.size)}
+                            >
+                                <PlusIcon></PlusIcon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="item-title">
+                    <strong>{product.title}</strong>
+                </div>
+            </li>
+        );
+    });
 
     const handleRemoveProduct = (productId, productSize) => {
         let productToRemove = cart.find((cartProduct) => {
@@ -37,78 +82,57 @@ export function Cart() {
 
     return (
         <>
-            <label className="cart-button" htmlFor={cartCheckboxId}>
-                <CartIcon /> {countTest}
+            <label title="Open cart" aria-label="Open cart Icon" className="cart-button" htmlFor={cartCheckboxId}>
+                <CartIcon /> {cartLength}
             </label>
             <input id={cartCheckboxId} type="checkbox" onChange={handleShowCart} checked={isChecked} hidden />
             <aside className="cart">
                 <div className="cart-header-container">
                     <h2 className="cart-header">Your cart</h2>
                     <div className="close-icon-container">
-                        <button type="button" onClick={handleShowCart}>
+                        <button title="Close" aria-label="Close cart button" type="button" onClick={handleShowCart}>
                             <span className="sr-only">Close panel</span>
                             <CloseCartIcon />
                         </button>
                     </div>
                 </div>
 
-                <ul className="cart-item-list">
-                    {cart.length ? (
-                        cart.map((product, index) => (
-                            <li key={`${product.id}-${product.size}-${index}`}>
-                                <img src={product.image.src} alt="Iphone" />
-                                <div>
-                                    <strong>{product.title}</strong> - ${product.price}
-                                </div>
-                                <div>Size: {product.size}</div>
-                                <footer>
-                                    <small>Qty: {product.count}</small>
-                                    <button onClick={() => handleRemoveProduct(product.id, product.size)}>-</button>
-                                    <button onClick={() => handleAddProduct(product.id, product.size)}>+</button>
-                                </footer>
-                            </li>
-                        ))
-                    ) : (
-                        <li>
-                            <div className="cart-empty">
-                                <p>Your cart is empty</p>
-                                <a href="/products">
-                                    Continue Shopping
-                                    <span aria-hidden="true"> &rarr;</span>
-                                </a>
-                            </div>
-                        </li>
-                    )}
-                </ul>
-                {cart.length ? (
-                    <button onClick={handleClearCart}>
-                        <ClearCartIcon />
-                    </button>
-                ) : (
-                    ""
+                {cart.length > 0 && <ul className="cart-list">{listItems}</ul>}
+
+                {cartLength <= 0 && (
+                    <div className="cart-empty">
+                        <p>Your cart is empty</p>
+                        <a href="/products">
+                            Continue Shopping
+                            <span aria-hidden="true"> &rarr;</span>
+                        </a>
+                    </div>
                 )}
 
-                <div className="">
-                    {cart.length ? (
-                        <div className="cart-footer-container">
-                            <div className="cart-subtotal">
-                                <p>Subtotal</p>
-                                <p>
-                                    $555
-                                    {/* <Money price={$cart.cost.subtotalAmount} showCurrency={true} /> */}
-                                </p>
-                            </div>
-                            <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-                            <div className="mt-6">
-                                <a href="/" className="button">
-                                    Checkout
-                                </a>
-                            </div>
+                {cart.length > 0 && (
+                    <div className="cart-footer-container">
+                        <div className="cart-subtotal">
+                            <p>Subtotal</p>
+                            <p>${subtotal}</p>
                         </div>
-                    ) : (
-                        ""
-                    )}
-                </div>
+                        <small>Shipping and taxes calculated at checkout.</small>
+                        <a title="Checkout cart link" aria-label="Checkout cart link" href="/" className="checkout-cart-button">
+                            Checkout
+                        </a>
+                    </div>
+                )}
+
+                {cart.length > 0 && (
+                    <button
+                        className="clear-cart"
+                        onClick={handleClearCart}
+                        title="Clear cart button"
+                        aria-label="Clear cart button"
+                    >
+                        <span>Clear cart</span>
+                        <ClearCartIcon />
+                    </button>
+                )}
             </aside>
         </>
     );

@@ -41,6 +41,7 @@ export function AddToCartForm({ product }) {
     };
 
     const buttonClassName = isProductInCart ? "product-added" : "product-to-add";
+    const buttonTitle = isProductInCart ? "Remove from cart" : "Add to cart";
 
     return (
         <>
@@ -76,7 +77,7 @@ export function AddToCartForm({ product }) {
                 </div>
 
                 <div className="cart-button-container">
-                    <button className={buttonClassName} type="submit">
+                    <button title={buttonTitle} aria-label={buttonTitle} className={buttonClassName} type="submit">
                         {isProductInCart ? (
                             <>
                                 <span>Delete</span>
