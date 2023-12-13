@@ -82,10 +82,10 @@ export function Cart() {
 
     return (
         <>
-            <label title="Open cart" aria-label="Open cart Icon" className="cart-button" htmlFor={cartCheckboxId}>
+            <label tabIndex="0" title="Open cart" aria-label="Open cart Icon" className="cart-button" htmlFor={cartCheckboxId}>
                 <CartIcon /> {cartLength}
             </label>
-            <input id={cartCheckboxId} type="checkbox" onChange={handleShowCart} checked={isChecked} hidden />
+            <input tab-index="0" id={cartCheckboxId} type="checkbox" onChange={handleShowCart} checked={isChecked} hidden />
             <aside className="cart">
                 <div className="cart-header-container">
                     <h2 className="cart-header">Your cart</h2>

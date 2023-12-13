@@ -1,36 +1,67 @@
 ---
+import "../components/css/imageSlider.scss";
+
 import { Image } from "astro:assets";
 
-import lsCrystalGloss7 from "../img/lifestyle/crystalGloss7.webp";
-import lsPinkRose1 from "../img/lifestyle/pinkRose1.webp";
-import lsPowerBlack1 from "../img/lifestyle/powerBlack1.webp";
-import lsRedBerry6 from "../img/lifestyle/redBerry6.webp";
+import crystalGloss5 from "../img/lifestyle/crystalGloss5.webp";
+import crystalGloss6 from "../img/lifestyle/crystalGloss6.webp";
+import redBerry5 from "../img/lifestyle/redBerry5.webp";
+import redBerry6 from "../img/lifestyle/redBerry6.webp";
+import pinkrose1 from "../img/lifestyle/pinkrose1.webp";
 
-import redBerryImg from "../img/products/redBerry.webp";
 import powerBlackImg from "../img/products/powerBlack.webp";
-import crystalGlossImg from "../img/products/crystalGloss.webp";
 import pinkRoseImg from "../img/products/pinkRose.webp";
 import jaianImg from "../img/products/jaian.webp";
 
 import okaPowerBlack from "../img/okayama/pbOkatwo.webp";
 
+import redBerry1 from "../img/carousel/redBerry1.webp";
+import crystalGloss3 from "../img/carousel/crystalGloss3.webp";
+import pinkrose6 from "../img/carousel/pinkrose6.webp";
+import powerBlack3 from "../img/carousel/powerBlack3.webp";
+import redBerrySkate from "../img/carousel/redBerrySkate.webp";
+import pinkRoseBike from "../img/carousel/pinkroseBike.webp";
+
+import { ImageSlider } from "./ImageSlider.jsx";
+
 const imgWidth = 300;
 const imgHeight = 300;
 const lifeStyleImgWidth = 400;
 const lifeStyleImgHeight = 600;
+
+const CAROUSEL_IMAGES = [
+    { url: pinkrose6.src, alt: "Pink Rose" },
+    { url: crystalGloss3.src, alt: "Crystal Gloss" },
+    { url: redBerrySkate.src, alt: "red Berry" },
+    { url: pinkRoseBike.src, alt: "Pink Rose riding bike" },
+    { url: powerBlack3.src, alt: "Power Black" },
+    { url: redBerry1.src, alt: "Red Berry" },
+];
+
+const GALLERY_IMAGES = [
+    { url: redBerry6.src, alt: "Red Berry" },
+    { url: crystalGloss6.src, alt: "Pink Rose" },
+    { url: redBerry5.src, alt: "Red Berry" },
+    { url: crystalGloss5.src, alt: "Pink Rose" },
+];
 ---
 
 <section class="catalog-container">
-    <article class="img-galery-section">
-        <Image width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={lsCrystalGloss7} alt="Botas Crystal Gloss" />
-        <Image width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={lsPinkRose1} alt="Botas Pink Rose" />
-        <Image width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={lsPowerBlack1} alt="Botas Power Black" />
-        <Image width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={lsRedBerry6} alt="Botas Red Berry" />
+    <article class="catalog-item product-item image-slider">
+        <ImageSlider images={CAROUSEL_IMAGES} client:only="react" />
     </article>
+
     <article class="catalog-item info-item">
         <h3 class="catalog-title">Productos Undercover</h3>
         <h5 class="catalog-info">Stock <br aria-hidden="true" />Noviembre - Diciembre <br aria-hidden="true" /> 2023</h5>
         <span class="catalog-secondary-info"> *Precios en descuento hasta 30/11/23</span>
+    </article>
+    <article class="img-galery-section">
+        {
+            GALLERY_IMAGES.map(({ url, alt }) => (
+                <img tabindex="0" width={lifeStyleImgWidth} height={lifeStyleImgHeight} src={url} alt={alt} loading="lazy" />
+            ))
+        }
     </article>
     <article class="catalog-item product-item p1">
         <div class="card" style=`background: url(${okaPowerBlack.src}); background-size: cover;`>
@@ -40,15 +71,7 @@ const lifeStyleImgHeight = 600;
             </div>
         </div>
     </article>
-    <article class="catalog-item product-item p2">
-        <div class="img-container">
-            <div class="new">
-                <span>$81</span>
-            </div>
-            <Image width={imgWidth} height={imgHeight} src={crystalGlossImg} alt="Botas Crystal Gloss" />
-        </div>
-        <h5 class="product-title">Crystal Gloss</h5>
-    </article>
+
     <article class="catalog-item product-item p3">
         <div class="img-container">
             <div class="new">
@@ -134,10 +157,10 @@ const lifeStyleImgHeight = 600;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
         grid-template-areas:
-            "imgGallery imgGallery"
+            "imageSlider imageSlider"
             "info info"
+            "imgGallery imgGallery"
             "p1 p1"
-            ". p2"
             "p3 ."
             ". p4"
             "p5 .";
@@ -163,9 +186,12 @@ const lifeStyleImgHeight = 600;
         grid-area: p1;
     }
 
-    .p2 {
-        grid-area: p2;
-        display: none;
+    .image-slider {
+        grid-area: imageSlider;
+        max-width: 1200px;
+        width: 100%;
+        height: 500px;
+        margin: 0 auto;
     }
     .p3 {
         grid-area: p3;
@@ -247,8 +273,9 @@ const lifeStyleImgHeight = 600;
             display: grid;
             grid-template-columns: 100%;
             grid-template-areas:
-                "imgGallery"
+                "imageSlider"
                 "info"
+                "imgGallery"
                 "p1"
                 "p2"
                 "p3"

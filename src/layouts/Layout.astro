@@ -35,10 +35,10 @@ const { title } = Astro.props as Props;
     </head>
     <body>
         <Header transition:persist />
+        <Cart client:only="react" />
         <main>
             <slot />
         </main>
-        <Cart client:only="react" />
         <Footer />
         <style is:global lang="scss">
             :root {

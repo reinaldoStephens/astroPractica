@@ -47,7 +47,8 @@
     pointer-events: auto;
 }
 
-.cart-header-container button:hover {
+.cart-header-container button:hover,
+.cart-header-container button:focus-visible {
     scale: 1.2;
 }
 
@@ -149,7 +150,9 @@
 }
 
 .minus-icon:hover,
-.plus-icon:hover {
+.plus-icon:hover,
+.minus-icon:focus-visible,
+.plus-icon:focus-visible {
     scale: 1.1;
 }
 
@@ -212,7 +215,8 @@
     opacity: 0.75;
 }
 
-.checkout-cart-button:hover {
+.checkout-cart-button:hover,
+.checkout-cart-button:focus-visible {
     opacity: 1;
 }
 
@@ -238,7 +242,8 @@
     z-index: 99;
 }
 
-.cart-button:hover {
+.cart-button:hover,
+.cart-button:focus-visible {
     scale: 1.1;
 }
 
