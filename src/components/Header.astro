@@ -90,6 +90,15 @@ const currentUrlPathname = Astro.url.pathname;
             item.addEventListener("mouseenter", () => {
                 setMenuBackdrop(item, menuBackDrop);
             });
+            const itemLink = item.children[0];
+            itemLink.addEventListener("focus", () => {
+                setMenuBackdrop(item, menuBackDrop);
+            });
+            itemLink?.addEventListener("blur", () => {
+                if (linkSelected) {
+                    setMenuBackdrop(linkSelected, menuBackDrop);
+                }
+            });
         });
 
         headerSection?.addEventListener("mouseleave", () => {

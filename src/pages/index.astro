@@ -1,8 +1,363 @@
 ---
+import "../components/css/imageSlider.scss";
+
 import Layout from "../layouts/Layout.astro";
-import Home from "../components/Home.astro";
+import { ImageSlider } from "../components/ImageSlider.jsx";
+
+import crystalGloss5 from "../img/lifestyle/crystalGloss5.webp";
+import crystalGloss6 from "../img/lifestyle/crystalGloss6.webp";
+import redBerry5 from "../img/lifestyle/redBerry5.webp";
+import redBerry6 from "../img/lifestyle/redBerry6.webp";
+
+import okaPowerBlack from "../img/okayama/pbOkatwo.webp";
+
+import redBerry1 from "../img/carousel/redBerry1.webp";
+import crystalGloss3 from "../img/carousel/crystalGloss3.webp";
+import pinkrose6 from "../img/carousel/pinkrose6.webp";
+import powerBlack3 from "../img/carousel/powerBlack3.webp";
+import redBerrySkate from "../img/carousel/redBerrySkate.webp";
+import pinkRoseBike from "../img/carousel/pinkroseBike.webp";
+
+const CAROUSEL_IMAGES = [
+    { url: pinkrose6.src, alt: "Pink Rose" },
+    { url: crystalGloss3.src, alt: "Crystal Gloss" },
+    { url: redBerrySkate.src, alt: "red Berry" },
+    { url: pinkRoseBike.src, alt: "Pink Rose riding bike" },
+    { url: powerBlack3.src, alt: "Power Black" },
+    { url: redBerry1.src, alt: "Red Berry" },
+];
+
+const GALLERY_IMAGES = [
+    { url: redBerry6.src, alt: "Red Berry" },
+    { url: crystalGloss6.src, alt: "Crystal Gloss" },
+    { url: redBerry5.src, alt: "Red Berry with black pants" },
+    { url: crystalGloss5.src, alt: "Crystal Gloss" },
+];
 ---
 
-<Layout title="Store App">
-    <Home />
+<Layout title="Awa - UC">
+    <section class="catalog-container">
+        <article class="catalog-item product-item image-slider">
+            <ImageSlider images={CAROUSEL_IMAGES} client:only="react" />
+        </article>
+
+        <article class="catalog-item info-item">
+            <h3 class="catalog-title">Productos Undercover</h3>
+            <h2 class="catalog-info">¿CUÁL ES TU ESTILO?</h2>
+        </article>
+
+        <article class="img-galery-section">
+            {
+                GALLERY_IMAGES.map(({ url, alt }) => (
+                    <img tabindex="0" width={400} height={600} src={url} alt={alt} loading="lazy" />
+                ))
+            }
+        </article>
+        <article class="product-cards">
+            <div class="product-cards-body">
+                <h2 class="product-cards-title">Compre ya</h2>
+                <div class="product-cards-grid">
+                    <div class="empty"></div>
+                    <div class="line"></div>
+                    <div class="product-card">
+                        <div class="card" style=`background: url(${okaPowerBlack.src}); background-size: cover;`>
+                            <div class="content">
+                                <h3>Power Black</h3>
+                                <div class="icons">Buy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card product-card-left">
+                        <div class="card" style=`background: url(${okaPowerBlack.src}); background-size: cover;`>
+                            <div class="content">
+                                <h3>Power Black</h3>
+                                <div class="icons">Buy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="empty"></div>
+                    <div class="emty"></div>
+                    <div class="line"></div>
+                    <div class="product-card">
+                        <div class="card" style=`background: url(${okaPowerBlack.src}); background-size: cover;`>
+                            <div class="content">
+                                <h3>Power Black</h3>
+                                <div class="icons">Buy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card product-card-left">
+                        <div class="card" style=`background: url(${okaPowerBlack.src}); background-size: cover;`>
+                            <div class="content">
+                                <h3>Power Black</h3>
+                                <div class="icons">Buy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="empty"></div>
+                </div>
+            </div>
+        </article>
+    </section>
 </Layout>
+<style lang="scss">
+    $catalog-border-radius: 10px;
+
+    .card {
+        width: 400px;
+        height: 533px;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+    }
+
+    .content {
+        width: 100%;
+        padding: 15px 25px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.582);
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.35s ease;
+    }
+
+    .card:hover .content {
+        transform: translateY(0);
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    .img-galery-section {
+        display: flex;
+        max-width: 100%;
+    }
+
+    .img-galery-section img {
+        width: 0;
+        flex-grow: 1;
+        object-fit: cover;
+        transition: 0.5s ease;
+    }
+
+    .img-galery-section img:hover {
+        cursor: crosshair;
+        width: 150px;
+        filter: contrast(120%);
+    }
+
+    .catalog-container {
+        margin-bottom: 3rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        grid-template-areas:
+            "imageSlider imageSlider"
+            "info info"
+            "imgGallery imgGallery"
+            "productCards productCards";
+    }
+
+    .catalog-item {
+        position: relative;
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .img-galery-section {
+        grid-area: imgGallery;
+        max-width: 1280px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .info-item {
+        grid-area: info;
+    }
+
+    .product-cards {
+        grid-area: productCards;
+    }
+
+    .image-slider {
+        grid-area: imageSlider;
+        width: 100%;
+        height: 75vh;
+        height: 75dvh;
+        margin: 0 auto;
+    }
+
+    img {
+        object-fit: cover;
+    }
+
+    .img-container {
+        background-color: var(--text-color-inverse);
+        width: max-content;
+        margin: 0 auto;
+        padding: 5px;
+        position: relative;
+    }
+
+    .product-title {
+        margin: 1.5rem 0px 0px 0px;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .catalog-title {
+        color: #454545;
+        font-weight: 300;
+        font-size: 14px;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+    }
+
+    .catalog-info {
+        margin: 1.5rem 0 0 0;
+        font-weight: 500;
+        font-size: 22px;
+        font-style: normal;
+        color: #454545;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
+
+    .new {
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-image: linear-gradient(45deg, rgba(212, 148, 255), rgba(85, 236, 219), #3776ff);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+        font-weight: 600;
+        clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+    }
+
+    .product-cards-title {
+        color: #454545;
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        text-align: center;
+        font-weight: 400;
+        font-size: 22px;
+    }
+
+    .product-cards {
+        padding: 0;
+    }
+
+    .product-cards-left {
+        text-align: right;
+    }
+
+    .product-cards-grid {
+        display: grid;
+        grid-template-columns: auto 1.7px auto;
+        gap: 20px 70px;
+        padding: 70px;
+        justify-content: center;
+        max-width: 980px;
+        margin: 0 auto;
+    }
+
+    .line {
+        background-color: var(--text-color);
+        position: relative;
+    }
+
+    .line::before,
+    .line::after {
+        content: "";
+        background-color: var(--text-color);
+        border-radius: 50%;
+        display: block;
+        width: 20px;
+        height: 20px;
+
+        position: absolute;
+        top: -20px;
+        left: -9px;
+    }
+
+    .line::after {
+        top: 100%;
+        left: -9px;
+        z-index: 1;
+    }
+
+    @media only screen and (max-width: 720px) {
+        .img-galery-section img {
+            height: 81vh;
+        }
+
+        .catalog-container {
+            max-width: 500px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-areas:
+                "imageSlider"
+                "info"
+                "imgGallery"
+                "productCards";
+        }
+
+        .product-cards {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-cards-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            margin-bottom: 25px;
+            margin-top: 0px;
+        }
+
+        .product-cards-date {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .product-cards-company {
+            font-size: 20px;
+            margin-top: 5px;
+        }
+
+        .product-cards-position {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .product-cards-description {
+            font-size: 15px;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        .product-cards {
+            padding: 25px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    }
+</style>

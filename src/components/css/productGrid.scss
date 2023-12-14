@@ -1,8 +1,15 @@
+.products-section {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .pagination-container {
     position: relative;
     text-align: center;
     height: 5rem;
 }
+
 .pagination-body {
     width: 100%;
     display: flex;
@@ -128,7 +135,7 @@ div.hide {
 .grid-layout {
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 622.4px));
     gap: 2rem;
     margin: 2.5rem 0rem 2.5rem 0rem;
 }
@@ -160,10 +167,6 @@ div.hide {
         .sort-select {
             margin-left: 0;
         }
-    }
-
-    .products-section {
-        margin-top: 2rem;
     }
 
     .grid-layout {

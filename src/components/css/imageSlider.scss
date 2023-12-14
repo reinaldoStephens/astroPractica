@@ -10,7 +10,7 @@
     height: 100%;
     display: block;
     flex-shrink: 0;
-    flex-grow: 0;
+    flex-grow: 1;
 }
 
 .img-slider-btn {
@@ -54,7 +54,7 @@
 
 .img-slider-pagination {
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 0.75rem;
     left: 50%;
     translate: -50%;
     display: flex;

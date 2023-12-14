@@ -34,7 +34,6 @@ export function ImageSlider({ images }) {
                         style={{
                             translate: `${-100 * imageIndex}%`,
                         }}
-                        loading="lazy"
                     ></img>
                 ))}
             </div>
