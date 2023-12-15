@@ -26,6 +26,8 @@ const next = currentPage < lastPage ? "" : "disabled";
 const nextDisabled = next === "disabled";
 
 const paginationList = Array.from({ length: lastPage }, (_, i) => i + 1);
+
+//https://github.com/coding-in-public/astro-search-fusejs/blob/lesson-8/src/pages/search.astro
 ---
 
 <Layout title="Products - Awa">
