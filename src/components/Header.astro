@@ -2,7 +2,7 @@
 import "../components/css/nav.scss";
 import Nav from "./Nav";
 
-const currentUrlPathname = Astro.url.pathname;
+const currentUrlPathname = Astro.url.pathname.split("/", 2).join("/");
 ---
 
 <header class="header-section">
@@ -116,7 +116,7 @@ const currentUrlPathname = Astro.url.pathname;
         });
 
         if (linkSelected) {
-            setMenuBackdrop(linkSelected, menuBackDrop);
+            setTimeout(() => setMenuBackdrop(linkSelected, menuBackDrop), 200);
         }
     }
 </script>

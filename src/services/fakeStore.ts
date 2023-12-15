@@ -7,7 +7,7 @@ import jaianImg from "../img/products/jaian.webp";
 
 export const response = [
     {
-        id: 1,
+        id: "red-berry-womens-rain-boots",
         title: "RED BERRY RAINKERS WOMEN'S RAIN BOOTS",
         price: 76,
         description:
@@ -18,7 +18,7 @@ export const response = [
         size: ["36", "37", "38", "39", "40", "41", "42"],
     },
     {
-        id: 2,
+        id: "uc-white-womens-sneakers",
         title: "JA - IAN WOMEN'S SNEAKERS",
         price: 72,
         description:
@@ -29,7 +29,7 @@ export const response = [
         size: ["36", "37", "38", "39", "40"],
     },
     {
-        id: 3,
+        id: "power-black-rainkers-womens-rain-boots",
         title: "POWER BLACK RAINKERS WOMEN'S RAIN BOOTS",
         price: 71,
         description:
@@ -40,7 +40,7 @@ export const response = [
         size: ["38", "39", "40", "41", "42"],
     },
     {
-        id: 4,
+        id: "crystal-gloss-rainkers-womens-rain-boots",
         title: "CRYSTAL GLOSS RAINKERS WOMEN'S RAIN BOOTS",
         price: 81,
         description:
@@ -50,7 +50,7 @@ export const response = [
         size: ["38", "39", "40"],
     },
     {
-        id: 5,
+        id: "pink-rose-rainkers-womens-rain-boots",
         title: "PINK ROSÉ RAINKERS WOMEN'S RAIN BOOTS",
         price: 71,
         description:

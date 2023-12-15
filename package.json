@@ -12,12 +12,10 @@
     "dependencies": {
         "@astrojs/check": "^0.2.1",
         "@astrojs/react": "^3.0.4",
-        "@nanostores/react": "^0.7.1",
         "@types/react": "^18.2.33",
         "@types/react-dom": "^18.2.14",
         "astro": "^3.4.0",
         "just-debounce-it": "3.2.0",
-        "nanostores": "^0.9.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "typescript": "^5.2.2",
