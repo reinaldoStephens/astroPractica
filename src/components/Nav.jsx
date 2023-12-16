@@ -8,7 +8,7 @@ const pages = [
         selected: false,
     },
     {
-        url: "/product",
+        url: "/products",
         label: "Products",
         selected: false,
     },

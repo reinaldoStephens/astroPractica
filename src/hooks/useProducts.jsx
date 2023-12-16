@@ -20,6 +20,14 @@ export function useProducts({ sort, paginationLimit, initialProducts, searchVal 
             const newProducts = searchProducts({ searchVal });
             setProducts(newProducts);
             setCurrentPage(1);
+            if (searchVal.length > 0) {
+                const searchParams = new URLSearchParams(window.location.search);
+                searchParams.set("q", searchVal);
+                const newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
+                history.replaceState(history.state, "", newRelativePathQuery);
+            } else {
+                history.replaceState(history.state, "", window.location.pathname);
+            }
         } catch (error) {
         } finally {
             // setLoading(false);

@@ -12,19 +12,21 @@ import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
 export async function getStaticPaths() {
     const products = getLatestProducts();
 
-    return products.map((product) => ({
+    return products.map((product, index, arr) => ({
         params: {
             id: product.id,
+        },
+        props: {
+            product: product,
+            nextProduct: arr[index + 1],
+            prevProduct: arr[index - 1],
         },
     }));
 }
 
 const { id } = Astro.params;
 
-let product: any = null;
-if (id) {
-    product = getProductBy({ id: id.toString() });
-}
+let { product, nextProduct, prevProduct } = Astro.props;
 ---
 
 {

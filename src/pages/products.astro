@@ -1,0 +1,14 @@
+---
+import ProductsGrid from "../components/ProductsGrid.jsx";
+import Layout from "../layouts/Layout.astro";
+import "../components/css/productGrid.scss";
+import "../components/css/productCard.scss";
+import { searchProducts } from "../services/products.js";
+const products = searchProducts({ searchVal: "" });
+---
+
+<Layout title="Products - Awa">
+    <section class="shop-section">
+        <ProductsGrid initialProducts={products} client:load />
+    </section>
+</Layout>
