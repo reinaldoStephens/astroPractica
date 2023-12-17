@@ -3,9 +3,9 @@ import { Products } from "./Products.jsx";
 import { useProducts } from "../hooks/useProducts.jsx";
 import debounce from "just-debounce-it";
 
-function useSearch() {
+function useSearch({ query }) {
     const [error, setError] = useState(null);
-    const [searchVal, setSearchVal] = useState("");
+    const [searchVal, setSearchVal] = useState(query);
     const isFirstInput = useRef(true);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ function useSearch() {
     return { searchVal, setSearchVal, error };
 }
 
-const ProductsGrid = ({ initialProducts }) => {
+const ProductsGrid = ({ initialProducts, query }) => {
     const sortSelectId = useId();
     const showSelectId = useId();
     const sortOptions = [
@@ -33,7 +33,7 @@ const ProductsGrid = ({ initialProducts }) => {
     ];
     const [paginationLimit, setPaginationLimit] = useState(showOptions[0].value);
     const [sort, setSort] = useState(sortOptions[0].value);
-    const { searchVal, setSearchVal, error } = useSearch();
+    const { searchVal, setSearchVal, error } = useSearch({ query });
     const { products, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage } = useProducts({
         sort,
         paginationLimit,
@@ -57,6 +57,15 @@ const ProductsGrid = ({ initialProducts }) => {
     const handleSort = (event) => {
         const value = event.target.value;
         setSort(value);
+
+        // if (value.length > 0) {
+        //     const searchParams = new URLSearchParams(window.location.products);
+        //     searchParams.set("sort", searchVal);
+        //     const newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
+        //     history.replaceState(history.state, "", newRelativePathQuery);
+        // } else {
+        //     history.replaceState(history.state, "", window.location.pathname);
+        // }
     };
 
     const handlePaginationLimit = (event) => {
