@@ -1,0 +1,17 @@
+import{r as w,g as I,R as A}from"./index.c7f9a1cc.js";const m=t=>{let e;const n=new Set,o=(c,p)=>{const i=typeof c=="function"?c(e):c;if(!Object.is(i,e)){const l=e;e=p??(typeof i!="object"||i===null)?i:Object.assign({},e,i),n.forEach(E=>E(e,l))}},r=()=>e,d={setState:o,getState:r,subscribe:c=>(n.add(c),()=>n.delete(c)),destroy:()=>{n.clear()}};return e=t(o,r,d),d},C=t=>t?m(t):m;var D={exports:{}},b={},R={exports:{}},O={};/**
+ * @license React
+ * use-sync-external-store-shim.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var S=w;function T(t,e){return t===e&&(t!==0||1/t===1/e)||t!==t&&e!==e}var F=typeof Object.is=="function"?Object.is:T,P=S.useState,_=S.useEffect,j=S.useLayoutEffect,V=S.useDebugValue;function q(t,e){var n=e(),o=P({inst:{value:n,getSnapshot:e}}),r=o[0].inst,u=o[1];return j(function(){r.value=n,r.getSnapshot=e,y(r)&&u({inst:r})},[t,n,e]),_(function(){return y(r)&&u({inst:r}),t(function(){y(r)&&u({inst:r})})},[t]),V(n),n}function y(t){var e=t.getSnapshot;t=t.value;try{var n=e();return!F(t,n)}catch{return!0}}function W(t,e){return e()}var $=typeof window>"u"||typeof window.document>"u"||typeof window.document.createElement>"u"?W:q;O.useSyncExternalStore=S.useSyncExternalStore!==void 0?S.useSyncExternalStore:$;R.exports=O;var z=R.exports;/**
+ * @license React
+ * use-sync-external-store-shim/with-selector.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var v=w,L=z;function B(t,e){return t===e&&(t!==0||1/t===1/e)||t!==t&&e!==e}var M=typeof Object.is=="function"?Object.is:B,U=L.useSyncExternalStore,X=v.useRef,k=v.useEffect,J=v.useMemo,N=v.useDebugValue;b.useSyncExternalStoreWithSelector=function(t,e,n,o,r){var u=X(null);if(u.current===null){var s={hasValue:!1,value:null};u.current=s}else s=u.current;u=J(function(){function c(a){if(!p){if(p=!0,i=a,a=o(a),r!==void 0&&s.hasValue){var f=s.value;if(r(f,a))return l=f}return l=a}if(f=l,M(i,a))return f;var g=o(a);return r!==void 0&&r(f,g)?f:(i=a,l=g)}var p=!1,i,l,E=n===void 0?null:n;return[function(){return c(e())},E===null?void 0:function(){return c(E())}]},[e,n,o,r]);var d=U(t,u[0],u[1]);return k(function(){s.hasValue=!0,s.value=d},[d]),N(d),d};D.exports=b;var G=D.exports;const H=I(G),{useDebugValue:K}=A,{useSyncExternalStoreWithSelector:Q}=H;function Y(t,e=t.getState,n){const o=Q(t.subscribe,t.getState,t.getServerState||t.getState,e,n);return K(o),o}const x=t=>{const e=typeof t=="function"?C(t):t,n=(o,r)=>Y(e,o,r);return Object.assign(n,e),n},Z=t=>t?x(t):x,tt=JSON.parse(window.localStorage.getItem("cart"))||[],ot=Z((t,e)=>({cart:tt,count:()=>{const{cart:n}=e();return n.length?n.map(o=>o.count).reduce((o,r)=>o+r):0},add:(n,o)=>{const{cart:r}=e(),u=et(n,r,o);h(u),t({cart:u})},remove:(n,o,r)=>{const{cart:u}=e(),s=nt(n,u,o,r);h(s),t({cart:s})},removeAll:()=>{h([]),t({cart:[]})}}));function et(t,e,n){const o={...t,count:1,size:n};if(!(e!=null&&e.length>0?e.some(u=>u.id===t.id&&u.size===n):!1))e.push(o);else return e.map(u=>u.id===t.id&&u.size===n?{...u,count:u.count+1}:u);return e}function nt(t,e,n,o){return e.map(r=>r.id===t&&r.size===n?{...r,count:o?null:r.count-1}:r).filter(r=>r.count)}const h=t=>{window.localStorage.setItem("cart",JSON.stringify(t))};export{ot as u};
