@@ -155,9 +155,9 @@ export function HomeIcon() {
     );
 }
 
-export function ArrowIcon() {
+export function ArrowIcon({ width, height }) {
     return (
-        <svg width="1rem" height="1rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <svg width={width} height={height} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path
                 fillRule="evenodd"
                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
@@ -248,6 +248,25 @@ export function CircleIcon() {
     return (
         <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em">
             <path d="M8 15A7 7 0 118 1a7 7 0 010 14zm0 1A8 8 0 108 0a8 8 0 000 16z" />
+        </svg>
+    );
+}
+
+export function ShoeIcon() {
+    return (
+        <svg
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+            height="1rem"
+            width="1rem"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" />
+            <path d="M4 6h5.426a1 1 0 01.863.496l1.064 1.823a3 3 0 001.896 1.407l4.677 1.114A4 4 0 0121 14.73V17a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1zM14 13l1-2" />
+            <path d="M8 18v-1a4 4 0 00-4-4H3M10 12l1.5-3" />
         </svg>
     );
 }

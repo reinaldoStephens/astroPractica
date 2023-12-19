@@ -17,6 +17,9 @@ import redBerrySkate from "../img/carousel/redBerrySkate.webp";
 import pinkRoseBike from "../img/carousel/pinkroseBike.webp";
 
 import okaPowerBlack from "../img/okayama/pbOkatwo.webp";
+import okaCrystalGlossGirls from "../img/okayama/crystalGlossGirls.jpg";
+import okaPinkRose5 from "../img/okayama/pinkRose5.jpg";
+import okaRedBerry18 from "../img/okayama/redBerry18.jpg";
 
 const CAROUSEL_IMAGES = [
     { url: pinkrose6.src, alt: "Pink Rose" },
@@ -68,9 +71,9 @@ const GALLERY_IMAGES = [
                         </div>
                     </div>
                     <div class="product-card product-card-left">
-                        <div class="card" style=`background: url(${okaPowerBlack.src}); background-size: cover;`>
+                        <div class="card" style=`background: url(${okaPinkRose5.src}); background-size: cover;`>
                             <div class="content">
-                                <h3>Power Black</h3>
+                                <h3>Pink Rose</h3>
                                 <div class="icons">Buy</div>
                             </div>
                         </div>
@@ -80,17 +83,17 @@ const GALLERY_IMAGES = [
                     <div class="emty"></div>
                     <div class="line"></div>
                     <div class="product-card">
-                        <div class="card" style=`background: url(${okaPowerBlack.src}); background-size: cover;`>
+                        <div class="card" style=`background: url(${okaCrystalGlossGirls.src}); background-size: cover;`>
                             <div class="content">
-                                <h3>Power Black</h3>
+                                <h3>Crystal Gloss</h3>
                                 <div class="icons">Buy</div>
                             </div>
                         </div>
                     </div>
                     <div class="product-card product-card-left">
-                        <div class="card" style=`background: url(${okaPowerBlack.src}); background-size: cover;`>
+                        <div class="card" style=`background: url(${okaRedBerry18.src}); background-size: cover;`>
                             <div class="content">
-                                <h3>Power Black</h3>
+                                <h3>Red Berry</h3>
                                 <div class="icons">Buy</div>
                             </div>
                         </div>
@@ -106,7 +109,7 @@ const GALLERY_IMAGES = [
     $catalog-border-radius: 10px;
 
     .card {
-        width: 400px;
+        width: 100%;
         height: 533px;
         display: flex;
         align-items: flex-end;
@@ -154,64 +157,72 @@ const GALLERY_IMAGES = [
 
     .catalog-container {
         margin-bottom: 3rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 4rem;
-        grid-template-areas:
-            "imageSlider imageSlider"
-            "info info"
-            "imgGallery imgGallery"
-            "productCards productCards";
     }
 
     .catalog-item {
-        position: relative;
         justify-content: center;
         text-align: center;
         display: flex;
         flex-direction: column;
     }
 
-    .img-galery-section {
-        grid-area: imgGallery;
-        max-width: 1280px;
-        width: 100%;
-        margin: 0 auto;
+    .img-galery-section img {
+        height: 81vh;
     }
 
-    .info-item {
-        grid-area: info;
+    .catalog-container {
+        width: 100%;
     }
 
     .product-cards {
-        grid-area: productCards;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-cards-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 25px;
+        margin-top: 0px;
+    }
+
+    .product-cards-date {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--secondary-color);
+    }
+
+    .product-cards-company {
+        font-size: 20px;
+        margin-top: 5px;
+    }
+
+    .product-cards-position {
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+
+    .product-cards-description {
+        font-size: 15px;
+        font-weight: 400;
+        margin-top: 10px;
+    }
+
+    .product-card {
+        padding: 25px 0;
+        margin: 0 auto;
     }
 
     .image-slider {
-        grid-area: imageSlider;
         width: 100%;
         height: 75vh;
         height: 75dvh;
         margin: 0 auto;
-    }
-
-    img {
-        object-fit: cover;
-    }
-
-    .img-container {
-        background-color: var(--text-color-inverse);
-        width: max-content;
-        margin: 0 auto;
-        padding: 5px;
-        position: relative;
-    }
-
-    .product-title {
-        margin: 1.5rem 0px 0px 0px;
-        font-size: 16px;
-        text-transform: uppercase;
-        font-weight: 500;
     }
 
     .catalog-title {
@@ -223,6 +234,13 @@ const GALLERY_IMAGES = [
         letter-spacing: 0.2em;
     }
 
+    .product-title {
+        margin: 1.5rem 0px 0px 0px;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
     .catalog-info {
         margin: 1.5rem 0 0 0;
         font-weight: 500;
@@ -231,21 +249,6 @@ const GALLERY_IMAGES = [
         color: #454545;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-    }
-
-    .new {
-        width: 3rem;
-        height: 3rem;
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background-image: linear-gradient(45deg, rgba(212, 148, 255), rgba(85, 236, 219), #3776ff);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        font-size: 1em;
-        font-weight: 600;
-        clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
     }
 
     .product-cards-title {
@@ -262,102 +265,70 @@ const GALLERY_IMAGES = [
         padding: 0;
     }
 
-    .product-cards-left {
-        text-align: right;
-    }
-
-    .product-cards-grid {
-        display: grid;
-        grid-template-columns: auto 1.7px auto;
-        gap: 20px 70px;
-        padding: 70px;
-        justify-content: center;
-        max-width: 980px;
-        margin: 0 auto;
-    }
-
-    .line {
-        background-color: var(--text-color);
-        position: relative;
-    }
-
-    .line::before,
-    .line::after {
-        content: "";
-        background-color: var(--text-color);
-        border-radius: 50%;
-        display: block;
-        width: 20px;
-        height: 20px;
-
-        position: absolute;
-        top: -20px;
-        left: -9px;
-    }
-
-    .line::after {
-        top: 100%;
-        left: -9px;
-        z-index: 1;
-    }
-
-    @media only screen and (max-width: 720px) {
-        .img-galery-section img {
-            height: 81vh;
+    @media (min-width: 950px) {
+        .product-card {
+            padding: 25px 0;
+            width: 400px;
+            margin: 0 auto;
         }
 
-        .catalog-container {
-            max-width: 500px;
+        .img-galery-section {
+            max-width: 1280px;
+            width: 100%;
             margin: 0 auto;
+        }
+
+        .new {
+            width: 3rem;
+            height: 3rem;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-image: linear-gradient(45deg, rgba(212, 148, 255), rgba(85, 236, 219), #3776ff);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            font-weight: 600;
+            clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%);
+        }
+
+        .product-cards-left {
+            text-align: right;
+        }
+
+        .product-cards-grid {
             display: grid;
-            grid-template-columns: 100%;
-            grid-template-areas:
-                "imageSlider"
-                "info"
-                "imgGallery"
-                "productCards";
-        }
-
-        .product-cards {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-cards-title {
-            text-align: center;
-            font-weight: bold;
-            font-size: 30px;
-            margin-bottom: 25px;
-            margin-top: 0px;
-        }
-
-        .product-cards-date {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        .product-cards-company {
-            font-size: 20px;
-            margin-top: 5px;
-        }
-
-        .product-cards-position {
-            font-size: 18px;
-            font-weight: 500;
-            margin-top: 20px;
-        }
-
-        .product-cards-description {
-            font-size: 15px;
-            font-weight: 400;
-            margin-top: 10px;
-        }
-
-        .product-cards {
-            padding: 25px;
-            max-width: 500px;
+            grid-template-columns: auto 1.7px auto;
+            gap: 20px 70px;
+            padding: 70px;
+            justify-content: center;
+            max-width: 980px;
             margin: 0 auto;
+        }
+
+        .line {
+            background-color: rgba(212, 148, 255, 1);
+            position: relative;
+        }
+
+        .line::before,
+        .line::after {
+            content: "";
+            background-color: rgba(212, 148, 255, 1);
+            border-radius: 50%;
+            display: block;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: -20px;
+            left: -9px;
+        }
+
+        .line::after {
+            top: 100%;
+            left: -9px;
+            z-index: 1;
         }
     }
 </style>

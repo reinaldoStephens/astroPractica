@@ -4,20 +4,17 @@ import { useProducts } from "../hooks/useProducts.jsx";
 import debounce from "just-debounce-it";
 
 function useSearch({ query }) {
-    const [error, setError] = useState(null);
     const [searchVal, setSearchVal] = useState(query);
-    const isFirstInput = useRef(true);
+    const inputRef = useRef(null);
 
     useEffect(() => {
-        if (isFirstInput.current) {
-            isFirstInput.current = searchVal === "";
-            return;
-        }
+        // put focus cursor at the end of the string
+        setTimeout(function () {
+            inputRef.current.selectionStart = inputRef.current.selectionEnd = query?.length || 0;
+        }, 50);
+    }, []);
 
-        setError(null);
-    }, [searchVal]);
-
-    return { searchVal, setSearchVal, error };
+    return { searchVal, setSearchVal, inputRef };
 }
 
 const ProductsGrid = ({ initialProducts, query }) => {
@@ -33,7 +30,7 @@ const ProductsGrid = ({ initialProducts, query }) => {
     ];
     const [paginationLimit, setPaginationLimit] = useState(showOptions[0].value);
     const [sort, setSort] = useState(sortOptions[0].value);
-    const { searchVal, setSearchVal, error } = useSearch({ query });
+    const { searchVal, setSearchVal, inputRef } = useSearch({ query });
     const { products, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage } = useProducts({
         sort,
         paginationLimit,
@@ -112,6 +109,8 @@ const ProductsGrid = ({ initialProducts, query }) => {
                             onChange={handleInput}
                             title="Search product by name"
                             aria-label="Product name"
+                            ref={inputRef}
+                            autoFocus
                         />
                     </div>
                     <div className="input-group show-input-group">
@@ -153,7 +152,6 @@ const ProductsGrid = ({ initialProducts, query }) => {
                         </select>
                     </div>
                 </form>
-                {error && <p className="error">{error}</p>}
                 <Products products={products}></Products>
                 <div className={paginationContainerClassName}>
                     <nav className="pagination-body">

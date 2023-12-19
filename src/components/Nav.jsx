@@ -4,22 +4,22 @@ import NavLink from "./NavLink";
 const pages = [
     {
         url: "/",
-        label: "Home",
+        label: "Inicio",
         selected: false,
     },
     {
         url: "/products",
-        label: "Products",
+        label: "Productos",
         selected: false,
     },
-    {
-        url: "/about",
-        label: "About",
-        selected: false,
-    },
+    // {
+    //     url: "/about",
+    //     label: "About",
+    //     selected: false,
+    // },
     {
         url: "/contact",
-        label: "Contact",
+        label: "Contacto",
         selected: false,
     },
 ];

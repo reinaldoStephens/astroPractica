@@ -4,7 +4,7 @@ const ProductCard = ({ id, title, price, image }) => {
     return (
         <>
             <li key={id} className="box" id={id}>
-                <a href={`/product/${id}`} tabIndex="0" aria-label={`This is an link to go to the product called ${title}`}>
+                <a href={`/products/${id}`} tabIndex="0" aria-label={`This is an link to go to the product called ${title}`}>
                     <picture className="img-box">
                         <img
                             title={title}

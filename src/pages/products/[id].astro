@@ -2,6 +2,7 @@
 import "../../components/css/addCartForm.scss";
 
 import Layout from "../../layouts/Layout.astro";
+import { slide } from "astro:transitions";
 import { AddToCartForm } from "../../components/AddToCartForm.jsx";
 
 import { getProductBy, getLatestProducts } from "../../services/fakeStore.js";
@@ -34,10 +35,24 @@ let { product, nextProduct, prevProduct } = Astro.props;
         <NotFoundLayout title="Product not found" message="Product not found" />
     ) : (
         <Layout title={`Product ${product.title}`}>
-            <section class="product-details-section">
+            <section
+                class="product-details-section"
+                transition:name="product-page"
+                transition:animate={slide({ duration: "0.4s" })}
+            >
                 <div class="breadcrumb">
                     <ProductBreadcrumb title={product.title} />
                 </div>
+                <nav class="products-nav">
+                    <ul role="list">
+                        <li>
+                            <a href={prevProduct ? `/products/${prevProduct.id}` : "javaScript:void(0)"}>Prev</a>
+                        </li>
+                        <li>
+                            <a href={nextProduct ? `/products/${nextProduct.id}` : "javaScript:void(0)"}>Next</a>
+                        </li>
+                    </ul>
+                </nav>
                 <figure class="zoom" style={`background-image: url(${product.image.src})`}>
                     <img width="570" height="570" src={product.image.src} alt={product.title} loading="lazy" decoding="async" />
                 </figure>
@@ -83,19 +98,33 @@ let { product, nextProduct, prevProduct } = Astro.props;
 </script>
 <style>
     .product-details-section {
+        max-width: 1280px;
+        width: 100%;
         display: grid;
         grid-template:
-            "breadcrumb ."
+            "breadcrumb products-nav"
             "image title"
             "image price"
             "image addToCartForm"
             "image description" 1fr /
             auto 1fr;
+        margin: 0 auto;
     }
 
     .breadcrumb {
         grid-area: breadcrumb;
         margin-top: 0.5rem;
+    }
+
+    .products-nav ul {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;
+        font-size: 0.875rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
     }
 
     .zoom {
@@ -181,13 +210,24 @@ let { product, nextProduct, prevProduct } = Astro.props;
             width: 100%;
             height: 100%;
         }
+
         figure.zoom {
             margin: 0 auto;
         }
+
+        .products-nav {
+            padding: 1rem;
+        }
+
+        .products-nav ul {
+            justify-content: center;
+        }
+
         .product-details-section {
             display: grid;
             grid-template:
                 "breadcrumb"
+                "products-nav"
                 "image" 1fr
                 "title"
                 "price"

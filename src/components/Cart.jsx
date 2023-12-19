@@ -27,7 +27,6 @@ export function Cart() {
                             <small>Size: {product.size}</small>
                         </span>
                         <div className="quantity-container">
-                            <small>Qty: {product.count}</small>
                             <button
                                 title="Remove"
                                 aria-label="Remove a product"
@@ -36,6 +35,7 @@ export function Cart() {
                             >
                                 <MinusIcon></MinusIcon>
                             </button>
+                            <small>{product.count}</small>
                             <button
                                 title="Add"
                                 aria-label="Add a product"

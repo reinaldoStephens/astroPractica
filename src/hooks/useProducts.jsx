@@ -5,12 +5,11 @@ export function useProducts({ sort, paginationLimit, initialProducts, searchVal 
     const [products, setProducts] = useState(initialProducts);
     const previousSearch = useRef();
     // const [loading, setLoading] = useState(false);
-    // const [error, setError] = useState(null);
     const pageCount = Math.ceil(products.length / paginationLimit);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNumbers, setPageNumbers] = useState([]);
 
-    const getProducts = useCallback(({ searchVal }) => {
+    const getProducts = useCallback(({ searchVal, sort, paginationLimit }) => {
         if (searchVal === previousSearch.current) return;
         try {
             // setLoading(true);
@@ -21,8 +20,8 @@ export function useProducts({ sort, paginationLimit, initialProducts, searchVal 
             setProducts(newProducts);
             setCurrentPage(1);
             if (searchVal.length > 0) {
-                const searchParams = new URLSearchParams(window.location.search);
-                searchParams.set("q", searchVal);
+                const searchObj = { q: searchVal };
+                const searchParams = new URLSearchParams(searchObj);
                 const newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
                 history.replaceState(history.state, "", newRelativePathQuery);
             } else {
