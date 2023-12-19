@@ -3,21 +3,27 @@ import { Products } from "./Products.jsx";
 import { useProducts } from "../hooks/useProducts.jsx";
 import debounce from "just-debounce-it";
 
-function useSearch({ query }) {
-    const [searchVal, setSearchVal] = useState(query);
+function useSearch() {
+    const [searchVal, setSearchVal] = useState("");
     const inputRef = useRef(null);
 
     useEffect(() => {
+        // if URL has search query,
+        // insert that search query in input field
+        const searchUrl = new URLSearchParams(window.location.search);
+        const searchStr = searchUrl.get("q");
+        if (searchStr) setSearchVal(searchStr);
+
         // put focus cursor at the end of the string
         setTimeout(function () {
-            inputRef.current.selectionStart = inputRef.current.selectionEnd = query?.length || 0;
+            inputRef.current.selectionStart = inputRef.current.selectionEnd = searchStr?.length || 0;
         }, 50);
     }, []);
 
     return { searchVal, setSearchVal, inputRef };
 }
 
-const ProductsGrid = ({ initialProducts, query }) => {
+const ProductsGrid = ({ initialProducts }) => {
     const sortSelectId = useId();
     const showSelectId = useId();
     const sortOptions = [
@@ -30,7 +36,7 @@ const ProductsGrid = ({ initialProducts, query }) => {
     ];
     const [paginationLimit, setPaginationLimit] = useState(showOptions[0].value);
     const [sort, setSort] = useState(sortOptions[0].value);
-    const { searchVal, setSearchVal, inputRef } = useSearch({ query });
+    const { searchVal, setSearchVal, inputRef } = useSearch();
     const { products, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage } = useProducts({
         sort,
         paginationLimit,
@@ -51,18 +57,11 @@ const ProductsGrid = ({ initialProducts, query }) => {
         []
     );
 
+    debouncedGetProducts(searchVal);
+
     const handleSort = (event) => {
         const value = event.target.value;
         setSort(value);
-
-        // if (value.length > 0) {
-        //     const searchParams = new URLSearchParams(window.location.products);
-        //     searchParams.set("sort", searchVal);
-        //     const newRelativePathQuery = window.location.pathname + "?" + searchParams.toString();
-        //     history.replaceState(history.state, "", newRelativePathQuery);
-        // } else {
-        //     history.replaceState(history.state, "", window.location.pathname);
-        // }
     };
 
     const handlePaginationLimit = (event) => {

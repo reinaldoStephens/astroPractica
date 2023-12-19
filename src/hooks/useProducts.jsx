@@ -9,7 +9,7 @@ export function useProducts({ sort, paginationLimit, initialProducts, searchVal 
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNumbers, setPageNumbers] = useState([]);
 
-    const getProducts = useCallback(({ searchVal, sort, paginationLimit }) => {
+    const getProducts = useCallback(({ searchVal }) => {
         if (searchVal === previousSearch.current) return;
         try {
             // setLoading(true);
