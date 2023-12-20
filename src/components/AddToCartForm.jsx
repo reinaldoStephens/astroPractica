@@ -28,6 +28,7 @@ export function AddToCartForm({ product }) {
 
     const handleRemoveProduct = (event) => {
         event.preventDefault();
+        event.stopPropagation();
         const size = event.target.elements.size.value;
         setSizeSelected(size);
         remove(product.id, size, true);
@@ -35,6 +36,7 @@ export function AddToCartForm({ product }) {
 
     const handleAddProduct = (event) => {
         event.preventDefault();
+        event.stopPropagation();
         const size = event.target.elements.size.value;
         setSizeSelected(size);
         add(product, size);
@@ -46,9 +48,10 @@ export function AddToCartForm({ product }) {
     return (
         <>
             <form
-                onSubmit={() => {
+                onSubmit={(event) => {
                     isProductInCart ? handleRemoveProduct(event) : handleAddProduct(event);
                 }}
+                disabled
             >
                 <div className="product-size-container">
                     <label htmlFor={productSizeId}>Size *</label>
