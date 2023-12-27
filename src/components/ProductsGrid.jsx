@@ -109,7 +109,6 @@ const ProductsGrid = ({ initialProducts }) => {
                             title="Search product by name"
                             aria-label="Product name"
                             ref={inputRef}
-                            autoFocus
                         />
                     </div>
                     <div className="input-group show-input-group">

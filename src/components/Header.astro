@@ -6,7 +6,7 @@ const currentUrlPathname = Astro.url.pathname.split("/", 2).join("/");
 ---
 
 <header class="header-section">
-    <Nav pathname={currentUrlPathname} client:load />
+    <Nav pathname={currentUrlPathname} client:load transition:persist="header" />
     <div aria-hidden="true" id="menu-backdrop"></div>
 </header>
 

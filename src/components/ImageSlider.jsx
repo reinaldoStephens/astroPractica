@@ -20,7 +20,7 @@ export function ImageSlider({ images }) {
 
     return (
         <article className="img-slider-container" aria-label="Image Slider">
-            <a href="#after-image-slider-controls" className="skip-link">
+            <a href="#after-image-slider-controls" className="skip-link" rel="noopener noreferrer">
                 Skip image slider controls
             </a>
             <div className="img-container">

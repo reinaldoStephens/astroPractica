@@ -2,11 +2,9 @@
 import "../../components/css/addCartForm.scss";
 
 import Layout from "../../layouts/Layout.astro";
-import { slide } from "astro:transitions";
 import { AddToCartForm } from "../../components/AddToCartForm.jsx";
 
-import { getProductBy, getLatestProducts } from "../../services/fakeStore.js";
-import { searchProducts } from "../../services/products.js";
+import { getLatestProducts } from "../../services/fakeStore.js";
 import NotFoundLayout from "../../layouts/NotFoundLayout.astro";
 import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
 
@@ -35,11 +33,7 @@ let { product, nextProduct, prevProduct } = Astro.props;
         <NotFoundLayout title="Product not found" message="Product not found" />
     ) : (
         <Layout title={`Product ${product.title}`}>
-            <section
-                class="product-details-section"
-                transition:name="product-page"
-                transition:animate={slide({ duration: "0.4s" })}
-            >
+            <section class="product-details-section">
                 <div class="breadcrumb">
                     <ProductBreadcrumb title={product.title} />
                 </div>

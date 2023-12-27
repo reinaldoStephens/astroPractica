@@ -102,7 +102,7 @@ export function Cart() {
                 {cartLength <= 0 && (
                     <div className="cart-empty">
                         <p>Your cart is empty</p>
-                        <a href="/products">
+                        <a href="/products" rel="noopener noreferrer">
                             Continue Shopping
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
@@ -116,7 +116,13 @@ export function Cart() {
                             <p>${subtotal}</p>
                         </div>
                         <small>Shipping and taxes calculated at checkout.</small>
-                        <a title="Checkout cart link" aria-label="Checkout cart link" href="/" className="checkout-cart-button">
+                        <a
+                            title="Checkout cart link"
+                            aria-label="Checkout cart link"
+                            href="/"
+                            className="checkout-cart-button"
+                            rel="noopener noreferrer"
+                        >
                             Checkout
                         </a>
                     </div>

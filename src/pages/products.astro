@@ -12,6 +12,6 @@ const products = searchProducts({ searchVal: "" });
 
 <Layout title="Products - Awa">
     <section class="shop-section">
-        <ProductsGrid initialProducts={products} client:load />
+        <ProductsGrid initialProducts={products} client:load transition:persist="products" />
     </section>
 </Layout>

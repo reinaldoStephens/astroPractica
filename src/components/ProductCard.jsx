@@ -4,15 +4,20 @@ const ProductCard = ({ id, title, price, image }) => {
     return (
         <>
             <li key={id} className="box" id={id}>
-                <a href={`/products/${id}`} tabIndex="0" aria-label={`This is an link to go to the product called ${title}`}>
+                <a
+                    href={`/products/${id}`}
+                    tabIndex="0"
+                    aria-label={`This is an link to go to the product called ${title}`}
+                    rel="noopener noreferrer"
+                >
                     <picture className="img-box">
                         <img
                             title={title}
                             src={image}
-                            alt={`This is an image of the product called ${title}`}
+                            alt={`Product ${title}`}
                             loading="lazy"
                             decoding="async"
-                            aria-label={`This is an image of the product called ${title}`}
+                            aria-label={`Product ${title}`}
                         />
                     </picture>
                     <div className="detail-box">

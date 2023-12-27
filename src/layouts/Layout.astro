@@ -5,6 +5,7 @@ import { Cart } from "../components/Cart.jsx";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
+import awaLogo from "../img/logo/awaLogo.webp";
 
 export interface Props {
     title: string;
@@ -19,7 +20,7 @@ const { title } = Astro.props as Props;
         <meta charset="UTF-8" />
         <meta name="description" content="Awa Store" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/webp" href={awaLogo.src} />
         <meta name="generator" content={Astro.generator} />
         <meta name="robots" content="index, follow" />
         <title>{title}</title>
@@ -28,14 +29,17 @@ const { title } = Astro.props as Props;
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
-        <meta property="og:title" content="Awa Store" />
+        <meta property="og:title" content={title} />
         <meta property="og:description" content="Find your Undercover boots in Awa Store" />
-        <meta property="og:url" content="" />
-        <meta property="og:image" content="" />
+        <meta property="og:url" content="https://awa-store-app.web.app/" />
+        <meta property="og:image" content={awaLogo.src} />
+        <meta property="og:locale" content="es_ES" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Awa Boots" />
     </head>
     <body>
-        <Header transition:persist />
-        <Cart client:only="react" />
+        <Header transition:persist="header" />
+        <Cart client:only="react" transition:persist="cart" />
         <main>
             <slot />
         </main>
