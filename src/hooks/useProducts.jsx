@@ -1,22 +1,23 @@
 import { useState, useRef, useMemo, useCallback, useEffect } from "react";
+import { list } from "../services/awaStore.js";
 
 export function useProducts({ sort, paginationLimit, initialProducts, searchVal }) {
     const [products, setProducts] = useState(initialProducts);
-
     const previousSearch = useRef();
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const pageCount = Math.ceil(products.length / paginationLimit);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageNumbers, setPageNumbers] = useState([]);
 
-    const getProducts = useCallback(({ searchVal }) => {
+    const getProducts = useCallback(async ({ searchVal }) => {
         if (searchVal === previousSearch.current) return;
         try {
-            // setLoading(true);
+            setLoading(true);
             // setError(null);
             // TODO: aca se debe de hacer el fetch al API
             previousSearch.current = searchVal;
-            const newProducts = initialProducts.filter((product) => {
+            const productList = await list();
+            const newProducts = productList.filter((product) => {
                 return product.title.includes(searchVal.toUpperCase());
             });
             setProducts(newProducts);
@@ -31,7 +32,7 @@ export function useProducts({ sort, paginationLimit, initialProducts, searchVal 
             }
         } catch (error) {
         } finally {
-            // setLoading(false);
+            setLoading(false);
         }
     }, []);
 
@@ -93,5 +94,5 @@ export function useProducts({ sort, paginationLimit, initialProducts, searchVal 
         setPageNumbers(newNumbers);
     }, [products, paginationLimit, currentPage]);
 
-    return { products: sortedProducts, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage };
+    return { products: sortedProducts, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage, loading };
 }

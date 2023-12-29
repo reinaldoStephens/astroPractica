@@ -6,10 +6,10 @@ import { AddToCartForm } from "../../components/AddToCartForm.jsx";
 
 import NotFoundLayout from "../../layouts/NotFoundLayout.astro";
 import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
-import awaStore from "../../services/awaStore.js";
+import { list } from "../../services/awaStore.js";
 
 export async function getStaticPaths() {
-    const products = await awaStore.list();
+    const products = await list();
 
     return products.map((product: any, index: number, arr: any) => ({
         params: {

@@ -37,7 +37,7 @@ const ProductsGrid = ({ initialProducts }) => {
     const [paginationLimit, setPaginationLimit] = useState(showOptions[0].value);
     const [sort, setSort] = useState(sortOptions[0].value);
     const { searchVal, setSearchVal, inputRef } = useSearch();
-    const { products, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage } = useProducts({
+    const { products, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage, loading } = useProducts({
         sort,
         paginationLimit,
         initialProducts,
@@ -57,7 +57,7 @@ const ProductsGrid = ({ initialProducts }) => {
         []
     );
 
-    debouncedGetProducts(searchVal);
+    //debouncedGetProducts(searchVal);
 
     const handleSort = (event) => {
         const value = event.target.value;
@@ -150,37 +150,48 @@ const ProductsGrid = ({ initialProducts }) => {
                         </select>
                     </div>
                 </form>
-                <Products products={products}></Products>
-                <div className={paginationContainerClassName}>
-                    <nav className="pagination-body">
-                        <button
-                            className={prevButtonClassName}
-                            id="prev-button"
-                            aria-label="Previous page"
-                            title="Previous page"
-                            disabled={prevButtonDisabled}
-                            onClick={handlePrevButtonOnClick}
-                            tabIndex="0"
-                        >
-                            {" "}
-                            &lt;
-                        </button>
-                        <div id="pagination-numbers">{pageNumbers}</div>
+                {loading ? (
+                    <div className="loading-state">
+                        <div className="loading"></div>
+                    </div>
+                ) : (
+                    <Products products={products}></Products>
+                )}
 
-                        <button
-                            className={nextButtonClassName}
-                            id="next-button"
-                            aria-label="Next page"
-                            title="Next page"
-                            disabled={nextButtonDisabled}
-                            onClick={handleNextButtonOnClick}
-                            tabIndex="0"
-                        >
-                            {" "}
-                            &gt;
-                        </button>
-                    </nav>
-                </div>
+                {loading ? (
+                    ""
+                ) : (
+                    <div className={paginationContainerClassName}>
+                        <nav className="pagination-body">
+                            <button
+                                className={prevButtonClassName}
+                                id="prev-button"
+                                aria-label="Previous page"
+                                title="Previous page"
+                                disabled={prevButtonDisabled}
+                                onClick={handlePrevButtonOnClick}
+                                tabIndex="0"
+                            >
+                                {" "}
+                                &lt;
+                            </button>
+                            <div id="pagination-numbers">{pageNumbers}</div>
+
+                            <button
+                                className={nextButtonClassName}
+                                id="next-button"
+                                aria-label="Next page"
+                                title="Next page"
+                                disabled={nextButtonDisabled}
+                                onClick={handleNextButtonOnClick}
+                                tabIndex="0"
+                            >
+                                {" "}
+                                &gt;
+                            </button>
+                        </nav>
+                    </div>
+                )}
             </section>
         </>
     );

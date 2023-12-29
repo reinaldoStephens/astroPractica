@@ -6,13 +6,13 @@ export const prerender = false;
 
 import Layout from "../layouts/Layout.astro";
 import ProductsGrid from "../components/ProductsGrid.jsx";
-import awaStore from "../services/awaStore.js";
+import { list } from "../services/awaStore.js";
 
-const products = await awaStore.list();
+const products = await list();
 ---
 
 <Layout title="Products - Awa">
     <section class="shop-section">
-        <ProductsGrid initialProducts={products} client:load transition:persist="products" />
+        <ProductsGrid initialProducts={products} client:load />
     </section>
 </Layout>

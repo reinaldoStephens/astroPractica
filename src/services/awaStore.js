@@ -5,8 +5,8 @@ import Papa from "papaparse";
 const DOC_DRIVE_URL =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTAVoqMK2lRWn3BhKwJlYgyjsz1uF28JbJo-ZeAIyYuU9UE7i0pXKHgZdj3R6DnR8rdlC8-rEl6TsBU/pub?output=csv";
 
-export default {
-    list: async () => {
+export const list = async () => {
+    try {
         return axios
             .get(DOC_DRIVE_URL, {
                 responseType: "blob",
@@ -20,5 +20,7 @@ export default {
                     });
                 });
             });
-    },
+    } catch (e) {
+        throw new Error("Error searching movies");
+    }
 };
