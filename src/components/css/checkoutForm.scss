@@ -5,6 +5,32 @@
     color: #333;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+}
+
+.form-group span {
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+input:invalid[focused="true"] {
+    border: 1px solid red;
+}
+
+input:invalid[focused="true"] ~ span {
+    display: block;
+}
+
+select:invalid[focused="true"] ~ span {
+    display: block;
+}
+
 .form-group {
     position: relative;
     margin-bottom: 20px;
@@ -38,13 +64,7 @@ fieldset {
     top: 12px;
     font-size: 14px;
     color: #777;
-    transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: #007bff;
-    outline: none;
+    transition: top 0.3s ease, font-size 0.3s ease;
 }
 
 .form-group input:focus + label,
@@ -87,9 +107,18 @@ fieldset {
 .full-name-form-group .form-group,
 .address-fields .form-group {
     flex-grow: 1;
+    flex-basis: 300px;
 }
 
 .address-fields {
     display: flex;
     gap: 0.75rem;
+}
+
+input:invalid[focused="true"] + label {
+    color: red;
+}
+
+select:invalid[focused="true"] {
+    border: 1px solid red;
 }

@@ -1,8 +1,7 @@
 import { useId, useState } from "react";
-
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-
-const isEmail = (email) => EMAIL_REGEX.test(email);
+import { FormInput } from "../components/FormInput.jsx";
+import { FormSelect } from "../components/FormSelect.jsx";
+import { COSTA_RICA_ADDRESS } from "../utils/costaRica.js";
 
 export function CheckoutForm() {
     const [form, setForm] = useState({
@@ -13,12 +12,154 @@ export function CheckoutForm() {
         telefono: "",
         pais: "Costa Rica",
         address: "",
-        provincia: "",
-        canton: "",
-        distrito: "",
+        provincia: "Heredia",
+        canton: "Barva",
+        distrito: "Barva",
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [errors, setErrors] = useState([]);
+
+    const COSTA_RICA_DATA = {
+        PROVINCIAS: [],
+        CANTONES: [],
+        DISTRITOS: [],
+    };
+
+    const KEYS = Object.keys(COSTA_RICA_ADDRESS);
+
+    KEYS.forEach((key) => {
+        const data = COSTA_RICA_ADDRESS[key];
+        COSTA_RICA_DATA.PROVINCIAS.push(data.NAME);
+
+        if (data.NAME === form.provincia) {
+            const provinciaData = COSTA_RICA_ADDRESS[key].DATA;
+
+            let cantones = [];
+            let distritos = [];
+
+            provinciaData.forEach((datos) => {
+                if (!cantones.includes(datos.NOM_CANT)) {
+                    cantones.push(datos.NOM_CANT);
+                }
+                if (form.canton === datos.NOM_CANT && !distritos.includes(datos.NOM_DIST)) {
+                    distritos.push(datos.NOM_DIST);
+                }
+            });
+
+            if (cantones.length > 0) {
+                COSTA_RICA_DATA.CANTONES = cantones;
+            }
+
+            if (distritos.length > 0) {
+                COSTA_RICA_DATA.DISTRITOS = distritos;
+            }
+        }
+    });
+
+    const inputs = {
+        email: {
+            id: "email",
+            name: "email",
+            type: "email",
+            placeholder: "",
+            errorMessage: "El formato del correo electrónico no es válido.",
+            label: "Correo electrónico (para enviarte el comprobante)",
+            required: true,
+        },
+        firstName: {
+            id: "firstName",
+            name: "firstName",
+            type: "text",
+            placeholder: "",
+            errorMessage: "El nombre debe tener entre 2 y 40 caracteres alfabéticos.",
+            label: "Nombre",
+            required: true,
+            autoComplete: "given-name",
+            minLength: "2",
+            maxLength: "30",
+            pattern: "^[a-zA-Z]*",
+        },
+        lastName: {
+            id: "lastName",
+            name: "lastName",
+            type: "text",
+            placeholder: "",
+            errorMessage: "Los apellidos deben tener entre 2 y 40 caracteres alfabéticos.",
+            label: "Apellidos",
+            required: true,
+            autoComplete: "family-name",
+            minLength: "2",
+            maxLength: "40",
+            pattern: "([A-Za-z]*)([ ]{0,1})([A-Za-z]*)",
+        },
+        cedula: {
+            id: "cedula",
+            name: "cedula",
+            type: "text",
+            placeholder: "",
+            errorMessage: `La cédula ingresada no es válida. El formato correcto es #-####-#### o sin guiones.`,
+            label: "Número de cédula o ID",
+            autoComplete: "off",
+            minLength: "9",
+            maxLength: "11",
+            pattern: `[1-9]\-?([0-9]{4})\-?[0-9]{4}`,
+            required: true,
+        },
+        telefono: {
+            id: "telefono",
+            name: "telefono",
+            type: "tel",
+            placeholder: "",
+            errorMessage: "El número de teléfono debe tener 8 digitos.",
+            label: "Teléfono (opcional)",
+            minLength: "8",
+            maxLength: "8",
+            pattern: `[0-9]{8}`,
+            required: false,
+            autoComplete: "tel",
+        },
+        address: {
+            id: "address",
+            name: "address",
+            type: "text",
+            placeholder: "",
+            errorMessage: "La dirección debe de ser de más de 10 caracteres.",
+            label: "Dirección exacta",
+            minLength: "10",
+            maxLength: "150",
+            required: true,
+            autoComplete: "shipping address-line1",
+        },
+    };
+
+    const selects = {
+        pais: {
+            id: "pais",
+            name: "pais",
+            autoComplete: "shipping country-name",
+            required: true,
+            errorMessage: "Este campo es obligatorio",
+        },
+        provincia: {
+            id: "provincia",
+            name: "provincia",
+            autoComplete: "address-level1",
+            required: true,
+            errorMessage: "Este campo es obligatorio",
+        },
+        canton: {
+            id: "canton",
+            name: "canton",
+            autoComplete: "address-level2",
+            required: true,
+            errorMessage: "Este campo es obligatorio",
+        },
+        distrito: {
+            id: "distrito",
+            name: "distrito",
+            autoComplete: "address-level3",
+            required: true,
+            errorMessage: "Este campo es obligatorio",
+        },
+    };
 
     const handleChange = (e) => {
         const keyName = e.target.name;
@@ -29,163 +170,75 @@ export function CheckoutForm() {
         e.preventDefault();
         e.stopPropagation();
 
-        console.log(form.email);
+        const form = e.target;
+        const formData = new FormData(form);
+        const email = formData.get("email");
+        const nombre = formData.get("firstName");
+        const apellidos = formData.get("lastName");
+        const cedula = formData.get("cedula");
+        const telefono = formData.get("telefono");
+        const pais = formData.get("pais");
+        const address = formData.get("address");
+        const provincia = formData.get("provincia");
+        const canton = formData.get("canton");
+        const distrito = formData.get("distrito");
 
-        if (!isEmail(form.email)) {
-            setErrors(["Wrong email"]);
-        }
+        const message = `Hola soy ${nombre} ${apellidos} \n, número de cédula: ${cedula} `;
 
-        console.log(!isEmail(form.email));
-
-        setIsSubmitting(true);
-
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-
-        setIsSubmitting(false);
+        alert(message);
     };
 
     return (
         <>
             <form onSubmit={handleSubmit} id="address-form">
-                {errors.length > 0 && (
-                    <ul>
-                        {errors.map((error) => (
-                            <li key={error} className="">
-                                {error}
-                            </li>
-                        ))}
-                    </ul>
-                )}
                 <fieldset>
                     <legend>Información de contacto</legend>
-                    <div className="form-group">
-                        <input
-                            type="email"
-                            onChange={handleChange}
-                            name="email"
-                            placeholder=""
-                            id="email"
-                            autoComplete="email"
-                            required
-                        />
-                        <label htmlFor="email">Correo electrónico (para enviarte el comprobante)</label>
-                    </div>
+                    <FormInput {...inputs.email} onChange={handleChange}></FormInput>
                 </fieldset>
                 <fieldset>
                     <legend>Dirección de envío</legend>
                     <div className="full-name-form-group">
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                onChange={handleChange}
-                                name="firstName"
-                                placeholder=" "
-                                id="name"
-                                aria-required="true"
-                                autoComplete="given-name"
-                                maxLength="40"
-                                inputMode="text"
-                                required
-                            />
-                            <label htmlFor="name">Nombre</label>
-                        </div>
-                        <div className="form-group">
-                            <input
-                                type="text"
-                                onChange={handleChange}
-                                name="lastName"
-                                placeholder=" "
-                                id="lastname"
-                                aria-required="true"
-                                autoComplete="family-name"
-                                maxLength="40"
-                                inputMode="text"
-                                required
-                            />
-                            <label htmlFor="lastname">Apellidos</label>
-                        </div>
+                        <FormInput {...inputs.firstName} onChange={handleChange}></FormInput>
+                        <FormInput {...inputs.lastName} onChange={handleChange}></FormInput>
                     </div>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            onChange={handleChange}
-                            name="cedula"
-                            placeholder=" "
-                            id="cedula"
-                            autoComplete="on"
-                            pattern="[0-9]{9}"
-                            minLength="9"
-                            maxLength="9"
-                            inputMode="text"
-                            required
-                        />
-                        <label htmlFor="cedula">Número de cédula o ID</label>
-                    </div>
-                    <div className="form-group">
-                        <input type="tel" onChange={handleChange} name="telefono" placeholder=" " id="phone" autoComplete="tel" />
-                        <label htmlFor="phone">Teléfono</label>
-                    </div>
-                    <div className="form-group">
-                        <select
-                            id="country"
-                            onChange={handleChange}
-                            name="pais"
-                            value={form.pais}
-                            className="form-control"
-                            autoComplete="shipping country-name"
-                        >
-                            <option value="Costa Rica">Costa Rica</option>
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            onChange={handleChange}
-                            name="address"
-                            placeholder=" "
-                            id="address"
-                            autoComplete="shipping address-line1"
-                        />
-                        <label htmlFor="address">Dirección exacta</label>
-                    </div>
+                    <FormInput {...inputs.cedula} onChange={handleChange}></FormInput>
+                    <FormInput {...inputs.telefono} onChange={handleChange}></FormInput>
+                    <FormSelect {...selects.pais} onChange={handleChange}>
+                        <option value="Costa Rica">Costa Rica</option>
+                    </FormSelect>
+                    <FormInput {...inputs.address} onChange={handleChange}></FormInput>
+
                     <div className="address-fields">
-                        <div className="form-group">
-                            <select
-                                aria-label="Provincia"
-                                id="provincia"
-                                name="provincia"
-                                className="form-control"
-                                autoComplete="address-level1"
-                            >
-                                <option value="">Elegir provincia</option>
-                            </select>
-                        </div>
-                        <div className="form-group">
-                            <select
-                                aria-label="Cantón"
-                                id="canton"
-                                name="canton"
-                                className="form-control"
-                                autoComplete="address-level2"
-                            >
-                                <option value="">Elegir cantón</option>
-                            </select>
-                        </div>
-                        <div className="form-group">
-                            <select
-                                aria-label="Distrito"
-                                id="distrito"
-                                name="distrito"
-                                className="form-control"
-                                autoComplete="address-level3"
-                            >
-                                <option value="">Elegir distrito</option>
-                            </select>
-                        </div>
+                        <FormSelect {...selects.provincia} onChange={handleChange}>
+                            <option value="">Elegir provincia</option>
+                            {COSTA_RICA_DATA.PROVINCIAS.map((provincia) => (
+                                <option key={provincia} value={provincia}>
+                                    {provincia}
+                                </option>
+                            ))}
+                        </FormSelect>
+
+                        <FormSelect {...selects.canton} onChange={handleChange}>
+                            <option value="">Elegir cantón</option>
+                            {COSTA_RICA_DATA.CANTONES.map((canton) => (
+                                <option key={canton} value={canton}>
+                                    {canton}
+                                </option>
+                            ))}
+                        </FormSelect>
+
+                        <FormSelect {...selects.distrito} onChange={handleChange}>
+                            <option value="">Elegir distrito</option>
+                            {COSTA_RICA_DATA.DISTRITOS.map((distrito) => (
+                                <option key={distrito} value={distrito}>
+                                    {distrito}
+                                </option>
+                            ))}
+                        </FormSelect>
                     </div>
                 </fieldset>
 
-                <button className="submit-button" type="submit" disabled={isSubmitting}>
+                <button className="submit-button" type="submit">
                     Submit
                 </button>
             </form>

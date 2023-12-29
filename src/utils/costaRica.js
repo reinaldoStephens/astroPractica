@@ -1,786 +1,7 @@
-export const COSTA_RICA_ADDRESS = [
-    {
-        PUNTARENAS: [
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ISLA DEL COCO",
-            },
-            {
-                NOM_CANT: "GOLFITO",
-                NOM_DIST: "GOLFITO",
-            },
-            {
-                NOM_CANT: "GOLFITO",
-                NOM_DIST: "GOLFITO",
-            },
-            {
-                NOM_CANT: "GOLFITO",
-                NOM_DIST: "GOLFITO",
-            },
-            {
-                NOM_CANT: "GOLFITO",
-                NOM_DIST: "GUAYCARA",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "BIOLLEY",
-            },
-            {
-                NOM_CANT: "COTO BRUS",
-                NOM_DIST: "PITTIER",
-            },
-            {
-                NOM_CANT: "COTO BRUS",
-                NOM_DIST: "AGUABUENA",
-            },
-            {
-                NOM_CANT: "CORREDORES",
-                NOM_DIST: "LA CUESTA",
-            },
-            {
-                NOM_CANT: "GOLFITO",
-                NOM_DIST: "PAVON",
-            },
-            {
-                NOM_CANT: "CORREDORES",
-                NOM_DIST: "CANOAS",
-            },
-            {
-                NOM_CANT: "CORREDORES",
-                NOM_DIST: "LAUREL",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "GOLFITO",
-                NOM_DIST: "GOLFITO",
-            },
-            {
-                NOM_CANT: "GOLFITO",
-                NOM_DIST: "PUERTO JIMENEZ",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "PIEDRAS BLANCAS",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "BRUNKA",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "BUENOS AIRES",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "PALMAR",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "PUERTO CORTES",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "COLINAS",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "VOLCAN",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "PILAS",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "BAHIA BALLENA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "NARANJITO",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "SAVEGRE",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "PARRITA",
-                NOM_DIST: "PARRITA",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "JACO",
-            },
-            {
-                NOM_CANT: "ESPARZA",
-                NOM_DIST: "SAN JUAN GRANDE",
-            },
-            {
-                NOM_CANT: "GARABITO",
-                NOM_DIST: "TARCOLES",
-            },
-            {
-                NOM_CANT: "ESPARZA",
-                NOM_DIST: "MACACONA",
-            },
-            {
-                NOM_CANT: "ESPARZA",
-                NOM_DIST: "SAN RAFAEL",
-            },
-            {
-                NOM_CANT: "MONTES DE ORO",
-                NOM_DIST: "MIRAMAR",
-            },
-            {
-                NOM_CANT: "MONTES DE ORO",
-                NOM_DIST: "LA UNION",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "MONTE VERDE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "GUACIMAL",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PUNTARENAS",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "CHACARITA",
-            },
-            {
-                NOM_CANT: "ESPARZA",
-                NOM_DIST: "SAN JERONIMO",
-            },
-            {
-                NOM_CANT: "MONTES DE ORO",
-                NOM_DIST: "SAN ISIDRO",
-            },
-            {
-                NOM_CANT: "ESPARZA",
-                NOM_DIST: "ESPIRITU SANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "BARRANCA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "EL ROBLE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PUNTARENAS",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PITAHAYA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "CHOMES",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PUNTARENAS",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "CHIRA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PUNTARENAS",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "COBANO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "COBANO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "COBANO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "MANZANILLO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "CHOMES",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "BORUCA",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "CHANGUENA",
-            },
-            {
-                NOM_CANT: "CORREDORES",
-                NOM_DIST: "CORREDOR",
-            },
-            {
-                NOM_CANT: "COTO BRUS",
-                NOM_DIST: "SAN VITO",
-            },
-            {
-                NOM_CANT: "COTO BRUS",
-                NOM_DIST: "SABALITO",
-            },
-            {
-                NOM_CANT: "BUENOS AIRES",
-                NOM_DIST: "POTRERO GRANDE",
-            },
-            {
-                NOM_CANT: "COTO BRUS",
-                NOM_DIST: "LIMONCITO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ACAPULCO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "ARANCIBIA",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "OSA",
-                NOM_DIST: "BAHIA BALLENA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "SIERPE",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "CHOMES",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "CHOMES",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "COBANO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "COBANO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "MANZANILLO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "LEPANTO",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "AGUIRRE",
-                NOM_DIST: "QUEPOS",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PAQUERA",
-            },
-            {
-                NOM_CANT: "PUNTARENAS",
-                NOM_DIST: "PUNTARENAS",
-            },
-        ],
-    },
-    {
-        SAN_JOSE: [
+export const COSTA_RICA_ADDRESS = {
+    SAN_JOSE: {
+        NAME: "San José",
+        DATA: [
             {
                 NOM_PROV: "SAN JOSE",
                 NOM_CANT: "PEREZ ZELEDON",
@@ -1383,1257 +604,9 @@ export const COSTA_RICA_ADDRESS = [
             },
         ],
     },
-    {
-        CARTAGO: [
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "CHIRRIPO",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "LA SUIZA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "TUIS",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "TRES EQUIS",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "JIMENEZ",
-                NOM_DIST: "PEJIBAYE",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "SANTA CRUZ",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "TURRIALBA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "LA ISABEL",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "SANTA TERESITA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "PERALTA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "PAVONES",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "OCCIDENTAL",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "JIMENEZ",
-                NOM_DIST: "TUCURRIQUE",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "OREAMUNO",
-                NOM_DIST: "COT",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "LA UNION",
-                NOM_DIST: "DULCE NOMBRE",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "OREAMUNO",
-                NOM_DIST: "POTRERO CERRADO",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "OREAMUNO",
-                NOM_DIST: "SANTA ROSA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "EL GUARCO",
-                NOM_DIST: "EL TEJAR",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "AGUACALIENTE O SAN FRANCISCO",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "SAN NICOLAS",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "ORIENTAL",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "CARMEN",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "GUADALUPE O ARENILLA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "PARAISO",
-                NOM_DIST: "SANTIAGO",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "OREAMUNO",
-                NOM_DIST: "CIPRESES",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "JIMENEZ",
-                NOM_DIST: "JUAN VIÑAS",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "PARAISO",
-                NOM_DIST: "CACHI",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "ALVARADO",
-                NOM_DIST: "PACAYAS",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "LLANO GRANDE",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "TIERRA BLANCA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "LA UNION",
-                NOM_DIST: "SAN RAFAEL",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "LA UNION",
-                NOM_DIST: "TRES RIOS",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "LA UNION",
-                NOM_DIST: "SAN JUAN",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "LA UNION",
-                NOM_DIST: "SAN DIEGO",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "LA UNION",
-                NOM_DIST: "RIO AZUL",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "LA UNION",
-                NOM_DIST: "SAN RAMON",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "LA UNION",
-                NOM_DIST: "CONCEPCION",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "EL GUARCO",
-                NOM_DIST: "SAN ISIDRO",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "EL GUARCO",
-                NOM_DIST: "TOBOSI",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "EL GUARCO",
-                NOM_DIST: "PATIO DE AGUA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "DULCE NOMBRE",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "PARAISO",
-                NOM_DIST: "PARAISO",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "PARAISO",
-                NOM_DIST: "OROSI",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "ALVARADO",
-                NOM_DIST: "CERVANTES",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "ALVARADO",
-                NOM_DIST: "CAPELLADES",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "CORRALILLO",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "SANTA ROSA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "TURRIALBA",
-                NOM_DIST: "TAYUTIC",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "CARTAGO",
-                NOM_DIST: "QUEBRADILLAS",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "PARAISO",
-                NOM_DIST: "LLANOS DE SANTA LUCIA",
-            },
-            {
-                NOM_PROV: "CARTAGO",
-                NOM_CANT: "OREAMUNO",
-                NOM_DIST: "SAN RAFAEL",
-            },
-        ],
-    },
-    {
-        HEREDIA: [
-            {
-                NOM_CANT: "SANTO DOMINGO",
-                NOM_DIST: "PARACITO",
-            },
-            {
-                NOM_CANT: "SANTO DOMINGO",
-                NOM_DIST: "SANTO TOMAS",
-            },
-            {
-                NOM_CANT: "BELEN",
-                NOM_DIST: "LA ASUNCION",
-            },
-            {
-                NOM_CANT: "FLORES",
-                NOM_DIST: "LLORENTE",
-            },
-            {
-                NOM_CANT: "HEREDIA",
-                NOM_DIST: "ULLOA",
-            },
-            {
-                NOM_CANT: "SANTO DOMINGO",
-                NOM_DIST: "SAN VICENTE",
-            },
-            {
-                NOM_CANT: "SANTO DOMINGO",
-                NOM_DIST: "TURES",
-            },
-            {
-                NOM_CANT: "SANTO DOMINGO",
-                NOM_DIST: "SAN MIGUEL",
-            },
-            {
-                NOM_CANT: "SANTO DOMINGO",
-                NOM_DIST: "SANTO DOMINGO",
-            },
-            {
-                NOM_CANT: "BELEN",
-                NOM_DIST: "SAN ANTONIO",
-            },
-            {
-                NOM_CANT: "HEREDIA",
-                NOM_DIST: "SAN FRANCISCO",
-            },
-            {
-                NOM_CANT: "HEREDIA",
-                NOM_DIST: "VARABLANCA",
-            },
-            {
-                NOM_CANT: "SARAPIQUI",
-                NOM_DIST: "LA VIRGEN",
-            },
-            {
-                NOM_CANT: "SARAPIQUI",
-                NOM_DIST: "LLANURAS DEL GASPAR",
-            },
-            {
-                NOM_CANT: "BELEN",
-                NOM_DIST: "LA RIBERA",
-            },
-            {
-                NOM_CANT: "SANTA BARBARA",
-                NOM_DIST: "SAN JUAN",
-            },
-            {
-                NOM_CANT: "HEREDIA",
-                NOM_DIST: "MERCEDES",
-            },
-            {
-                NOM_CANT: "FLORES",
-                NOM_DIST: "SAN JOAQUIN",
-            },
-            {
-                NOM_CANT: "SANTA BARBARA",
-                NOM_DIST: "JESUS",
-            },
-            {
-                NOM_CANT: "BARVA",
-                NOM_DIST: "SAN PEDRO",
-            },
-            {
-                NOM_CANT: "SAN RAFAEL",
-                NOM_DIST: "SAN JOSECITO",
-            },
-            {
-                NOM_CANT: "BARVA",
-                NOM_DIST: "SANTA LUCIA",
-            },
-            {
-                NOM_CANT: "SAN RAFAEL",
-                NOM_DIST: "SAN RAFAEL",
-            },
-            {
-                NOM_CANT: "SAN RAFAEL",
-                NOM_DIST: "SANTIAGO",
-            },
-            {
-                NOM_CANT: "BARVA",
-                NOM_DIST: "BARVA",
-            },
-            {
-                NOM_CANT: "FLORES",
-                NOM_DIST: "BARRANTES",
-            },
-            {
-                NOM_CANT: "SAN RAFAEL",
-                NOM_DIST: "CONCEPCION",
-            },
-            {
-                NOM_CANT: "BARVA",
-                NOM_DIST: "SAN JOSE DE LA MONTAÑA",
-            },
-            {
-                NOM_CANT: "SAN RAFAEL",
-                NOM_DIST: "ANGELES",
-            },
-            {
-                NOM_CANT: "BARVA",
-                NOM_DIST: "SAN ROQUE",
-            },
-            {
-                NOM_CANT: "SANTA BARBARA",
-                NOM_DIST: "SANTA BARBARA",
-            },
-            {
-                NOM_CANT: "SAN ISIDRO",
-                NOM_DIST: "CONCEPCION",
-            },
-            {
-                NOM_CANT: "SAN ISIDRO",
-                NOM_DIST: "SAN FRANCISCO",
-            },
-            {
-                NOM_CANT: "SAN ISIDRO",
-                NOM_DIST: "SAN ISIDRO",
-            },
-            {
-                NOM_CANT: "BARVA",
-                NOM_DIST: "SAN PABLO",
-            },
-            {
-                NOM_CANT: "SANTA BARBARA",
-                NOM_DIST: "PURABA",
-            },
-            {
-                NOM_CANT: "SANTO DOMINGO",
-                NOM_DIST: "PARA",
-            },
-            {
-                NOM_CANT: "SAN ISIDRO",
-                NOM_DIST: "SAN JOSE",
-            },
-            {
-                NOM_CANT: "SANTA BARBARA",
-                NOM_DIST: "SAN PEDRO",
-            },
-            {
-                NOM_CANT: "SANTA BARBARA",
-                NOM_DIST: "SANTO DOMINGO",
-            },
-            {
-                NOM_CANT: "SARAPIQUI",
-                NOM_DIST: "LAS HORQUETAS",
-            },
-            {
-                NOM_CANT: "SARAPIQUI",
-                NOM_DIST: "PUERTO VIEJO",
-            },
-            {
-                NOM_CANT: "SARAPIQUI",
-                NOM_DIST: "CUREÑA",
-            },
-            {
-                NOM_CANT: "HEREDIA",
-                NOM_DIST: "HEREDIA",
-            },
-            {
-                NOM_CANT: "SAN PABLO",
-                NOM_DIST: "RINCON DE SABANILLA",
-            },
-            {
-                NOM_CANT: "SAN PABLO",
-                NOM_DIST: "SAN PABLO",
-            },
-            {
-                NOM_CANT: "SANTO DOMINGO",
-                NOM_DIST: "SANTA ROSA",
-            },
-        ],
-    },
-    {
-        LIMON: [
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "LIMON",
-                NOM_CANT: "LIMON",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "CAHUITA",
-                NOM_CANT: "TALAMANCA",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "SIXAOLA",
-                NOM_CANT: "TALAMANCA",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "TELIRE",
-                NOM_CANT: "TALAMANCA",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "VALLE DE LA ESTRELLA",
-                NOM_CANT: "LIMON",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "VALLE DE LA ESTRELLA",
-                NOM_CANT: "LIMON",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "VALLE DE LA ESTRELLA",
-                NOM_CANT: "LIMON",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "BRATSI",
-                NOM_CANT: "TALAMANCA",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "BATAN",
-                NOM_CANT: "MATINA",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "LIMON",
-                NOM_CANT: "LIMON",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "MATINA",
-                NOM_CANT: "MATINA",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "RIO BLANCO",
-                NOM_CANT: "LIMON",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "MATAMA",
-                NOM_CANT: "LIMON",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "CARRANDI",
-                NOM_CANT: "MATINA",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "PACUARITO",
-                NOM_CANT: "SIQUIRRES",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "COLORADO",
-                NOM_CANT: "POCOCI",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "SIQUIRRES",
-                NOM_CANT: "SIQUIRRES",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "FLORIDA",
-                NOM_CANT: "SIQUIRRES",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "LA ALEGRIA",
-                NOM_CANT: "SIQUIRRES",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "POCORA",
-                NOM_CANT: "GUACIMO",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "GERMANIA",
-                NOM_CANT: "SIQUIRRES",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "JIMENES",
-                NOM_CANT: "POCOCI",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "DUACARI",
-                NOM_CANT: "GUACIMO",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "GUACIMO",
-                NOM_CANT: "GUACIMO",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "RIO JIMENES",
-                NOM_CANT: "GUACIMO",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "MERCEDES",
-                NOM_CANT: "GUACIMO",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "EL CAIRO",
-                NOM_CANT: "SIQUIRRES",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "CARIARI",
-                NOM_CANT: "POCOCI",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "RITA",
-                NOM_CANT: "POCOCI",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "ROXANA",
-                NOM_CANT: "POCOCI",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "CAHUITA",
-                NOM_CANT: "TALAMANCA",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "LIMON",
-                NOM_CANT: "LIMON",
-            },
-            {
-                NOM_PROV: "LIMON",
-                NOM_DIST: "GUAPILES",
-                NOM_CANT: "POCOCI",
-            },
-        ],
-    },
-    {
-        GUANACASTE: [
-            {
-                NOM_CANT: "ABANGARES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SAN JUAN",
-            },
-            {
-                NOM_CANT: "TILARAN",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TRONADORA",
-            },
-            {
-                NOM_CANT: "TILARAN",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "QUEBRADA GRANDE",
-            },
-            {
-                NOM_CANT: "TILARAN",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LIBANO",
-            },
-            {
-                NOM_CANT: "ABANGARES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SIERRA",
-            },
-            {
-                NOM_CANT: "TILARAN",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "ARENAL",
-            },
-            {
-                NOM_CANT: "TILARAN",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ROSA",
-            },
-            {
-                NOM_CANT: "NANDAYURE",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SAN PABLO",
-            },
-            {
-                NOM_CANT: "NANDAYURE",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CARMONA",
-            },
-            {
-                NOM_CANT: "TILARAN",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TILARAN",
-            },
-            {
-                NOM_CANT: "CAÑAS",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "POROZAL",
-            },
-            {
-                NOM_CANT: "CAÑAS",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SAN MIGUEL",
-            },
-            {
-                NOM_CANT: "CAÑAS",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CAÑAS",
-            },
-            {
-                NOM_CANT: "CAÑAS",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "BEBEDERO",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "QUEBRADA HONDA",
-            },
-            {
-                NOM_CANT: "TILARAN",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TIERRAS MORENAS",
-            },
-            {
-                NOM_CANT: "CAÑAS",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "PALMIRA",
-            },
-            {
-                NOM_CANT: "BAGACES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "RIO NARANJO",
-            },
-            {
-                NOM_CANT: "BAGACES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LA FORTUNA",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SAMARA",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "MANSION",
-            },
-            {
-                NOM_CANT: "HOJANCHA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "PUERTO CARRILLO",
-            },
-            {
-                NOM_CANT: "NANDAYURE",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "PORVENIR",
-            },
-            {
-                NOM_CANT: "NANDAYURE",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "BEJUCO",
-            },
-            {
-                NOM_CANT: "NANDAYURE",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "ZAPOTAL",
-            },
-            {
-                NOM_CANT: "HOJANCHA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "HOJANCHA",
-            },
-            {
-                NOM_CANT: "HOJANCHA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "HUACAS",
-            },
-            {
-                NOM_CANT: "NANDAYURE",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA RITA",
-            },
-            {
-                NOM_CANT: "HOJANCHA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "MONTE ROMO",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SAN ANTONIO",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "BOLSON",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "BELEN DE NOSARITA",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "NICOYA",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CURUBANDE",
-            },
-            {
-                NOM_CANT: "BAGACES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "MOGOTE",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LIBERIA",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "NACASCOLO",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SAMARA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LA CRUZ",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LA CRUZ",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LA CRUZ",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LA CRUZ",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CABO VELAS",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CABO VELAS",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CABO VELAS",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TEMPATE",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CABO VELAS",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TEMPATE",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TEMPATE",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TEMPATE",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TEMPATE",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CABO VELAS",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "NACASCOLO",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "NACASCOLO",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "NACASCOLO",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "NACASCOLO",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LA CRUZ",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TAMARINDO",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CABO VELAS",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TAMARINDO",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "TEMPATE",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CARTAGENA",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CUAJINIQUIL",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "VEINTISIETE DE ABRIL",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA CRUZ",
-            },
-            {
-                NOM_CANT: "SANTA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "DIRIA",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "NOSARA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LA GARITA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA CECILIA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LA CRUZ",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "MAYORGA",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "CAÑAS DULCES",
-            },
-            {
-                NOM_CANT: "LIBERIA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "NACASCOLO",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "PALMIRA",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "BELEN",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "FILADELFIA",
-            },
-            {
-                NOM_CANT: "BAGACES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "BAGACES",
-            },
-            {
-                NOM_CANT: "ABANGARES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "LAS JUNTAS",
-            },
-            {
-                NOM_CANT: "ABANGARES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "COLORADO",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "LA CRUZ",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SANTA ELENA",
-            },
-            {
-                NOM_CANT: "CARRILLO",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "SARDINAL",
-            },
-            {
-                NOM_CANT: "NICOYA",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "MANSION",
-            },
-            {
-                NOM_CANT: "ABANGARES",
-                NOM_PROV: "GUANACASTE",
-                NOM_DIST: "COLORADO",
-            },
-        ],
-    },
-    {
-        ALAJUELLA: [
+    ALAJUELA: {
+        NAME: "Alajuela",
+        DATA: [
             {
                 NOM_CANT: "ALAJUELA",
                 NOM_DIST: "RIO SEGUNDO",
@@ -3189,11 +1162,1157 @@ export const COSTA_RICA_ADDRESS = [
                 NOM_DIST: "LAGUNA",
                 COD_PROV: "2",
             },
+        ],
+    },
+    CARTAGO: {
+        NAME: "Cartago",
+        DATA: [
             {
-                NOM_CANT: "LOS CHILES",
-                NOM_DIST: "CAÑO NEGRO",
-                COD_PROV: "2",
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "CHIRRIPO",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "LA SUIZA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "TUIS",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "TRES EQUIS",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "JIMENEZ",
+                NOM_DIST: "PEJIBAYE",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "SANTA CRUZ",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "TURRIALBA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "LA ISABEL",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "SANTA TERESITA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "PERALTA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "PAVONES",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "OCCIDENTAL",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "JIMENEZ",
+                NOM_DIST: "TUCURRIQUE",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "OREAMUNO",
+                NOM_DIST: "COT",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "LA UNION",
+                NOM_DIST: "DULCE NOMBRE",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "OREAMUNO",
+                NOM_DIST: "POTRERO CERRADO",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "OREAMUNO",
+                NOM_DIST: "SANTA ROSA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "EL GUARCO",
+                NOM_DIST: "EL TEJAR",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "AGUACALIENTE O SAN FRANCISCO",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "SAN NICOLAS",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "ORIENTAL",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "CARMEN",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "GUADALUPE O ARENILLA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "PARAISO",
+                NOM_DIST: "SANTIAGO",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "OREAMUNO",
+                NOM_DIST: "CIPRESES",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "JIMENEZ",
+                NOM_DIST: "JUAN VIÑAS",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "PARAISO",
+                NOM_DIST: "CACHI",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "ALVARADO",
+                NOM_DIST: "PACAYAS",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "LLANO GRANDE",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "TIERRA BLANCA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "LA UNION",
+                NOM_DIST: "SAN RAFAEL",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "LA UNION",
+                NOM_DIST: "TRES RIOS",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "LA UNION",
+                NOM_DIST: "SAN JUAN",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "LA UNION",
+                NOM_DIST: "SAN DIEGO",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "LA UNION",
+                NOM_DIST: "RIO AZUL",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "LA UNION",
+                NOM_DIST: "SAN RAMON",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "LA UNION",
+                NOM_DIST: "CONCEPCION",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "EL GUARCO",
+                NOM_DIST: "SAN ISIDRO",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "EL GUARCO",
+                NOM_DIST: "TOBOSI",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "EL GUARCO",
+                NOM_DIST: "PATIO DE AGUA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "DULCE NOMBRE",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "PARAISO",
+                NOM_DIST: "PARAISO",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "PARAISO",
+                NOM_DIST: "OROSI",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "ALVARADO",
+                NOM_DIST: "CERVANTES",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "ALVARADO",
+                NOM_DIST: "CAPELLADES",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "CORRALILLO",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "SANTA ROSA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "TURRIALBA",
+                NOM_DIST: "TAYUTIC",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "CARTAGO",
+                NOM_DIST: "QUEBRADILLAS",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "PARAISO",
+                NOM_DIST: "LLANOS DE SANTA LUCIA",
+            },
+            {
+                NOM_PROV: "CARTAGO",
+                NOM_CANT: "OREAMUNO",
+                NOM_DIST: "SAN RAFAEL",
             },
         ],
     },
-];
+    HEREDIA: {
+        NAME: "Heredia",
+        DATA: [
+            {
+                NOM_CANT: "SANTO DOMINGO",
+                NOM_DIST: "PARACITO",
+            },
+            {
+                NOM_CANT: "SANTO DOMINGO",
+                NOM_DIST: "SANTO TOMAS",
+            },
+            {
+                NOM_CANT: "BELEN",
+                NOM_DIST: "LA ASUNCION",
+            },
+            {
+                NOM_CANT: "FLORES",
+                NOM_DIST: "LLORENTE",
+            },
+            {
+                NOM_CANT: "HEREDIA",
+                NOM_DIST: "ULLOA",
+            },
+            {
+                NOM_CANT: "SANTO DOMINGO",
+                NOM_DIST: "SAN VICENTE",
+            },
+            {
+                NOM_CANT: "SANTO DOMINGO",
+                NOM_DIST: "TURES",
+            },
+            {
+                NOM_CANT: "SANTO DOMINGO",
+                NOM_DIST: "SAN MIGUEL",
+            },
+            {
+                NOM_CANT: "SANTO DOMINGO",
+                NOM_DIST: "SANTO DOMINGO",
+            },
+            {
+                NOM_CANT: "BELEN",
+                NOM_DIST: "SAN ANTONIO",
+            },
+            {
+                NOM_CANT: "HEREDIA",
+                NOM_DIST: "SAN FRANCISCO",
+            },
+            {
+                NOM_CANT: "HEREDIA",
+                NOM_DIST: "VARABLANCA",
+            },
+            {
+                NOM_CANT: "SARAPIQUI",
+                NOM_DIST: "LA VIRGEN",
+            },
+            {
+                NOM_CANT: "SARAPIQUI",
+                NOM_DIST: "LLANURAS DEL GASPAR",
+            },
+            {
+                NOM_CANT: "BELEN",
+                NOM_DIST: "LA RIBERA",
+            },
+            {
+                NOM_CANT: "SANTA BARBARA",
+                NOM_DIST: "SAN JUAN",
+            },
+            {
+                NOM_CANT: "HEREDIA",
+                NOM_DIST: "MERCEDES",
+            },
+            {
+                NOM_CANT: "FLORES",
+                NOM_DIST: "SAN JOAQUIN",
+            },
+            {
+                NOM_CANT: "SANTA BARBARA",
+                NOM_DIST: "JESUS",
+            },
+            {
+                NOM_CANT: "BARVA",
+                NOM_DIST: "SAN PEDRO",
+            },
+            {
+                NOM_CANT: "SAN RAFAEL",
+                NOM_DIST: "SAN JOSECITO",
+            },
+            {
+                NOM_CANT: "BARVA",
+                NOM_DIST: "SANTA LUCIA",
+            },
+            {
+                NOM_CANT: "SAN RAFAEL",
+                NOM_DIST: "SAN RAFAEL",
+            },
+            {
+                NOM_CANT: "SAN RAFAEL",
+                NOM_DIST: "SANTIAGO",
+            },
+            {
+                NOM_CANT: "BARVA",
+                NOM_DIST: "BARVA",
+            },
+            {
+                NOM_CANT: "FLORES",
+                NOM_DIST: "BARRANTES",
+            },
+            {
+                NOM_CANT: "SAN RAFAEL",
+                NOM_DIST: "CONCEPCION",
+            },
+            {
+                NOM_CANT: "BARVA",
+                NOM_DIST: "SAN JOSE DE LA MONTAÑA",
+            },
+            {
+                NOM_CANT: "SAN RAFAEL",
+                NOM_DIST: "ANGELES",
+            },
+            {
+                NOM_CANT: "BARVA",
+                NOM_DIST: "SAN ROQUE",
+            },
+            {
+                NOM_CANT: "SANTA BARBARA",
+                NOM_DIST: "SANTA BARBARA",
+            },
+            {
+                NOM_CANT: "SAN ISIDRO",
+                NOM_DIST: "CONCEPCION",
+            },
+            {
+                NOM_CANT: "SAN ISIDRO",
+                NOM_DIST: "SAN FRANCISCO",
+            },
+            {
+                NOM_CANT: "SAN ISIDRO",
+                NOM_DIST: "SAN ISIDRO",
+            },
+            {
+                NOM_CANT: "BARVA",
+                NOM_DIST: "SAN PABLO",
+            },
+            {
+                NOM_CANT: "SANTA BARBARA",
+                NOM_DIST: "PURABA",
+            },
+            {
+                NOM_CANT: "SANTO DOMINGO",
+                NOM_DIST: "PARA",
+            },
+            {
+                NOM_CANT: "SAN ISIDRO",
+                NOM_DIST: "SAN JOSE",
+            },
+            {
+                NOM_CANT: "SANTA BARBARA",
+                NOM_DIST: "SAN PEDRO",
+            },
+            {
+                NOM_CANT: "SANTA BARBARA",
+                NOM_DIST: "SANTO DOMINGO",
+            },
+            {
+                NOM_CANT: "SARAPIQUI",
+                NOM_DIST: "LAS HORQUETAS",
+            },
+            {
+                NOM_CANT: "SARAPIQUI",
+                NOM_DIST: "PUERTO VIEJO",
+            },
+            {
+                NOM_CANT: "SARAPIQUI",
+                NOM_DIST: "CUREÑA",
+            },
+            {
+                NOM_CANT: "HEREDIA",
+                NOM_DIST: "HEREDIA",
+            },
+            {
+                NOM_CANT: "SAN PABLO",
+                NOM_DIST: "RINCON DE SABANILLA",
+            },
+            {
+                NOM_CANT: "SAN PABLO",
+                NOM_DIST: "SAN PABLO",
+            },
+            {
+                NOM_CANT: "SANTO DOMINGO",
+                NOM_DIST: "SANTA ROSA",
+            },
+        ],
+    },
+    GUANACASTE: {
+        NAME: "Guanacaste",
+        DATA: [
+            {
+                NOM_CANT: "ABANGARES",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SAN JUAN",
+            },
+            {
+                NOM_CANT: "ABANGARES",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SIERRA",
+            },
+            {
+                NOM_CANT: "ABANGARES",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "LAS JUNTAS",
+            },
+            {
+                NOM_CANT: "ABANGARES",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "COLORADO",
+            },
+            {
+                NOM_CANT: "BAGACES",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "RIO NARANJO",
+            },
+            {
+                NOM_CANT: "BAGACES",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "LA FORTUNA",
+            },
+            {
+                NOM_CANT: "BAGACES",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "MOGOTE",
+            },
+            {
+                NOM_CANT: "BAGACES",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "BAGACES",
+            },
+            {
+                NOM_CANT: "CARRILLO",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SARDINAL",
+            },
+            {
+                NOM_CANT: "CARRILLO",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "PALMIRA",
+            },
+            {
+                NOM_CANT: "CARRILLO",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "BELEN",
+            },
+            {
+                NOM_CANT: "CARRILLO",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "FILADELFIA",
+            },
+            {
+                NOM_CANT: "CAÑAS",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "POROZAL",
+            },
+            {
+                NOM_CANT: "CAÑAS",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SAN MIGUEL",
+            },
+            {
+                NOM_CANT: "CAÑAS",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "CAÑAS",
+            },
+            {
+                NOM_CANT: "CAÑAS",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "BEBEDERO",
+            },
+            {
+                NOM_CANT: "CAÑAS",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "PALMIRA",
+            },
+            {
+                NOM_CANT: "HOJANCHA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "PUERTO CARRILLO",
+            },
+            {
+                NOM_CANT: "HOJANCHA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "HOJANCHA",
+            },
+            {
+                NOM_CANT: "HOJANCHA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "HUACAS",
+            },
+            {
+                NOM_CANT: "HOJANCHA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "MONTE ROMO",
+            },
+            {
+                NOM_CANT: "LA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "LA CRUZ",
+            },
+            {
+                NOM_CANT: "LA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SANTA ELENA",
+            },
+            {
+                NOM_CANT: "LA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "LA GARITA",
+            },
+            {
+                NOM_CANT: "LA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SANTA CECILIA",
+            },
+            {
+                NOM_CANT: "LIBERIA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "CURUBANDE",
+            },
+            {
+                NOM_CANT: "LIBERIA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "LIBERIA",
+            },
+            {
+                NOM_CANT: "LIBERIA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "NACASCOLO",
+            },
+            {
+                NOM_CANT: "LIBERIA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "MAYORGA",
+            },
+            {
+                NOM_CANT: "LIBERIA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "CAÑAS DULCES",
+            },
+            {
+                NOM_CANT: "NANDAYURE",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SAN PABLO",
+            },
+            {
+                NOM_CANT: "NANDAYURE",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "CARMONA",
+            },
+            {
+                NOM_CANT: "NANDAYURE",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "PORVENIR",
+            },
+            {
+                NOM_CANT: "NANDAYURE",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "BEJUCO",
+            },
+            {
+                NOM_CANT: "NANDAYURE",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "ZAPOTAL",
+            },
+            {
+                NOM_CANT: "NANDAYURE",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SANTA RITA",
+            },
+            {
+                NOM_CANT: "NICOYA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "QUEBRADA HONDA",
+            },
+            {
+                NOM_CANT: "NICOYA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SAMARA",
+            },
+            {
+                NOM_CANT: "NICOYA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "MANSION",
+            },
+            {
+                NOM_CANT: "NICOYA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SAN ANTONIO",
+            },
+            {
+                NOM_CANT: "NICOYA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "BELEN DE NOSARITA",
+            },
+            {
+                NOM_CANT: "NICOYA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "NICOYA",
+            },
+            {
+                NOM_CANT: "NICOYA",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "NOSARA",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "BOLSON",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "CABO VELAS",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "TEMPATE",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "TAMARINDO",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "CARTAGENA",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "CUAJINIQUIL",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "VEINTISIETE DE ABRIL",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SANTA CRUZ",
+            },
+            {
+                NOM_CANT: "SANTA CRUZ",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "DIRIA",
+            },
+            {
+                NOM_CANT: "TILARAN",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "TRONADORA",
+            },
+            {
+                NOM_CANT: "TILARAN",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "QUEBRADA GRANDE",
+            },
+            {
+                NOM_CANT: "TILARAN",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "LIBANO",
+            },
+            {
+                NOM_CANT: "TILARAN",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "ARENAL",
+            },
+            {
+                NOM_CANT: "TILARAN",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "SANTA ROSA",
+            },
+            {
+                NOM_CANT: "TILARAN",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "TILARAN",
+            },
+            {
+                NOM_CANT: "TILARAN",
+                NOM_PROV: "GUANACASTE",
+                NOM_DIST: "TIERRAS MORENAS",
+            },
+        ],
+    },
+    PUNTARENAS: {
+        NAME: "Puntarenas",
+        DATA: [
+            {
+                NOM_CANT: "AGUIRRE",
+                NOM_DIST: "NARANJITO",
+            },
+            {
+                NOM_CANT: "AGUIRRE",
+                NOM_DIST: "SAVEGRE",
+            },
+            {
+                NOM_CANT: "AGUIRRE",
+                NOM_DIST: "QUEPOS",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "BIOLLEY",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "BRUNKA",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "BUENOS AIRES",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "COLINAS",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "VOLCAN",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "PILAS",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "BORUCA",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "CHANGUENA",
+            },
+            {
+                NOM_CANT: "BUENOS AIRES",
+                NOM_DIST: "POTRERO GRANDE",
+            },
+            {
+                NOM_CANT: "CORREDORES",
+                NOM_DIST: "LA CUESTA",
+            },
+            {
+                NOM_CANT: "CORREDORES",
+                NOM_DIST: "CANOAS",
+            },
+            {
+                NOM_CANT: "CORREDORES",
+                NOM_DIST: "LAUREL",
+            },
+            {
+                NOM_CANT: "CORREDORES",
+                NOM_DIST: "CORREDOR",
+            },
+            {
+                NOM_CANT: "COTO BRUS",
+                NOM_DIST: "PITTIER",
+            },
+            {
+                NOM_CANT: "COTO BRUS",
+                NOM_DIST: "AGUABUENA",
+            },
+            {
+                NOM_CANT: "COTO BRUS",
+                NOM_DIST: "SAN VITO",
+            },
+            {
+                NOM_CANT: "COTO BRUS",
+                NOM_DIST: "SABALITO",
+            },
+            {
+                NOM_CANT: "COTO BRUS",
+                NOM_DIST: "LIMONCITO",
+            },
+            {
+                NOM_CANT: "ESPARZA",
+                NOM_DIST: "SAN JUAN GRANDE",
+            },
+            {
+                NOM_CANT: "ESPARZA",
+                NOM_DIST: "MACACONA",
+            },
+            {
+                NOM_CANT: "ESPARZA",
+                NOM_DIST: "SAN RAFAEL",
+            },
+            {
+                NOM_CANT: "ESPARZA",
+                NOM_DIST: "SAN JERONIMO",
+            },
+            {
+                NOM_CANT: "ESPARZA",
+                NOM_DIST: "ESPIRITU SANTO",
+            },
+            {
+                NOM_CANT: "GARABITO",
+                NOM_DIST: "JACO",
+            },
+            {
+                NOM_CANT: "GARABITO",
+                NOM_DIST: "TARCOLES",
+            },
+            {
+                NOM_CANT: "GOLFITO",
+                NOM_DIST: "GUAYCARA",
+            },
+            {
+                NOM_CANT: "GOLFITO",
+                NOM_DIST: "PAVON",
+            },
+            {
+                NOM_CANT: "GOLFITO",
+                NOM_DIST: "GOLFITO",
+            },
+            {
+                NOM_CANT: "GOLFITO",
+                NOM_DIST: "PUERTO JIMENEZ",
+            },
+            {
+                NOM_CANT: "MONTES DE ORO",
+                NOM_DIST: "MIRAMAR",
+            },
+            {
+                NOM_CANT: "MONTES DE ORO",
+                NOM_DIST: "LA UNION",
+            },
+            {
+                NOM_CANT: "MONTES DE ORO",
+                NOM_DIST: "SAN ISIDRO",
+            },
+            {
+                NOM_CANT: "OSA",
+                NOM_DIST: "SIERPE",
+            },
+            {
+                NOM_CANT: "OSA",
+                NOM_DIST: "PIEDRAS BLANCAS",
+            },
+            {
+                NOM_CANT: "OSA",
+                NOM_DIST: "PALMAR",
+            },
+            {
+                NOM_CANT: "OSA",
+                NOM_DIST: "PUERTO CORTES",
+            },
+            {
+                NOM_CANT: "OSA",
+                NOM_DIST: "BAHIA BALLENA",
+            },
+            {
+                NOM_CANT: "PARRITA",
+                NOM_DIST: "PARRITA",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "ISLA DEL COCO",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "MONTE VERDE",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "GUACIMAL",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "PUNTARENAS",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "CHACARITA",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "BARRANCA",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "EL ROBLE",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "PITAHAYA",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "CHOMES",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "CHIRA",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "LEPANTO",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "COBANO",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "MANZANILLO",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "ACAPULCO",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "ARANCIBIA",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "SIERPE",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "COBANO",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "MANZANILLO",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "LEPANTO",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "QUEPOS",
+            },
+            {
+                NOM_CANT: "PUNTARENAS",
+                NOM_DIST: "PAQUERA",
+            },
+        ],
+    },
+    LIMON: {
+        NAME: "Limón",
+        DATA: [
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "LIMON",
+                NOM_CANT: "LIMON",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "CAHUITA",
+                NOM_CANT: "TALAMANCA",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "SIXAOLA",
+                NOM_CANT: "TALAMANCA",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "TELIRE",
+                NOM_CANT: "TALAMANCA",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "VALLE DE LA ESTRELLA",
+                NOM_CANT: "LIMON",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "BRATSI",
+                NOM_CANT: "TALAMANCA",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "BATAN",
+                NOM_CANT: "MATINA",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "MATINA",
+                NOM_CANT: "MATINA",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "RIO BLANCO",
+                NOM_CANT: "LIMON",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "MATAMA",
+                NOM_CANT: "LIMON",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "CARRANDI",
+                NOM_CANT: "MATINA",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "PACUARITO",
+                NOM_CANT: "SIQUIRRES",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "COLORADO",
+                NOM_CANT: "POCOCI",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "SIQUIRRES",
+                NOM_CANT: "SIQUIRRES",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "FLORIDA",
+                NOM_CANT: "SIQUIRRES",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "LA ALEGRIA",
+                NOM_CANT: "SIQUIRRES",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "POCORA",
+                NOM_CANT: "GUACIMO",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "GERMANIA",
+                NOM_CANT: "SIQUIRRES",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "JIMENES",
+                NOM_CANT: "POCOCI",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "DUACARI",
+                NOM_CANT: "GUACIMO",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "GUACIMO",
+                NOM_CANT: "GUACIMO",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "RIO JIMENES",
+                NOM_CANT: "GUACIMO",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "MERCEDES",
+                NOM_CANT: "GUACIMO",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "EL CAIRO",
+                NOM_CANT: "SIQUIRRES",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "CARIARI",
+                NOM_CANT: "POCOCI",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "RITA",
+                NOM_CANT: "POCOCI",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "ROXANA",
+                NOM_CANT: "POCOCI",
+            },
+            {
+                NOM_PROV: "LIMON",
+                NOM_DIST: "GUAPILES",
+                NOM_CANT: "POCOCI",
+            },
+        ],
+    },
+};
