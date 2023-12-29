@@ -48,7 +48,7 @@ const Nav = ({ pathname }) => {
         <>
             <nav className="navbar" role="navigation">
                 <div className="navbar-brand-container">
-                    <a className="navbar-brand" href="index.html" aria-label="Awa Boots Logo link" rel="noopener noreferrer">
+                    <a className="navbar-brand" href="/" aria-label="Awa Boots Logo link" rel="noopener noreferrer">
                         <h1>
                             Awa<span className="text-gradient">Boots</span>
                         </h1>

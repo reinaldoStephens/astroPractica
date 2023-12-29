@@ -6,8 +6,9 @@ export const prerender = false;
 
 import Layout from "../layouts/Layout.astro";
 import ProductsGrid from "../components/ProductsGrid.jsx";
-import { searchProducts } from "../services/products.js";
-const products = searchProducts({ searchVal: "" });
+import awaStore from "../services/awaStore.js";
+
+const products = await awaStore.list();
 ---
 
 <Layout title="Products - Awa">

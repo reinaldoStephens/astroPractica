@@ -5,7 +5,7 @@ function ListOfProducts({ products }) {
         <>
             <ul className="grid-layout product-detail-container">
                 {products.map(({ id, image, title, price }) => (
-                    <ProductCard key={id} id={id.toString()} image={image.src} title={title} price={price.toString()} />
+                    <ProductCard key={id} id={id.toString()} image={image} title={title} price={price.toString()} />
                 ))}
             </ul>
         </>

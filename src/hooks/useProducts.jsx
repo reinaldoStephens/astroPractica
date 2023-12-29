@@ -1,8 +1,8 @@
 import { useState, useRef, useMemo, useCallback, useEffect } from "react";
-import { searchProducts } from "../services/products.js";
 
 export function useProducts({ sort, paginationLimit, initialProducts, searchVal }) {
     const [products, setProducts] = useState(initialProducts);
+
     const previousSearch = useRef();
     // const [loading, setLoading] = useState(false);
     const pageCount = Math.ceil(products.length / paginationLimit);
@@ -16,7 +16,9 @@ export function useProducts({ sort, paginationLimit, initialProducts, searchVal 
             // setError(null);
             // TODO: aca se debe de hacer el fetch al API
             previousSearch.current = searchVal;
-            const newProducts = searchProducts({ searchVal });
+            const newProducts = initialProducts.filter((product) => {
+                return product.title.includes(searchVal.toUpperCase());
+            });
             setProducts(newProducts);
             setCurrentPage(1);
             if (searchVal.length > 0) {
@@ -35,7 +37,9 @@ export function useProducts({ sort, paginationLimit, initialProducts, searchVal 
 
     useEffect(() => {
         if (searchVal) {
-            const newProducts = searchProducts({ searchVal });
+            const newProducts = initialProducts.filter((product) => {
+                return product.title.includes(searchVal.toUpperCase());
+            });
             setProducts(newProducts);
             setCurrentPage(1);
         }

@@ -4,14 +4,14 @@ import "../../components/css/addCartForm.scss";
 import Layout from "../../layouts/Layout.astro";
 import { AddToCartForm } from "../../components/AddToCartForm.jsx";
 
-import { getLatestProducts } from "../../services/fakeStore.js";
 import NotFoundLayout from "../../layouts/NotFoundLayout.astro";
 import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
+import awaStore from "../../services/awaStore.js";
 
 export async function getStaticPaths() {
-    const products = getLatestProducts();
+    const products = await awaStore.list();
 
-    return products.map((product, index, arr) => ({
+    return products.map((product: any, index: number, arr: any) => ({
         params: {
             id: product.id,
         },
@@ -32,38 +32,50 @@ let { product, nextProduct, prevProduct } = Astro.props;
     !product ? (
         <NotFoundLayout title="Product not found" message="Product not found" />
     ) : (
-        <Layout title={`Product ${product.title}`}>
+        <Layout title={`Product ${product["title"]}`}>
             <section class="product-details-section">
                 <div class="breadcrumb">
-                    <ProductBreadcrumb title={product.title} />
+                    <ProductBreadcrumb title={product["title"]} />
                 </div>
                 <nav class="products-nav">
                     <ul role="list">
                         <li>
-                            <a href={prevProduct ? `/products/${prevProduct.id}` : "javaScript:void(0)"}>Prev</a>
+                            <a
+                                href={prevProduct ? `/products/${prevProduct["id"]}` : "javaScript:void(0)"}
+                                title="Producto anterior"
+                                aria-label="Producto anterior"
+                            >
+                                Anterior
+                            </a>
                         </li>
                         <li>
-                            <a href={nextProduct ? `/products/${nextProduct.id}` : "javaScript:void(0)"}>Next</a>
+                            <a
+                                href={nextProduct ? `/products/${nextProduct["id"]}` : "javaScript:void(0)"}
+                                title="Producto siguiente"
+                                aria-label="Producto siguiente"
+                            >
+                                Siguiente
+                            </a>
                         </li>
                     </ul>
                 </nav>
-                <figure class="zoom" style={`background-image: url(${product.image.src})`}>
-                    <img width="570" height="570" src={product.image.src} alt={product.title} loading="lazy" decoding="async" />
+                <figure class="zoom" style={`background-image: url(${product["image"]})`}>
+                    <img width="570" height="570" src={product["image"]} alt={product["title"]} loading="lazy" decoding="async" />
                 </figure>
                 <header class="product-title">
-                    <h2>{product.title}</h2>
+                    <h2>{product["title"]}</h2>
                     <hr />
                 </header>
                 <article class="product-price-container">
                     <span class="dollar">US$</span>
-                    <span class="price">{product.price}</span>
+                    <span class="price">{product["price"]}</span>
                 </article>
                 <article class="add-cart-form">
                     <AddToCartForm product={product} client:only="react" />
                 </article>
                 <article class="product-description">
-                    <h5>Description</h5>
-                    <p>{product.description}</p>
+                    <h5>Descripción</h5>
+                    <p>{product["description"]}</p>
                 </article>
             </section>
         </Layout>

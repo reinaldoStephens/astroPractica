@@ -54,15 +54,15 @@ export function AddToCartForm({ product }) {
                 disabled
             >
                 <div className="product-size-container">
-                    <label htmlFor={productSizeId}>Size *</label>
+                    <label htmlFor={productSizeId}>Talla *</label>
                     <select
                         value={sizeSelected}
                         id={productSizeId}
                         className="size-select"
                         name="size"
                         onChange={handleSizeChange}
-                        title="Choose a size"
-                        aria-label="Select a shoe size"
+                        title="Elige una talla"
+                        aria-label="Elige una talla"
                         tabIndex="0"
                     >
                         {allSizes.map((size) =>
@@ -83,12 +83,12 @@ export function AddToCartForm({ product }) {
                     <button title={buttonTitle} aria-label={buttonTitle} className={buttonClassName} type="submit">
                         {isProductInCart ? (
                             <>
-                                <span>Delete</span>
+                                <span>Eliminar</span>
                                 <RemoveFromCartIcon />
                             </>
                         ) : (
                             <>
-                                <span>Add to cart</span>
+                                <span>Agregar al Carrito</span>
                                 <AddToCartIcon />
                             </>
                         )}

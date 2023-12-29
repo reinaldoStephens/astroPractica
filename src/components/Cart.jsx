@@ -16,7 +16,7 @@ export function Cart() {
         listItems.push(
             <li key={`${product.id}-${product.size}-${index}`}>
                 <div className="up-details">
-                    <img src={product.image.src} alt="" loading="lazy" />
+                    <img src={product.image} alt="" loading="lazy" />
                     <div className="item-details">
                         <div className="price-container">
                             <span className="dollar">US$</span>
@@ -24,7 +24,7 @@ export function Cart() {
                         </div>
 
                         <span className="size">
-                            <small>Size: {product.size}</small>
+                            <small>Talla: {product.size}</small>
                         </span>
                         <div className="quantity-container">
                             <button
@@ -88,7 +88,7 @@ export function Cart() {
             <input tab-index="0" id={cartCheckboxId} type="checkbox" onChange={handleShowCart} checked={isChecked} hidden />
             <aside className="cart">
                 <div className="cart-header-container">
-                    <h2 className="cart-header">Your cart</h2>
+                    <h2 className="cart-header">Carrito</h2>
                     <div className="close-icon-container">
                         <button title="Close" aria-label="Close cart button" type="button" onClick={handleShowCart}>
                             <span className="sr-only">Close panel</span>
@@ -101,9 +101,9 @@ export function Cart() {
 
                 {cartLength <= 0 && (
                     <div className="cart-empty">
-                        <p>Your cart is empty</p>
+                        <p>Su carrito está vacío</p>
                         <a href="/products" rel="noopener noreferrer">
-                            Continue Shopping
+                            Continuar comprando
                             <span aria-hidden="true"> &rarr;</span>
                         </a>
                     </div>
@@ -115,27 +115,22 @@ export function Cart() {
                             <p>Subtotal</p>
                             <p>${subtotal}</p>
                         </div>
-                        <small>Shipping and taxes calculated at checkout.</small>
+                        <small>Gastos de envío e impuestos calculados al pagar.</small>
                         <a
-                            title="Checkout cart link"
-                            aria-label="Checkout cart link"
-                            href="/"
+                            title="Procesar pedido"
+                            aria-label="Procesar pedido"
+                            href="/checkout"
                             className="checkout-cart-button"
                             rel="noopener noreferrer"
                         >
-                            Checkout
+                            Procesar pedido
                         </a>
                     </div>
                 )}
 
                 {cart.length > 0 && (
-                    <button
-                        className="clear-cart"
-                        onClick={handleClearCart}
-                        title="Clear cart button"
-                        aria-label="Clear cart button"
-                    >
-                        <span>Clear cart</span>
+                    <button className="clear-cart" onClick={handleClearCart} title="Vaciar carro" aria-label="Vaciar carro">
+                        <span>Vaciar carro</span>
                         <ClearCartIcon />
                     </button>
                 )}
