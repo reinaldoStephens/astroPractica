@@ -34,14 +34,16 @@ const ProductsGrid = ({ initialProducts }) => {
         { value: "4", label: "4" },
         { value: "8", label: "8" },
     ];
+    const [loading, setLoading] = useState(true);
     const [paginationLimit, setPaginationLimit] = useState(showOptions[0].value);
     const [sort, setSort] = useState(sortOptions[0].value);
     const { searchVal, setSearchVal, inputRef } = useSearch();
-    const { products, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage, loading } = useProducts({
+    const { products, getProducts, currentPage, pageCount, pageNumbers, setCurrentPage } = useProducts({
         sort,
         paginationLimit,
         initialProducts,
         searchVal,
+        setLoading,
     });
 
     const paginationContainerClassName = products.length > 0 ? "pagination-container" : "pagination-container hide";
@@ -57,7 +59,7 @@ const ProductsGrid = ({ initialProducts }) => {
         []
     );
 
-    //debouncedGetProducts(searchVal);
+    debouncedGetProducts(searchVal);
 
     const handleSort = (event) => {
         const value = event.target.value;
