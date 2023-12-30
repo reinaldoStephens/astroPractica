@@ -15,7 +15,15 @@ export const list = async () => {
                 return new Promise((resolve, reject) => {
                     Papa.parse(response.data, {
                         header: true,
-                        complete: (results) => resolve(results.data),
+                        complete: (results) => {
+                            const products = results.data;
+                            resolve(
+                                products.map((product) => ({
+                                    ...product,
+                                    price: Number(product.price),
+                                }))
+                            );
+                        },
                         error: (error) => reject(error.messaje),
                     });
                 });

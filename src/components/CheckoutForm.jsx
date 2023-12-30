@@ -188,9 +188,9 @@ export function CheckoutForm() {
 
         const message = `Orden de ${nombre} ${apellidos} \nCédula# ${cedula}\n\n`
             .concat(
-                cart.reduce((message, product) => message.concat(`* ${product.title}(${product.size}) $${product.price}`), ``)
+                cart.reduce((message, product) => message.concat(`* ${product.title}(${product.size}) $${product.price}\n`), ``)
             )
-            .concat(`\n\nTotal: $${cart.reduce((total, product) => total + Number(product.price), 0)}`);
+            .concat(`\nTotal: $${cart.reduce((total, product) => total + Number(product.price), 0)}`);
         alert(message);
     };
 
