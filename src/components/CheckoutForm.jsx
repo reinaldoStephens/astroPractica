@@ -1,7 +1,8 @@
-import { useId, useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { FormInput } from "../components/FormInput.jsx";
 import { FormSelect } from "../components/FormSelect.jsx";
 import { COSTA_RICA_ADDRESS } from "../utils/costaRica.js";
+import { useCartStore } from "../store/cartStore.js";
 
 export function useSelectOptions({ provincia, canton }) {
     const getData = useMemo(() => {
@@ -40,6 +41,8 @@ export function useSelectOptions({ provincia, canton }) {
 }
 
 export function CheckoutForm() {
+    const { cart } = useCartStore((state) => state);
+
     const [form, setForm] = useState({
         email: "",
         firstName: "",
@@ -183,8 +186,11 @@ export function CheckoutForm() {
         const canton = formData.get("canton");
         const distrito = formData.get("distrito");
 
-        const message = `Hola soy ${nombre} ${apellidos} \n, número de cédula: ${cedula} `;
-
+        const message = `Orden de ${nombre} ${apellidos} \nCédula# ${cedula}\n\n`
+            .concat(
+                cart.reduce((message, product) => message.concat(`* ${product.title}(${product.size}) $${product.price}`), ``)
+            )
+            .concat(`\n\nTotal: $${cart.reduce((total, product) => total + Number(product.price), 0)}`);
         alert(message);
     };
 
