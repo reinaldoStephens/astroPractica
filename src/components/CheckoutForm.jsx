@@ -1,7 +1,43 @@
-import { useId, useState } from "react";
+import { useId, useState, useEffect, useMemo } from "react";
 import { FormInput } from "../components/FormInput.jsx";
 import { FormSelect } from "../components/FormSelect.jsx";
 import { COSTA_RICA_ADDRESS } from "../utils/costaRica.js";
+
+export function useSelectOptions({ provincia, canton }) {
+    const getData = useMemo(() => {
+        const provincias = [];
+        const cantones = [];
+        const distritos = [];
+
+        const KEYS = Object.keys(COSTA_RICA_ADDRESS);
+        KEYS.forEach((key) => {
+            const data = COSTA_RICA_ADDRESS[key];
+            provincias.push(data.NAME);
+
+            if (data.NAME === provincia) {
+                const provinciaData = COSTA_RICA_ADDRESS[key].DATA;
+
+                provinciaData.forEach((datos) => {
+                    if (!cantones.includes(datos.NOM_CANT)) {
+                        cantones.push(datos.NOM_CANT);
+                    }
+
+                    if (canton === datos.NOM_CANT && !distritos.includes(datos.NOM_DIST)) {
+                        distritos.push(datos.NOM_DIST);
+                    }
+                });
+            }
+        });
+
+        return {
+            PROVINCIAS: provincias,
+            CANTONES: cantones,
+            DISTRITOS: distritos,
+        };
+    }, [provincia, canton]);
+
+    return { datos: getData };
+}
 
 export function CheckoutForm() {
     const [form, setForm] = useState({
@@ -17,43 +53,7 @@ export function CheckoutForm() {
         distrito: "Barva",
     });
 
-    const COSTA_RICA_DATA = {
-        PROVINCIAS: [],
-        CANTONES: [],
-        DISTRITOS: [],
-    };
-
-    const KEYS = Object.keys(COSTA_RICA_ADDRESS);
-
-    KEYS.forEach((key) => {
-        const data = COSTA_RICA_ADDRESS[key];
-        COSTA_RICA_DATA.PROVINCIAS.push(data.NAME);
-
-        if (data.NAME === form.provincia) {
-            const provinciaData = COSTA_RICA_ADDRESS[key].DATA;
-
-            let cantones = [];
-            let distritos = [];
-
-            provinciaData.forEach((datos) => {
-                if (!cantones.includes(datos.NOM_CANT)) {
-                    cantones.push(datos.NOM_CANT);
-                }
-                if (form.canton === datos.NOM_CANT && !distritos.includes(datos.NOM_DIST)) {
-                    distritos.push(datos.NOM_DIST);
-                }
-            });
-
-            if (cantones.length > 0) {
-                COSTA_RICA_DATA.CANTONES = cantones;
-            }
-
-            if (distritos.length > 0) {
-                COSTA_RICA_DATA.DISTRITOS = distritos;
-            }
-        }
-    });
-
+    const { datos } = useSelectOptions({ provincia: form.provincia, canton: form.canton.toUpperCase() });
     const inputs = {
         email: {
             id: "email",
@@ -211,7 +211,7 @@ export function CheckoutForm() {
                     <div className="address-fields">
                         <FormSelect {...selects.provincia} onChange={handleChange}>
                             <option value="">Elegir provincia</option>
-                            {COSTA_RICA_DATA.PROVINCIAS.map((provincia) => (
+                            {datos.PROVINCIAS.map((provincia) => (
                                 <option key={provincia} value={provincia}>
                                     {provincia}
                                 </option>
@@ -220,7 +220,7 @@ export function CheckoutForm() {
 
                         <FormSelect {...selects.canton} onChange={handleChange}>
                             <option value="">Elegir cantón</option>
-                            {COSTA_RICA_DATA.CANTONES.map((canton) => (
+                            {datos.CANTONES.map((canton) => (
                                 <option key={canton} value={canton}>
                                     {canton}
                                 </option>
@@ -229,7 +229,7 @@ export function CheckoutForm() {
 
                         <FormSelect {...selects.distrito} onChange={handleChange}>
                             <option value="">Elegir distrito</option>
-                            {COSTA_RICA_DATA.DISTRITOS.map((distrito) => (
+                            {datos.DISTRITOS.map((distrito) => (
                                 <option key={distrito} value={distrito}>
                                     {distrito}
                                 </option>
