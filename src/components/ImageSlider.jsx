@@ -18,12 +18,32 @@ export function ImageSlider({ images }) {
         });
     };
 
+    const handleMouseDown = (e) => {
+        e.preventDefault();
+        e.target.style.cursor = "grabbing";
+    };
+
+    const handleMouseUp = (e) => {
+        const imgWidth = e.target.width;
+        let index = 0;
+
+        if (e.pageX > imgWidth / 2) {
+            index = imageIndex === images.length - 1 ? 0 : imageIndex + 1;
+        } else {
+            index = imageIndex == 0 ? images.length - 1 : imageIndex - 1;
+        }
+
+        e.target.style.cursor = "grab";
+
+        setImageIndex(index);
+    };
+
     return (
         <article className="img-slider-container" aria-label="Image Slider">
             <a href="#after-image-slider-controls" className="skip-link" rel="noopener noreferrer">
                 Skip image slider controls
             </a>
-            <div className="img-container">
+            <div className="img-container" onMouseUp={handleMouseUp} onMouseDown={handleMouseDown} onTouchEnd={handleMouseUp}>
                 {images.map(({ url, alt }, index) => (
                     <img
                         key={url}
@@ -34,6 +54,7 @@ export function ImageSlider({ images }) {
                         style={{
                             translate: `${-100 * imageIndex}%`,
                         }}
+                        data-img-index={index}
                     ></img>
                 ))}
             </div>

@@ -55,7 +55,7 @@ export function CheckoutForm() {
         canton: "Barva",
         distrito: "Barva",
     });
-
+    console.log(form);
     const { datos } = useSelectOptions({ provincia: form.provincia, canton: form.canton.toUpperCase() });
     const inputs = {
         email: {
@@ -166,6 +166,7 @@ export function CheckoutForm() {
 
     const handleChange = (e) => {
         const keyName = e.target.name;
+
         setForm({ ...form, [keyName]: e.target.value });
     };
 
