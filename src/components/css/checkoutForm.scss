@@ -122,3 +122,21 @@ input:invalid[focused="true"] + label {
 select:invalid[focused="true"] {
     border: 1px solid red;
 }
+
+@media screen and (max-width: 778px) {
+    .full-name-form-group {
+        flex-direction: column;
+        gap: 0rem;
+    }
+
+    .address-fields {
+        flex-direction: column;
+        gap: 0rem;
+    }
+
+    .full-name-form-group .form-group,
+    .address-fields .form-group {
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+}

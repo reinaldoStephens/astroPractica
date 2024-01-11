@@ -6,8 +6,9 @@ import { useId, useState } from "react";
 export function AddToCartForm({ product }) {
     const { add, cart, remove, removeAll } = useCartStore((state) => state);
 
+    const productSizeList = product.size.split(",");
     const productSizeId = useId();
-    const [sizeSelected, setSizeSelected] = useState(product.size[0]);
+    const [sizeSelected, setSizeSelected] = useState(productSizeList[0]);
 
     const allSizes = ["36", "37", "38", "39", "40", "41", "42", "43", "44"];
     const enableSizes = allSizes.filter((item) => product?.size.includes(item));
@@ -19,6 +20,7 @@ export function AddToCartForm({ product }) {
     };
 
     const isProductInCart = checkProductInCart(product.id);
+    console.log(isProductInCart);
 
     const handleSizeChange = (event) => {
         event.preventDefault();

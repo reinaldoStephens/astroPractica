@@ -64,7 +64,7 @@ export function CheckoutForm() {
             type: "email",
             placeholder: "",
             errorMessage: "El formato del correo electrónico no es válido.",
-            label: "Correo electrónico (para enviarte el comprobante)",
+            label: "Correo electrónico",
             required: true,
         },
         firstName: {
