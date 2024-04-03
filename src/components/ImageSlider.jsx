@@ -55,6 +55,8 @@ export function ImageSlider({ images }) {
                             translate: `${-100 * imageIndex}%`,
                         }}
                         data-img-index={index}
+                        loading="lazy"
+                        decoding="async"
                     ></img>
                 ))}
             </div>
